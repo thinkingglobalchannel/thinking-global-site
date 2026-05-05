@@ -1,2115 +1,534 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes" />
-
-<title>Thinking Global | Decoding Geopolitics & Political Economy</title>
-
-<meta name="description" content="Thinking Global is an independent media outlet providing geopolitical intelligence and political economy analysis." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-<style>
-
-:root {
-
---bg: #0d0d0d;
-
---bg2: #141414;
-
---bg3: #1a1a1a;
-
---border: #2a2a2a;
-
---border-light: #222;
-
---text: #e8e4dc;
-
---text-muted: #888;
-
---text-faint: #555;
-
---accent: #c8a96e;
-
---accent-dim: #a08040;
-
---red: #c84b3c;
-
---tag-bg: #1e1e1e;
-
---nav-h: 56px;
-
---top-bar-h: 36px;
-
-}
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Thinking Global | Decoding Geopolitics & Political Economy</title>
+  <meta name="description" content="Thinking Global is an independent media outlet providing geopolitical intelligence and political economy analysis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:      #0b1c2e;
+      --navy2:     #0f2338;
+      --navy3:     #132840;
+      --navy4:     #1a3350;
+      --blue:      #2d7dd2;
+      --blue-dim:  #1f5da0;
+      --blue-glow: #5aa3e8;
+      --text:      #dde8f5;
+      --text-muted:#8aa5c0;
+      --text-faint:#456080;
+      --border:    #1d3a56;
+      --border-lt: #162e48;
+      --tag-bg:    #0f2338;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--blue-glow); }
+    img { display: block; max-width: 100%; }
+    @keyframes spin { to { transform: rotate(360deg); } }
  
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* TOP BAR */
+    .top-bar { background: #07131f; border-bottom: 1px solid var(--border); height: 38px; display: flex; align-items: center; }
+    .top-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+    .top-bar-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; margin-right: 10px; }
+    .top-cat-nav { display: flex; gap: 2px; align-items: center; flex-wrap: nowrap; overflow-x: auto; }
+    .top-cat-nav a { padding: 4px 10px; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); border-radius: 2px; transition: all .2s; white-space: nowrap; }
+    .top-cat-nav a:hover { background: var(--blue); color: #fff; }
  
-
-html { scroll-behavior: smooth; }
-
+    /* MAIN NAV */
+    .main-nav { background: var(--navy2); border-bottom: 2px solid var(--blue-dim); position: sticky; top: 0; z-index: 100; height: 56px; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; height: 100%; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: 24px; flex-shrink: 0; cursor: pointer; }
+    .nav-logo img { height: 34px; width: auto; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; line-height: 1.1; color: var(--text); }
+    .nav-logo-text span { display: block; font-size: 9px; font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-top: 1px; }
+    .nav-links { display: flex; list-style: none; height: 100%; flex: 1; overflow: hidden; }
+    .nav-links > li { position: relative; height: 100%; display: flex; align-items: center; }
+    .nav-links > li > a { padding: 0 11px; font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted); height: 100%; display: flex; align-items: center; transition: color .2s; white-space: nowrap; }
+    .nav-links > li > a:hover { color: var(--blue-glow); }
+    .nav-right { margin-left: auto; display: flex; gap: 8px; flex-shrink: 0; }
+    .btn-small { padding: 5px 14px; border-radius: 2px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; white-space: nowrap; }
+    .btn-outline { border: 1px solid var(--blue-dim); color: var(--blue); }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+    .btn-solid { background: var(--blue); color: #fff; }
+    .btn-solid:hover { background: var(--blue-glow); color: #fff; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; margin-left: auto; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
+    .mobile-menu { display: none; background: var(--navy2); border-bottom: 1px solid var(--border); padding: 12px 20px; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 10px 0; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border-lt); }
+    .mobile-menu a:hover { color: var(--blue-glow); }
  
-
-body {
-
-background: var(--bg);
-
-color: var(--text);
-
-font-family: 'DM Sans', sans-serif;
-
-font-size: 15px;
-
-line-height: 1.6;
-
-}
-
+    /* LAYOUT */
+    .site-body { max-width: 1200px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
  
-
-a { color: inherit; text-decoration: none; }
-
-a:hover { color: var(--accent); }
-
-img { display: block; max-width: 100%; }
-
+    /* LABELS */
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); display: inline-block; margin-bottom: 5px; }
+    .tag { display: inline-block; padding: 2px 8px; background: var(--tag-bg); border: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
  
-
-/* ── TOP BAR ── */
-
-.top-bar {
-
-background: #080808;
-
-border-bottom: 1px solid var(--border);
-
-height: var(--top-bar-h);
-
-display: flex;
-
-align-items: center;
-
-}
-
-.top-bar-inner {
-
-max-width: 1200px;
-
-margin: 0 auto;
-
-padding: 0 20px;
-
-width: 100%;
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-}
-
-.top-bar-socials {
-
-display: flex;
-
-gap: 14px;
-
-align-items: center;
-
-}
-
-.top-bar-socials a {
-
-color: var(--text-muted);
-
-font-size: 13px;
-
-letter-spacing: .04em;
-
-font-weight: 500;
-
-transition: color .2s;
-
-}
-
-.top-bar-socials a:hover { color: var(--accent); }
-
-.top-bar-actions {
-
-display: flex;
-
-gap: 10px;
-
-}
-
-.btn-small {
-
-padding: 4px 14px;
-
-border-radius: 2px;
-
-font-size: 11px;
-
-font-weight: 600;
-
-letter-spacing: .08em;
-
-text-transform: uppercase;
-
-transition: all .2s;
-
-}
-
-.btn-outline {
-
-border: 1px solid var(--accent-dim);
-
-color: var(--accent);
-
-}
-
-.btn-outline:hover { background: var(--accent); color: #000; }
-
-.btn-solid {
-
-background: var(--accent);
-
-color: #000;
-
-}
-
-.btn-solid:hover { background: #e0c080; }
-
+    /* FEATURED */
+    .featured-article { margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 26px; }
+    .featured-article .thumb-wrap { position: relative; overflow: hidden; margin-bottom: 14px; background: var(--navy3); aspect-ratio: 16/9; cursor: pointer; }
+    .featured-article .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .featured-article:hover .thumb-wrap img { transform: scale(1.03); }
+    .featured-article h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; line-height: 1.28; color: var(--text); margin-bottom: 10px; transition: color .2s; cursor: pointer; }
+    .featured-article:hover h2 { color: var(--blue-glow); }
+    .featured-article p.excerpt { font-family: 'Source Serif 4', serif; font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; }
+    .article-meta { font-size: 12px; color: var(--text-faint); display: flex; align-items: center; gap: 10px; }
+    .article-meta .author { color: var(--blue-dim); }
  
-
-/* ── MAIN NAV ── */
-
-.main-nav {
-
-background: var(--bg2);
-
-border-bottom: 2px solid var(--accent-dim);
-
-position: sticky;
-
-top: 0;
-
-z-index: 100;
-
-height: var(--nav-h);
-
-}
-
-.nav-inner {
-
-max-width: 1200px;
-
-margin: 0 auto;
-
-padding: 0 20px;
-
-display: flex;
-
-align-items: center;
-
-height: 100%;
-
-gap: 0;
-
-}
-
-.nav-logo {
-
-display: flex;
-
-align-items: center;
-
-gap: 10px;
-
-margin-right: 28px;
-
-flex-shrink: 0;
-
-}
-
-.nav-logo img {
-
-height: 34px;
-
-width: auto;
-
-}
-
-.nav-logo-text {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 17px;
-
-font-weight: 700;
-
-letter-spacing: .01em;
-
-line-height: 1.1;
-
-color: var(--text);
-
-}
-
-.nav-logo-text span {
-
-display: block;
-
-font-size: 9px;
-
-font-family: 'DM Sans', sans-serif;
-
-font-weight: 400;
-
-letter-spacing: .14em;
-
-text-transform: uppercase;
-
-color: var(--accent);
-
-margin-top: 1px;
-
-}
-
-.nav-links {
-
-display: flex;
-
-list-style: none;
-
-height: 100%;
-
-flex: 1;
-
-}
-
-.nav-links > li {
-
-position: relative;
-
-height: 100%;
-
-display: flex;
-
-align-items: center;
-
-}
-
-.nav-links > li > a {
-
-padding: 0 14px;
-
-font-size: 12px;
-
-font-weight: 600;
-
-letter-spacing: .08em;
-
-text-transform: uppercase;
-
-color: var(--text-muted);
-
-height: 100%;
-
-display: flex;
-
-align-items: center;
-
-transition: color .2s;
-
-white-space: nowrap;
-
-}
-
-.nav-links > li > a:hover,
-
-.nav-links > li:hover > a { color: var(--accent); }
-
-.nav-links > li > a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
-
+    /* ARTICLE LIST */
+    .article-list { margin-bottom: 28px; }
+    .article-card { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border-lt); cursor: pointer; }
+    .article-card:first-child { border-top: 1px solid var(--border-lt); }
+    .article-card .thumb-wrap { overflow: hidden; background: var(--navy3); aspect-ratio: 16/9; }
+    .article-card .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .article-card:hover .thumb-wrap img { transform: scale(1.05); }
+    .article-card-body { display: flex; flex-direction: column; justify-content: center; }
+    .article-card h3 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; line-height: 1.35; color: var(--text); margin-bottom: 6px; transition: color .2s; }
+    .article-card:hover h3 { color: var(--blue-glow); }
+    .article-card p.excerpt { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--navy3), var(--navy4)); display: flex; align-items: center; justify-content: center; color: var(--text-faint); font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
  
-
-/* Dropdown */
-
-.dropdown {
-
-position: absolute;
-
-top: 100%;
-
-left: 0;
-
-background: var(--bg2);
-
-border: 1px solid var(--border);
-
-border-top: 2px solid var(--accent);
-
-min-width: 260px;
-
-opacity: 0;
-
-pointer-events: none;
-
-transform: translateY(6px);
-
-transition: all .2s;
-
-z-index: 200;
-
-}
-
-.nav-links > li:hover .dropdown {
-
-opacity: 1;
-
-pointer-events: all;
-
-transform: translateY(0);
-
-}
-
-.dropdown a {
-
-display: block;
-
-padding: 10px 16px;
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-border-bottom: 1px solid var(--border-light);
-
-transition: all .15s;
-
-}
-
-.dropdown a:hover { color: var(--accent); background: var(--bg3); padding-left: 22px; }
-
-.dropdown-title {
-
-font-size: 10px;
-
-font-weight: 700;
-
-letter-spacing: .1em;
-
-text-transform: uppercase;
-
-color: var(--text-faint);
-
-padding: 10px 16px 6px;
-
-border-bottom: 1px solid var(--border);
-
-}
-
+    /* PAGINATION */
+    .pagination { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
+    .pagination a, .pagination span { padding: 6px 12px; border: 1px solid var(--border); font-size: 13px; color: var(--text-muted); transition: all .2s; cursor: pointer; }
+    .pagination a:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .pagination .current { background: var(--blue); color: #fff; border-color: var(--blue); }
  
-
-.nav-right {
-
-margin-left: auto;
-
-display: flex;
-
-gap: 8px;
-
-}
-
+    /* SIDEBAR */
+    .sidebar-widget { background: var(--navy2); border: 1px solid var(--border); padding: 20px; margin-bottom: 28px; }
+    .widget-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--text); padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px solid var(--blue-dim); }
+    .popular-list { list-style: none; }
+    .popular-list li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border-lt); align-items: flex-start; cursor: pointer; }
+    .popular-list li:last-child { border-bottom: none; }
+    .popular-num { font-size: 20px; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--blue-dim); line-height: 1; flex-shrink: 0; width: 20px; text-align: right; }
+    .p-title { font-size: 13px; line-height: 1.45; color: var(--text-muted); transition: color .2s; font-family: 'Source Serif 4', serif; }
+    .popular-list li:hover .p-title { color: var(--blue-glow); }
+    .newsletter-widget p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.55; }
+    .btn-full { display: block; width: 100%; padding: 10px; background: var(--blue); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; text-align: center; transition: background .2s; margin-bottom: 8px; }
+    .btn-full:hover { background: var(--blue-glow); color: #fff; }
+    .btn-full.outline { background: transparent; border: 1px solid var(--blue-dim); color: var(--blue); }
+    .btn-full.outline:hover { background: var(--blue); color: #fff; }
+    .cat-list { list-style: none; }
+    .cat-list li { border-bottom: 1px solid var(--border-lt); }
+    .cat-list a { display: flex; justify-content: space-between; padding: 9px 0; font-size: 13px; color: var(--text-muted); transition: all .2s; }
+    .cat-list a:hover { color: var(--blue-glow); padding-left: 6px; }
+    .membership-tier { padding: 12px 0; border-bottom: 1px solid var(--border-lt); }
+    .membership-tier:last-child { border-bottom: none; }
+    .tier-name { font-size: 13px; font-weight: 600; color: var(--blue-glow); margin-bottom: 3px; }
+    .tier-desc { font-size: 12px; color: var(--text-faint); line-height: 1.45; }
+    .loading-spinner { display: inline-block; width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin .8s linear infinite; margin: 12px auto; }
  
-
-/* Hamburger */
-
-.nav-hamburger {
-
-display: none;
-
-flex-direction: column;
-
-gap: 5px;
-
-cursor: pointer;
-
-padding: 4px;
-
-margin-left: auto;
-
-}
-
-.nav-hamburger span {
-
-display: block;
-
-width: 22px;
-
-height: 2px;
-
-background: var(--text);
-
-transition: all .3s;
-
-}
-
+    /* ARTICLE READER */
+    #article-page { display: none; max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+    #article-page.visible { display: block; }
+    .article-back { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; cursor: pointer; transition: color .2s; border: 1px solid var(--blue-dim); padding: 6px 14px; }
+    .article-back:hover { color: var(--blue-glow); border-color: var(--blue-glow); }
+    .article-reader { display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    .reader-tag { margin-bottom: 10px; }
+    .reader-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; line-height: 1.22; color: var(--text); margin-bottom: 14px; }
+    .reader-meta { font-size: 13px; color: var(--text-faint); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .reader-meta .author { color: var(--blue); font-weight: 600; }
+    .reader-hero { aspect-ratio: 16/9; overflow: hidden; background: var(--navy3); margin-bottom: 28px; }
+    .reader-hero img { width: 100%; height: 100%; object-fit: cover; }
+    .reader-body { font-family: 'Source Serif 4', serif; font-size: 17px; color: var(--text-muted); line-height: 1.8; }
+    .reader-body p { margin-bottom: 1.4em; }
+    .reader-body h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text); margin: 1.8em 0 .8em; }
+    .reader-body h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text); margin: 1.5em 0 .6em; }
+    .reader-body blockquote { border-left: 3px solid var(--blue); padding: 12px 20px; background: var(--navy2); margin: 1.5em 0; color: var(--text); }
+    .reader-body a { color: var(--blue-glow); text-decoration: underline; text-underline-offset: 3px; }
+    .reader-body img { max-width: 100%; margin: 1.5em auto; }
+    .reader-loading { padding: 60px 0; text-align: center; color: var(--text-faint); font-size: 14px; }
+    .reader-cta { background: var(--navy2); border: 1px solid var(--border); padding: 28px; margin-top: 36px; text-align: center; border-top: 2px solid var(--blue-dim); }
+    .reader-cta h4 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 8px; color: var(--text); }
+    .reader-cta p { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; }
+    .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .cta-btns a { display: inline-block; padding: 10px 22px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; }
  
-
-/* ── HERO BANNER ── */
-
-.hero-banner {
-
-background: linear-gradient(135deg, #0a0a0a 0%, #111 60%, #181208 100%);
-
-border-bottom: 1px solid var(--border);
-
-padding: 28px 0 20px;
-
-}
-
-.hero-inner {
-
-max-width: 1200px;
-
-margin: 0 auto;
-
-padding: 0 20px;
-
-display: flex;
-
-align-items: center;
-
-gap: 20px;
-
-}
-
-.hero-logo { height: 64px; width: auto; }
-
-.hero-text h1 {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 28px;
-
-font-weight: 900;
-
-letter-spacing: -.01em;
-
-color: var(--text);
-
-}
-
-.hero-text p {
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-letter-spacing: .06em;
-
-text-transform: uppercase;
-
-margin-top: 3px;
-
-}
-
+    /* FOOTER */
+    .site-footer { background: #07131f; border-top: 2px solid var(--blue-dim); padding: 40px 0 20px; margin-top: 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+    .footer-brand img { height: 40px; margin-bottom: 12px; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 8px; }
+    .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+    .footer-col h4 { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul a { font-size: 13px; color: var(--text-muted); transition: color .2s; }
+    .footer-col ul a:hover { color: var(--blue-glow); }
+    .footer-socials { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .footer-socials a { padding: 4px 10px; border: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 600; transition: all .2s; border-radius: 2px; }
+    .footer-socials a:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-faint); }
  
-
-/* ── LAYOUT ── */
-
-.site-body {
-
-max-width: 1200px;
-
-margin: 0 auto;
-
-padding: 30px 20px;
-
-display: grid;
-
-grid-template-columns: 1fr 300px;
-
-gap: 40px;
-
-}
-
- 
-
-/* ── SECTION LABEL ── */
-
-.section-label {
-
-font-size: 10px;
-
-font-weight: 700;
-
-letter-spacing: .14em;
-
-text-transform: uppercase;
-
-color: var(--accent);
-
-display: inline-block;
-
-margin-bottom: 6px;
-
-}
-
- 
-
-/* ── FEATURED ARTICLE (large) ── */
-
-.featured-article {
-
-margin-bottom: 32px;
-
-border-bottom: 1px solid var(--border);
-
-padding-bottom: 28px;
-
-}
-
-.featured-article .thumb-wrap {
-
-position: relative;
-
-overflow: hidden;
-
-margin-bottom: 14px;
-
-background: var(--bg3);
-
-aspect-ratio: 16/9;
-
-}
-
-.featured-article .thumb-wrap img {
-
-width: 100%;
-
-height: 100%;
-
-object-fit: cover;
-
-transition: transform .4s;
-
-}
-
-.featured-article:hover .thumb-wrap img { transform: scale(1.03); }
-
-.featured-article h2 {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 24px;
-
-font-weight: 700;
-
-line-height: 1.28;
-
-color: var(--text);
-
-margin-bottom: 10px;
-
-transition: color .2s;
-
-}
-
-.featured-article:hover h2 { color: var(--accent); }
-
-.featured-article p.excerpt {
-
-font-family: 'Source Serif 4', serif;
-
-font-size: 15px;
-
-color: var(--text-muted);
-
-line-height: 1.65;
-
-margin-bottom: 12px;
-
-}
-
-.article-meta {
-
-font-size: 12px;
-
-color: var(--text-faint);
-
-display: flex;
-
-align-items: center;
-
-gap: 10px;
-
-}
-
-.article-meta .author { color: var(--accent-dim); }
-
-.article-meta .dot { color: var(--border); }
-
- 
-
-/* ── ARTICLE LIST (medium) ── */
-
-.article-list { margin-bottom: 32px; }
-
-.article-card {
-
-display: grid;
-
-grid-template-columns: 160px 1fr;
-
-gap: 16px;
-
-padding: 16px 0;
-
-border-bottom: 1px solid var(--border-light);
-
-transition: all .2s;
-
-}
-
-.article-card:first-child { border-top: 1px solid var(--border-light); }
-
-.article-card .thumb-wrap {
-
-overflow: hidden;
-
-background: var(--bg3);
-
-aspect-ratio: 16/9;
-
-flex-shrink: 0;
-
-}
-
-.article-card .thumb-wrap img {
-
-width: 100%;
-
-height: 100%;
-
-object-fit: cover;
-
-transition: transform .3s;
-
-}
-
-.article-card:hover .thumb-wrap img { transform: scale(1.05); }
-
-.article-card-body { display: flex; flex-direction: column; justify-content: center; }
-
-.article-card h3 {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 16px;
-
-font-weight: 600;
-
-line-height: 1.35;
-
-color: var(--text);
-
-margin-bottom: 6px;
-
-transition: color .2s;
-
-}
-
-.article-card:hover h3 { color: var(--accent); }
-
-.article-card p.excerpt {
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-line-height: 1.55;
-
-margin-bottom: 8px;
-
-display: -webkit-box;
-
--webkit-line-clamp: 2;
-
--webkit-box-orient: vertical;
-
-overflow: hidden;
-
-}
-
- 
-
-/* Placeholder thumbs */
-
-.thumb-placeholder {
-
-width: 100%;
-
-height: 100%;
-
-background: linear-gradient(135deg, #1a1a1a, #222);
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-color: var(--text-faint);
-
-font-size: 11px;
-
-font-weight: 600;
-
-letter-spacing: .06em;
-
-text-transform: uppercase;
-
-}
-
- 
-
-/* ── PAGINATION ── */
-
-.pagination {
-
-display: flex;
-
-gap: 4px;
-
-margin-top: 20px;
-
-flex-wrap: wrap;
-
-}
-
-.pagination a, .pagination span {
-
-padding: 6px 12px;
-
-border: 1px solid var(--border);
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-transition: all .2s;
-
-}
-
-.pagination a:hover { background: var(--accent); color: #000; border-color: var(--accent); }
-
-.pagination .current { background: var(--accent); color: #000; border-color: var(--accent); }
-
- 
-
-/* ── SIDEBAR ── */
-
-.sidebar { }
-
-.sidebar-widget {
-
-background: var(--bg2);
-
-border: 1px solid var(--border);
-
-padding: 20px;
-
-margin-bottom: 28px;
-
-}
-
-.widget-title {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 16px;
-
-font-weight: 700;
-
-color: var(--text);
-
-padding-bottom: 12px;
-
-margin-bottom: 14px;
-
-border-bottom: 2px solid var(--accent-dim);
-
-}
-
- 
-
-/* Popular list */
-
-.popular-list { list-style: none; }
-
-.popular-list li {
-
-display: flex;
-
-gap: 12px;
-
-padding: 10px 0;
-
-border-bottom: 1px solid var(--border-light);
-
-align-items: flex-start;
-
-}
-
-.popular-list li:last-child { border-bottom: none; }
-
-.popular-num {
-
-font-size: 20px;
-
-font-weight: 700;
-
-font-family: 'Playfair Display', serif;
-
-color: var(--accent-dim);
-
-line-height: 1;
-
-flex-shrink: 0;
-
-width: 20px;
-
-text-align: right;
-
-}
-
-.popular-list a {
-
-font-size: 13px;
-
-line-height: 1.45;
-
-color: var(--text-muted);
-
-transition: color .2s;
-
-font-family: 'Source Serif 4', serif;
-
-}
-
-.popular-list a:hover { color: var(--accent); }
-
-.popular-thumb {
-
-width: 60px;
-
-height: 44px;
-
-object-fit: cover;
-
-flex-shrink: 0;
-
-}
-
- 
-
-/* Newsletter widget */
-
-.newsletter-widget p {
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-margin-bottom: 14px;
-
-line-height: 1.55;
-
-}
-
-.btn-full {
-
-display: block;
-
-width: 100%;
-
-padding: 10px;
-
-background: var(--accent);
-
-color: #000;
-
-font-weight: 700;
-
-font-size: 12px;
-
-letter-spacing: .08em;
-
-text-transform: uppercase;
-
-text-align: center;
-
-transition: background .2s;
-
-margin-bottom: 8px;
-
-}
-
-.btn-full:hover { background: #e0c080; color: #000; }
-
-.btn-full.outline {
-
-background: transparent;
-
-border: 1px solid var(--accent-dim);
-
-color: var(--accent);
-
-}
-
-.btn-full.outline:hover { background: var(--accent); color: #000; }
-
- 
-
-/* Categories widget */
-
-.cat-list { list-style: none; }
-
-.cat-list li { border-bottom: 1px solid var(--border-light); }
-
-.cat-list a {
-
-display: flex;
-
-justify-content: space-between;
-
-padding: 9px 0;
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-transition: all .2s;
-
-}
-
-.cat-list a:hover { color: var(--accent); padding-left: 6px; }
-
-.cat-list .cat-count {
-
-font-size: 11px;
-
-color: var(--text-faint);
-
-background: var(--bg3);
-
-padding: 1px 7px;
-
-border-radius: 2px;
-
-}
-
- 
-
-/* Membership widget */
-
-.membership-tier {
-
-padding: 12px 0;
-
-border-bottom: 1px solid var(--border-light);
-
-}
-
-.membership-tier:last-child { border-bottom: none; }
-
-.tier-name {
-
-font-size: 13px;
-
-font-weight: 600;
-
-color: var(--accent);
-
-margin-bottom: 3px;
-
-}
-
-.tier-desc {
-
-font-size: 12px;
-
-color: var(--text-faint);
-
-line-height: 1.45;
-
-}
-
- 
-
-/* ── CATEGORY SECTIONS ── */
-
-.category-section {
-
-margin-bottom: 36px;
-
-padding-bottom: 28px;
-
-border-bottom: 2px solid var(--border);
-
-}
-
-.category-section-header {
-
-display: flex;
-
-align-items: baseline;
-
-gap: 14px;
-
-margin-bottom: 18px;
-
-}
-
-.category-section-header h2 {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 20px;
-
-font-weight: 700;
-
-}
-
-.category-section-header a.see-all {
-
-font-size: 11px;
-
-letter-spacing: .08em;
-
-text-transform: uppercase;
-
-color: var(--accent-dim);
-
-font-weight: 600;
-
-}
-
-.category-section-header a.see-all:hover { color: var(--accent); }
-
- 
-
-/* Mini cards grid */
-
-.mini-cards {
-
-display: grid;
-
-grid-template-columns: 1fr 1fr;
-
-gap: 16px;
-
-}
-
-.mini-card .thumb-wrap {
-
-aspect-ratio: 16/9;
-
-overflow: hidden;
-
-background: var(--bg3);
-
-margin-bottom: 8px;
-
-}
-
-.mini-card .thumb-wrap img {
-
-width: 100%; height: 100%; object-fit: cover;
-
-transition: transform .3s;
-
-}
-
-.mini-card:hover .thumb-wrap img { transform: scale(1.05); }
-
-.mini-card h4 {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 14px;
-
-font-weight: 600;
-
-line-height: 1.35;
-
-color: var(--text);
-
-transition: color .2s;
-
-}
-
-.mini-card:hover h4 { color: var(--accent); }
-
- 
-
-/* ── FOOTER ── */
-
-.site-footer {
-
-background: #080808;
-
-border-top: 2px solid var(--accent-dim);
-
-padding: 40px 0 20px;
-
-margin-top: 40px;
-
-}
-
-.footer-inner {
-
-max-width: 1200px;
-
-margin: 0 auto;
-
-padding: 0 20px;
-
-}
-
-.footer-top {
-
-display: grid;
-
-grid-template-columns: 1fr 1fr 1fr 1fr;
-
-gap: 32px;
-
-padding-bottom: 32px;
-
-border-bottom: 1px solid var(--border);
-
-margin-bottom: 24px;
-
-}
-
-.footer-brand img { height: 40px; margin-bottom: 12px; }
-
-.footer-brand h3 {
-
-font-family: 'Playfair Display', serif;
-
-font-size: 16px;
-
-margin-bottom: 8px;
-
-}
-
-.footer-brand p {
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-line-height: 1.55;
-
-}
-
-.footer-col h4 {
-
-font-size: 10px;
-
-font-weight: 700;
-
-letter-spacing: .12em;
-
-text-transform: uppercase;
-
-color: var(--accent);
-
-margin-bottom: 14px;
-
-}
-
-.footer-col ul { list-style: none; }
-
-.footer-col ul li { margin-bottom: 8px; }
-
-.footer-col ul a {
-
-font-size: 13px;
-
-color: var(--text-muted);
-
-transition: color .2s;
-
-}
-
-.footer-col ul a:hover { color: var(--accent); }
-
-.footer-socials {
-
-display: flex;
-
-gap: 10px;
-
-margin-top: 14px;
-
-}
-
-.footer-socials a {
-
-width: 32px;
-
-height: 32px;
-
-border: 1px solid var(--border);
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-color: var(--text-muted);
-
-font-size: 13px;
-
-transition: all .2s;
-
-border-radius: 2px;
-
-}
-
-.footer-socials a:hover { background: var(--accent); border-color: var(--accent); color: #000; }
-
-.footer-bottom {
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-font-size: 12px;
-
-color: var(--text-faint);
-
-}
-
- 
-
-/* ── TAG BADGE ── */
-
-.tag {
-
-display: inline-block;
-
-padding: 2px 8px;
-
-background: var(--tag-bg);
-
-border: 1px solid var(--border);
-
-font-size: 10px;
-
-font-weight: 700;
-
-letter-spacing: .08em;
-
-text-transform: uppercase;
-
-color: var(--accent);
-
-margin-bottom: 6px;
-
-}
-
- 
-
-/* ── MOBILE ── */
-
-.mobile-menu {
-
-display: none;
-
-background: var(--bg2);
-
-border-bottom: 1px solid var(--border);
-
-padding: 12px 20px;
-
-}
-
-.mobile-menu.open { display: block; }
-
-.mobile-menu a {
-
-display: block;
-
-padding: 10px 0;
-
-font-size: 13px;
-
-font-weight: 600;
-
-letter-spacing: .06em;
-
-text-transform: uppercase;
-
-color: var(--text-muted);
-
-border-bottom: 1px solid var(--border-light);
-
-}
-
-.mobile-menu a:hover { color: var(--accent); }
-
- 
-
-@media (max-width: 900px) {
-
-.nav-links { display: none; }
-
-.nav-right { display: none; }
-
-.nav-hamburger { display: flex; }
-
-.site-body { grid-template-columns: 1fr; }
-
-.footer-top { grid-template-columns: 1fr 1fr; }
-
-.mini-cards { grid-template-columns: 1fr; }
-
-}
-
-@media (max-width: 600px) {
-
-.article-card { grid-template-columns: 1fr; }
-
-.article-card .thumb-wrap { aspect-ratio: 16/9; }
-
-.footer-top { grid-template-columns: 1fr; }
-
-.top-bar-socials { display: none; }
-
-.hero-text h1 { font-size: 22px; }
-
-}
-
-</style>
-
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links, .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
+      .site-body, .article-reader { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .top-cat-nav { display: none; }
+    }
+    @media (max-width: 600px) {
+      .article-card { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .reader-title { font-size: 22px; }
+    }
+  </style>
 </head>
-
 <body>
-
  
-
 <!-- TOP BAR -->
-
 <div class="top-bar">
-
-<div class="top-bar-inner">
-
-<div class="top-bar-socials">
-
-<a href="https://x.com/thinkinglobalYT" target="_blank">X / Twitter</a>
-
-<a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">YouTube</a>
-
-<a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a>
-
-<a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a>
-
+  <div class="top-bar-inner">
+    <span class="top-bar-label">▶ Watch:</span>
+    <nav class="top-cat-nav">
+      <a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
+      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
+    </nav>
+  </div>
 </div>
-
-<div class="top-bar-actions">
-
-<a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
-
-<a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
-
-</div>
-
-</div>
-
-</div>
-
  
-
 <!-- MAIN NAV -->
-
 <nav class="main-nav">
-
-<div class="nav-inner">
-
-<a href="/" class="nav-logo">
-
-<img src="https://www.thinking-global.org/logo.png" alt="Thinking Global" onerror="this.style.display='none'" />
-
-<div class="nav-logo-text">
-
-Thinking Global
-
-<span>Decoding Geopolitics</span>
-
-</div>
-
-</a>
-
- 
-
-<ul class="nav-links">
-
-<li>
-
-<a href="#">Eurasia</a>
-
-<div class="dropdown">
-
-<div class="dropdown-title">Latest in Eurasia</div>
-
-<a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">Iran & Middle East</a>
-
-<a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">Taiwan & China</a>
-
-<a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">Russia & Europe</a>
-
-</div>
-
-</li>
-
-<li>
-
-<a href="#">Americas</a>
-
-<div class="dropdown">
-
-<div class="dropdown-title">Latest in Americas</div>
-
-<a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">Latin America</a>
-
-<a href="#">USA & Geopolitics</a>
-
-</div>
-
-</li>
-
-<li>
-
-<a href="#">Africa</a>
-
-<div class="dropdown">
-
-<div class="dropdown-title">Latest in Africa</div>
-
-<a href="#">BRICS & Africa</a>
-
-<a href="#">Sahel & Transitions</a>
-
-</div>
-
-</li>
-
-<li>
-
-<a href="#">Economy</a>
-
-<div class="dropdown">
-
-<div class="dropdown-title">Latest in Economy</div>
-
-<a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot">Global South</a>
-
-<a href="#">Dedollarization</a>
-
-<a href="#">Trade & Sanctions</a>
-
-</div>
-
-</li>
-
-<li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">Videos</a></li>
-
-<li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
-
-</ul>
-
- 
-
-<div class="nav-right">
-
-<a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
-
-<a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
-
-</div>
-
- 
-
-<div class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-
-<span></span><span></span><span></span>
-
-</div>
-
-</div>
-
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showHome()">
+      <img src="https://www.thinking-global.org/logo.png" alt="Thinking Global" onerror="this.style.display='none'" />
+      <div class="nav-logo-text">Thinking Global<span>Decoding Geopolitics</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Pol. Theory</a></li>
+      <li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
+      <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
 </nav>
-
- 
-
-<!-- MOBILE MENU -->
-
 <div class="mobile-menu" id="mobileMenu">
-
-<a href="#">Eurasia</a>
-
-<a href="#">Americas</a>
-
-<a href="#">Africa</a>
-
-<a href="#">Economy</a>
-
-<a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">Videos</a>
-
-<a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
-
-<a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
-
-<a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
-
+  <a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
+  <a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
+  <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
+  <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
 </div>
-
  
-
-<!-- SITE BODY -->
-
-<div class="site-body">
-
+<!-- HOME PAGE -->
+<div id="home-page">
+  <div class="site-body">
+    <main>
+      <div id="articles-container">
+        <div style="padding:50px 0;text-align:center;color:var(--text-faint);">
+          <div class="loading-spinner" style="display:block;margin:0 auto;"></div>
+          <p style="margin-top:14px;font-size:13px;">Loading latest analysis…</p>
+        </div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Popular</h3>
+        <div id="popularLoading" style="text-align:center;padding:10px 0;"><div class="loading-spinner" style="display:inline-block;width:20px;height:20px;"></div></div>
+        <ol class="popular-list" id="popularList" style="display:none"></ol>
+      </div>
+      <div class="sidebar-widget newsletter-widget">
+        <h3 class="widget-title">Weekly Dispatch</h3>
+        <p>Structural intelligence on geopolitics and political economy — directly to your inbox.</p>
+        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Join the Newsletter</a>
+        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
+      </div>
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Watch by Region</h3>
+        <ul class="cat-list">
+          <li><a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S. ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania ▶</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory ▶</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Thinking Global Club</h3>
+        <div class="membership-tier"><div class="tier-name">🛡️ Sovereign Supporter</div><div class="tier-desc">Directly fund our independence. Exclusive emojis & badges.</div></div>
+        <div class="membership-tier"><div class="tier-name">📊 Multipolar Analyst</div><div class="tier-desc">Early access to long-form videos. Handle credited in outros.</div></div>
+        <div class="membership-tier"><div class="tier-name">🎓 Structural Partner</div><div class="tier-desc">Inner circle. Direct educational guidance and IR expertise via email.</div></div>
+        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:14px;">Join via YouTube</a>
+      </div>
+    </aside>
+  </div>
+</div>
  
-
-<!-- MAIN COLUMN -->
-
-<main>
-
+<!-- ARTICLE PAGE -->
+<div id="article-page">
+  <div style="max-width:1200px;margin:0 auto;padding:20px 20px 0;">
+    <span class="article-back" onclick="showHome()">← Back to Home</span>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 20px 30px;">
+    <div class="article-reader">
+      <main><div id="article-content"><div class="reader-loading"><div class="loading-spinner" style="display:block;margin:0 auto;width:32px;height:32px;"></div><p style="margin-top:14px;">Loading article…</p></div></div></main>
+      <aside class="sidebar">
+        <div class="sidebar-widget newsletter-widget">
+          <h3 class="widget-title">Weekly Dispatch</h3>
+          <p>Structural geopolitical intelligence — directly to your inbox.</p>
+          <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Subscribe Free</a>
+          <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
+        </div>
+        <div class="sidebar-widget">
+          <h3 class="widget-title">Popular</h3>
+          <ol class="popular-list" id="popularListArticle"></ol>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
  
-
-<!-- FEATURED ARTICLE -->
-
-<article class="featured-article">
-
-<span class="tag">Economy</span>
-
-<a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot">
-
-<div class="thumb-wrap">
-
-<div class="thumb-placeholder">Thinking Global</div>
-
-</div>
-
-<h2>The $5 Trillion Blind Spot: Indonesia's Geopolitical Power</h2>
-
-</a>
-
-<p class="excerpt">The world's fourth most populous nation stands at a unique geopolitical crossroads — commanding critical maritime chokepoints, abundant resources, and a rapidly expanding economy that most Western analysts continue to underestimate.</p>
-
-<div class="article-meta">
-
-<span class="author">Thinking Global</span>
-
-<span class="dot">·</span>
-
-<span>2026-05-01</span>
-
-</div>
-
-</article>
-
- 
-
-<!-- ARTICLE LIST: Latest -->
-
-<div class="category-section-header">
-
-<h2>Latest Analysis</h2>
-
-</div>
-
-<div class="article-list">
-
- 
-
-<article class="article-card">
-
-<a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">
-
-<div class="thumb-wrap">
-
-<div class="thumb-placeholder">Eurasia</div>
-
-</div>
-
-</a>
-
-<div class="article-card-body">
-
-<span class="section-label">Eurasia</span>
-
-<a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">
-
-<h3>Why Taiwan is Turning Away from the US: The 14% Collapse</h3>
-
-</a>
-
-<p class="excerpt">Trust in Washington's security guarantees has fallen to historic lows in Taipei, reshaping the island's geopolitical posture in real time.</p>
-
-<div class="article-meta">
-
-<span class="author">Thinking Global</span>
-
-<span class="dot">·</span>
-
-<span>2026-04-28</span>
-
-</div>
-
-</div>
-
-</article>
-
- 
-
-<article class="article-card">
-
-<a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">
-
-<div class="thumb-wrap">
-
-<div class="thumb-placeholder">Eurasia</div>
-
-</div>
-
-</a>
-
-<div class="article-card-body">
-
-<span class="section-label">Eurasia</span>
-
-<a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">
-
-<h3>Strategic Timeline: Iranian Missile Interceptions in March 2026</h3>
-
-</a>
-
-<p class="excerpt">A detailed chronological breakdown of Iran's asymmetric defense posture and what it reveals about the evolving balance of power in the region.</p>
-
-<div class="article-meta">
-
-<span class="author">Thinking Global</span>
-
-<span class="dot">·</span>
-
-<span>2026-04-15</span>
-
-</div>
-
-</div>
-
-</article>
-
- 
-
-<article class="article-card">
-
-<a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">
-
-<div class="thumb-wrap">
-
-<div class="thumb-placeholder">Americas</div>
-
-</div>
-
-</a>
-
-<div class="article-card-body">
-
-<span class="section-label">Americas</span>
-
-<a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">
-
-<h3>The Mercosur-EU Agreement: A New Colonial Pact</h3>
-
-</a>
-
-<p class="excerpt">Beneath the diplomatic surface, the landmark trade deal encodes structural asymmetries that echo centuries of unequal exchange between the Global South and Europe.</p>
-
-<div class="article-meta">
-
-<span class="author">Thinking Global</span>
-
-<span class="dot">·</span>
-
-<span>2026-04-02</span>
-
-</div>
-
-</div>
-
-</article>
-
- 
-
-<article class="article-card">
-
-<a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">
-
-<div class="thumb-wrap">
-
-<div class="thumb-placeholder">Eurasia</div>
-
-</div>
-
-</a>
-
-<div class="article-card-body">
-
-<span class="section-label">Eurasia</span>
-
-<a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">
-
-<h3>Greenland: The Strategic Test for European Sovereignty</h3>
-
-</a>
-
-<p class="excerpt">As Washington increases pressure over the Arctic island, European capitals face a defining test of whether they can act as an autonomous geopolitical actor.</p>
-
-<div class="article-meta">
-
-<span class="author">Thinking Global</span>
-
-<span class="dot">·</span>
-
-<span>2026-03-20</span>
-
-</div>
-
-</div>
-
-</article>
-
- 
-
-</div>
-
- 
-
-<!-- PAGINATION -->
-
-<div class="pagination">
-
-<span class="current">1</span>
-
-<a href="https://thinkingglobal.substack.com/">2</a>
-
-<a href="https://thinkingglobal.substack.com/">3</a>
-
-<a href="https://thinkingglobal.substack.com/">Next ›</a>
-
-<a href="https://thinkingglobal.substack.com/">Last »</a>
-
-</div>
-
- 
-
-</main>
-
- 
-
-<!-- SIDEBAR -->
-
-<aside class="sidebar">
-
- 
-
-<!-- Popular -->
-
-<div class="sidebar-widget">
-
-<h3 class="widget-title">Popular</h3>
-
-<ol class="popular-list">
-
-<li>
-
-<span class="popular-num">1</span>
-
-<a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">Why Taiwan is Turning Away from the US: The 14% Collapse</a>
-
-</li>
-
-<li>
-
-<span class="popular-num">2</span>
-
-<a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot">The $5 Trillion Blind Spot: Indonesia's Geopolitical Power</a>
-
-</li>
-
-<li>
-
-<span class="popular-num">3</span>
-
-<a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">The Mercosur-EU Agreement: A New Colonial Pact</a>
-
-</li>
-
-<li>
-
-<span class="popular-num">4</span>
-
-<a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">Strategic Timeline: Iranian Missile Interceptions in March 2026</a>
-
-</li>
-
-<li>
-
-<span class="popular-num">5</span>
-
-<a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">Greenland: The Strategic Test for European Sovereignty</a>
-
-</li>
-
-</ol>
-
-</div>
-
- 
-
-<!-- Newsletter -->
-
-<div class="sidebar-widget newsletter-widget">
-
-<h3 class="widget-title">Weekly Dispatch</h3>
-
-<p>Structural intelligence on geopolitics and political economy — directly to your inbox.</p>
-
-<a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Join the Newsletter</a>
-
-<a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
-
-</div>
-
- 
-
-<!-- Categories -->
-
-<div class="sidebar-widget">
-
-<h3 class="widget-title">Topics</h3>
-
-<ul class="cat-list">
-
-<li><a href="#">Eurasia <span class="cat-count">38</span></a></li>
-
-<li><a href="#">Americas <span class="cat-count">24</span></a></li>
-
-<li><a href="#">Africa <span class="cat-count">17</span></a></li>
-
-<li><a href="#">Economy <span class="cat-count">31</span></a></li>
-
-<li><a href="#">Dedollarization <span class="cat-count">12</span></a></li>
-
-<li><a href="#">BRICS <span class="cat-count">9</span></a></li>
-
-<li><a href="#">Opinion <span class="cat-count">8</span></a></li>
-
-</ul>
-
-</div>
-
- 
-
-<!-- Membership -->
-
-<div class="sidebar-widget">
-
-<h3 class="widget-title">Thinking Global Club</h3>
-
-<div class="membership-tier">
-
-<div class="tier-name">🛡️ Sovereign Supporter</div>
-
-<div class="tier-desc">Directly fund our independence. Exclusive emojis & badges for community discussions.</div>
-
-</div>
-
-<div class="membership-tier">
-
-<div class="tier-name">📊 Multipolar Analyst</div>
-
-<div class="tier-desc">Early access to long-form videos and your handle credited in video outros.</div>
-
-</div>
-
-<div class="membership-tier">
-
-<div class="tier-name">🎓 Structural Partner</div>
-
-<div class="tier-desc">Inner circle support. Direct educational guidance and shared IR expertise via email.</div>
-
-</div>
-
-<a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:14px;">Support via YouTube</a>
-
-</div>
-
- 
-
-</aside>
-
-</div>
-
- 
-
 <!-- FOOTER -->
-
 <footer class="site-footer">
-
-<div class="footer-inner">
-
-<div class="footer-top">
-
-<div class="footer-brand">
-
-<img src="https://www.thinking-global.org/logo.png" alt="Thinking Global" onerror="this.style.display='none'" />
-
-<h3>Thinking Global</h3>
-
-<p>Decoding Geopolitics & Political Economy. Independent analysis for a multipolar world.</p>
-
-<div class="footer-socials">
-
-<a href="https://x.com/thinkinglobalYT" target="_blank" title="X / Twitter">𝕏</a>
-
-<a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank" title="YouTube">▶</a>
-
-<a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" title="Instagram">◻</a>
-
-<a href="https://www.tiktok.com/@thinking.global" target="_blank" title="TikTok">♪</a>
-
-</div>
-
-</div>
-
- 
-
-<div class="footer-col">
-
-<h4>Navigate</h4>
-
-<ul>
-
-<li><a href="#">Eurasia</a></li>
-
-<li><a href="#">Americas</a></li>
-
-<li><a href="#">Africa</a></li>
-
-<li><a href="#">Economy</a></li>
-
-<li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">Videos</a></li>
-
-</ul>
-
-</div>
-
- 
-
-<div class="footer-col">
-
-<h4>Support</h4>
-
-<ul>
-
-<li><a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Patreon</a></li>
-
-<li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank">YouTube Membership</a></li>
-
-<li><a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Newsletter</a></li>
-
-</ul>
-
-</div>
-
- 
-
-<div class="footer-col">
-
-<h4>Connect</h4>
-
-<ul>
-
-<li><a href="https://x.com/thinkinglobalYT" target="_blank">X / Twitter</a></li>
-
-<li><a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a></li>
-
-<li><a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a></li>
-
-<li><a href="https://thinkingglobal.substack.com/" target="_blank">Substack</a></li>
-
-</ul>
-
-</div>
-
-</div>
-
- 
-
-<div class="footer-bottom">
-
-<span>© 2026 Thinking Global. Decoding Geopolitics & Economy.</span>
-
-<span>Independent & Ad-Free</span>
-
-</div>
-
-</div>
-
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://www.thinking-global.org/logo.png" alt="Thinking Global" onerror="this.style.display='none'" />
+        <h3>Thinking Global</h3>
+        <p>Decoding Geopolitics & Political Economy. Independent analysis for a multipolar world.</p>
+        <div class="footer-socials">
+          <a href="https://x.com/thinkinglobalYT" target="_blank">X</a>
+          <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">YouTube</a>
+          <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a>
+          <a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Watch</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Read</h4>
+        <ul>
+          <li><a href="https://thinkingglobal.substack.com/" target="_blank">All Articles</a></li>
+          <li><a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Newsletter</a></li>
+          <li><a href="https://thinkingglobal.substack.com/?sort=top" target="_blank">Most Popular</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Patreon</a></li>
+          <li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank">YouTube Membership</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Thinking Global. Decoding Geopolitics & Economy.</span>
+      <span>Independent & Ad-Free</span>
+    </div>
+  </div>
 </footer>
-
  
-
 <script>
-
-function toggleMenu() {
-
-const m = document.getElementById('mobileMenu');
-
-m.classList.toggle('open');
-
-}
-
-</script>
-
+  let allPosts = [], topPosts = [];
  
-
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function showHome() {
+    document.getElementById('home-page').style.display = '';
+    document.getElementById('article-page').style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+ 
+  // ── Fetch latest posts ──────────────────────────────────────
+  async function fetchPosts() {
+    try {
+      const r = await fetch('https://thinkingglobal.substack.com/api/v1/posts?limit=20&sort=new');
+      if (!r.ok) throw new Error();
+      allPosts = await r.json();
+      renderArticles(allPosts);
+    } catch { renderFallbackArticles(); }
+  }
+ 
+  // ── Fetch top posts ─────────────────────────────────────────
+  async function fetchTopPosts() {
+    try {
+      const r = await fetch('https://thinkingglobal.substack.com/api/v1/posts?limit=5&sort=top_all_time');
+      if (!r.ok) throw new Error();
+      topPosts = await r.json();
+      renderPopular(topPosts);
+    } catch { renderPopularFallback(); }
+  }
+ 
+  // ── Render homepage article list ────────────────────────────
+  function renderArticles(posts) {
+    if (!posts || posts.length === 0) { renderFallbackArticles(); return; }
+    const c = document.getElementById('articles-container');
+    const f = posts[0];
+    let html = `<article class="featured-article">
+      <span class="tag">${escTag(f.section_name || 'Analysis')}</span>
+      <div onclick="openArticle('${f.slug}')" style="cursor:pointer">
+        <div class="thumb-wrap">
+          ${f.cover_image ? `<img src="${f.cover_image}" alt="${esc(f.title)}" loading="lazy"/>` : `<div class="thumb-placeholder">Thinking Global</div>`}
+        </div>
+        <h2>${esc(f.title)}</h2>
+      </div>
+      <p class="excerpt">${esc(f.subtitle || '')}</p>
+      <div class="article-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(f.post_date)}</span></div>
+    </article>
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
+      <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">Latest Analysis</h2>
+    </div>
+    <div class="article-list">`;
+    for (let i = 1; i < Math.min(posts.length, 9); i++) {
+      const p = posts[i];
+      html += `<article class="article-card" onclick="openArticle('${p.slug}')">
+        <div class="thumb-wrap">${p.cover_image ? `<img src="${p.cover_image}" alt="${esc(p.title)}" loading="lazy"/>` : `<div class="thumb-placeholder">${escTag(p.section_name||'Analysis')}</div>`}</div>
+        <div class="article-card-body">
+          <span class="section-label">${escTag(p.section_name||'Analysis')}</span>
+          <h3>${esc(p.title)}</h3>
+          <p class="excerpt">${esc(p.subtitle||'')}</p>
+          <div class="article-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span></div>
+        </div>
+      </article>`;
+    }
+    html += `</div>`;
+    c.innerHTML = html;
+  }
+ 
+  // ── Open article reader ──────────────────────────────────────
+  async function openArticle(slug) {
+    document.getElementById('home-page').style.display = 'none';
+    document.getElementById('article-page').style.display = 'block';
+    document.getElementById('article-content').innerHTML = `<div class="reader-loading"><div class="loading-spinner" style="display:block;margin:0 auto;width:32px;height:32px;"></div><p style="margin-top:14px;">Loading article…</p></div>`;
+    // Mirror popular list to article sidebar
+    document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
+    window.scrollTo(0, 0);
+    try {
+      const r = await fetch(`https://thinkingglobal.substack.com/api/v1/posts/${slug}`);
+      if (!r.ok) throw new Error();
+      const p = await r.json();
+      renderFullReader(p);
+    } catch {
+      const p = allPosts.find(x=>x.slug===slug) || topPosts.find(x=>x.slug===slug);
+      if (p) renderBasicReader(p); else renderReaderError(slug);
+    }
+  }
+ 
+  function renderFullReader(p) {
+    document.getElementById('article-content').innerHTML = `
+      <span class="tag">${escTag(p.section_name||'Analysis')}</span>
+      <h1 class="reader-title">${esc(p.title)}</h1>
+      <div class="reader-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span></div>
+      ${p.cover_image?`<div class="reader-hero"><img src="${p.cover_image}" alt="${esc(p.title)}"/></div>`:''}
+      <div class="reader-body">${p.body_html||`<p>${esc(p.subtitle||'')}</p>`}</div>
+      <div class="reader-cta">
+        <h4>Enjoy this analysis?</h4>
+        <p>Subscribe to receive structural geopolitical intelligence weekly.</p>
+        <div class="cta-btns">
+          <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full" style="max-width:220px;">Subscribe Free</a>
+          <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline" style="max-width:220px;">Support on Patreon</a>
+        </div>
+      </div>`;
+  }
+ 
+  function renderBasicReader(p) {
+    document.getElementById('article-content').innerHTML = `
+      <span class="tag">${escTag(p.section_name||'Analysis')}</span>
+      <h1 class="reader-title">${esc(p.title)}</h1>
+      <div class="reader-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span></div>
+      ${p.cover_image?`<div class="reader-hero"><img src="${p.cover_image}" alt="${esc(p.title)}"/></div>`:''}
+      <div class="reader-body"><p style="font-size:18px;color:var(--text);">${esc(p.subtitle||'')}</p></div>
+      <div class="reader-cta">
+        <h4>Read the full article</h4>
+        <p>Subscribe to Thinking Global to access the complete analysis.</p>
+        <div class="cta-btns">
+          <a href="https://thinkingglobal.substack.com/p/${p.slug}" target="_blank" class="btn-full" style="max-width:220px;">Read on Substack ↗</a>
+          <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full outline" style="max-width:220px;">Subscribe Free</a>
+        </div>
+      </div>`;
+  }
+ 
+  function renderReaderError(slug) {
+    document.getElementById('article-content').innerHTML = `
+      <div style="padding:40px 0;text-align:center;color:var(--text-faint);">
+        <p style="margin-bottom:16px;">Could not load this article directly.</p>
+        <a href="https://thinkingglobal.substack.com/p/${slug}" target="_blank" class="btn-full" style="display:inline-block;max-width:260px;">Read on Substack ↗</a>
+      </div>`;
+  }
+ 
+  // ── Popular list ─────────────────────────────────────────────
+  function renderPopular(posts) {
+    document.getElementById('popularLoading').style.display = 'none';
+    const list = document.getElementById('popularList');
+    list.style.display = '';
+    list.innerHTML = posts.slice(0,5).map((p,i)=>`
+      <li onclick="openArticle('${p.slug}')">
+        <span class="popular-num">${i+1}</span>
+        <span class="p-title">${esc(p.title)}</span>
+      </li>`).join('');
+  }
+ 
+  function renderPopularFallback() {
+    const fb = [
+      {slug:'taiwan-collapse-us-trust', title:'Why Taiwan is Turning Away from the US: The 14% Collapse'},
+      {slug:'indonesia-5-trillion-blind-spot', title:'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power'},
+      {slug:'mercosur-eu-agreement-colonial-pact', title:'The Mercosur-EU Agreement: A New Colonial Pact'},
+      {slug:'iran-missile-defense-timeline', title:'Strategic Timeline: Iranian Missile Interceptions in March 2026'},
+      {slug:'greenland-geopolitics-europe-sovereignty', title:'Greenland: The Strategic Test for European Sovereignty'},
+    ];
+    renderPopular(fb);
+  }
+ 
+  function renderFallbackArticles() {
+    renderArticles([
+      {slug:'indonesia-5-trillion-blind-spot', title:'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', subtitle:'The world\'s fourth most populous nation commands critical maritime chokepoints and a rapidly expanding economy most Western analysts underestimate.', section_name:'Economy', post_date:'2026-05-01', cover_image:null},
+      {slug:'taiwan-collapse-us-trust', title:'Why Taiwan is Turning Away from the US: The 14% Collapse', subtitle:'Trust in Washington\'s security guarantees has fallen to historic lows in Taipei, reshaping the island\'s geopolitical posture in real time.', section_name:'Eurasia', post_date:'2026-04-28', cover_image:null},
+      {slug:'iran-missile-defense-timeline', title:'Strategic Timeline: Iranian Missile Interceptions in March 2026', subtitle:'A detailed chronological breakdown of Iran\'s asymmetric defense posture and what it reveals about the evolving balance of power.', section_name:'Eurasia', post_date:'2026-04-15', cover_image:null},
+      {slug:'mercosur-eu-agreement-colonial-pact', title:'The Mercosur-EU Agreement: A New Colonial Pact', subtitle:'Beneath the diplomatic surface, the landmark trade deal encodes structural asymmetries that echo centuries of unequal exchange.', section_name:'Americas', post_date:'2026-04-02', cover_image:null},
+      {slug:'greenland-geopolitics-europe-sovereignty', title:'Greenland: The Strategic Test for European Sovereignty', subtitle:'European capitals face a defining test of whether they can act as an autonomous geopolitical actor.', section_name:'Eurasia', post_date:'2026-03-20', cover_image:null},
+    ]);
+  }
+ 
+  // ── Utils ──────────────────────────────────────────────────
+  function esc(s){ if(!s)return''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function escTag(s){ return esc(s).substring(0,30); }
+  function fmtDate(d){ return d?d.substring(0,10):''; }
+ 
+  // ── Init ──────────────────────────────────────────────────
+  fetchPosts();
+  fetchTopPosts();
+</script>
 </body>
-
 </html>
