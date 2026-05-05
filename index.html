@@ -11,27 +11,21 @@
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
         h1, h2, .serif { font-family: 'Libre Baskerville', serif; }
         .font-impact { font-family: 'Anton', sans-serif; }
-        
-        /* Banner de Fundo Dinâmico no Header */
         .header-bg { 
             background-image: linear-gradient(rgba(0, 26, 51, 0.85), rgba(0, 26, 51, 0.85)), url('channels4_banner.jpg');
-            background-size: cover;
-            background-position: center;
+            background-size: cover; background-position: center;
         }
-        
         .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-        .sidebar-rank { font-size: 2.5rem; color: #e5e7eb; font-weight: 700; line-height: 1; }
+        .sidebar-rank { font-size: 2.2rem; color: #e5e7eb; font-weight: 700; min-width: 1.5rem; }
     </style>
 </head>
 <body class="text-slate-900">
 
-    <!-- Barra Superior -->
     <nav class="bg-[#001a33] text-white py-2 px-6 flex justify-between items-center border-b border-[#3399cc] sticky top-0 z-50">
         <div class="flex gap-4 items-center">
-            <!-- Ícones das Redes -->
-            <a href="https://x.com/thinkinglobalYT" target="_blank" class="opacity-80 hover:opacity-100 transition"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-4 invert"></a>
-            <a href="https://www.tiktok.com/@thinking.global" target="_blank" class="opacity-80 hover:opacity-100 transition"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-4 invert"></a>
-            <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" class="opacity-80 hover:opacity-100 transition"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="w-4 invert"></a>
+            <a href="https://x.com/thinkinglobalYT" target="_blank" class="opacity-80 hover:opacity-100"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-4 invert"></a>
+            <a href="https://www.tiktok.com/@thinking.global" target="_blank" class="opacity-80 hover:opacity-100"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-4 invert"></a>
+            <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" class="opacity-80 hover:opacity-100"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="w-4 invert"></a>
         </div>
         <div class="flex gap-3">
             <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="bg-[#d4af37] text-[#001a33] text-[10px] font-bold uppercase px-4 py-1.5 rounded-sm hover:bg-yellow-500 transition">Support</a>
@@ -39,7 +33,6 @@
         </div>
     </nav>
 
-    <!-- Header Central -->
     <header class="header-bg text-white py-14 px-6 text-center border-b-8 border-[#d4af37]">
         <div class="max-w-5xl mx-auto">
             <img src="logo.png" alt="Thinking Global" class="w-24 h-24 mx-auto mb-4 rounded-full border-2 border-[#3399cc] shadow-xl">
@@ -48,72 +41,77 @@
         </div>
     </header>
 
-    <!-- Grid de Conteúdo Estilo Benchmark -->
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div class="grid lg:grid-cols-4 gap-12">
             
-            <!-- Últimas 10 Postagens (Coluna Principal) -->
             <div class="lg:col-span-3">
                 <div class="flex justify-between items-center mb-8 border-b-2 border-slate-900 pb-2">
                     <h2 class="font-impact text-2xl uppercase tracking-widest text-[#001a33]">Latest Intelligence</h2>
                 </div>
                 <div id="substack-feed" class="grid md:grid-cols-2 gap-x-8 gap-y-12">
-                    <!-- Dinâmico via JS -->
-                    <div class="animate-pulse col-span-2 text-slate-400">Decoding structural data...</div>
+                    <div class="animate-pulse col-span-2 text-slate-400">Loading analysis thumbnails...</div>
                 </div>
             </div>
 
-            <!-- Sidebar: Populares / Destaques -->
             <aside class="lg:col-span-1">
                 <div class="border-b-2 border-slate-900 pb-2 mb-8">
                     <h2 class="font-impact text-2xl uppercase tracking-widest text-[#001a33]">Popular</h2>
                 </div>
-                <div class="space-y-8" id="popular-sidebar">
-                    <!-- Manual/Dinâmico -->
-                    <div class="flex gap-4 group">
+                <!-- Ranking Top 5 Baseado em Substack Top -->
+                <div class="space-y-6" id="popular-sidebar">
+                    <div class="flex gap-4 items-start">
                         <span class="sidebar-rank">1</span>
-                        <a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust" class="text-sm font-bold leading-tight group-hover:text-[#3399cc] transition">Why Taiwan is Turning Away from the US: The 14% Collapse</a>
+                        <a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust" class="text-sm font-bold leading-tight hover:text-[#3399cc]">Why Taiwan is Turning Away from the US: The 14% Collapse</a>
                     </div>
-                    <div class="flex gap-4 group pt-6 border-t border-slate-100">
+                    <div class="flex gap-4 items-start pt-4 border-t border-slate-100">
                         <span class="sidebar-rank">2</span>
-                        <a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot" class="text-sm font-bold leading-tight group-hover:text-[#3399cc] transition">The $5 Trillion Blind Spot: Indonesia's Geopolitical Power</a>
+                        <a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot" class="text-sm font-bold leading-tight hover:text-[#3399cc]">The $5 Trillion Blind Spot: Indonesia's Geopolitical Power</a>
+                    </div>
+                    <div class="flex gap-4 items-start pt-4 border-t border-slate-100">
+                        <span class="sidebar-rank">3</span>
+                        <a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact" class="text-sm font-bold leading-tight hover:text-[#3399cc]">The Mercosur-EU Agreement: A New Colonial Pact</a>
+                    </div>
+                    <div class="flex gap-4 items-start pt-4 border-t border-slate-100">
+                        <span class="sidebar-rank">4</span>
+                        <a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline" class="text-sm font-bold leading-tight hover:text-[#3399cc]">Strategic Timeline: Iranian Missile Interceptions in March 2026</a>
+                    </div>
+                    <div class="flex gap-4 items-start pt-4 border-t border-slate-100">
+                        <span class="sidebar-rank">5</span>
+                        <a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty" class="text-sm font-bold leading-tight hover:text-[#3399cc]">Greenland: The Strategic Test for European Sovereignty</a>
                     </div>
                 </div>
 
-                <!-- Newsletter Sidebar Box -->
                 <div class="mt-12 bg-slate-50 p-6 border-t-4 border-[#001a33]">
                     <h3 class="font-impact text-lg uppercase mb-2">Weekly Dispatch</h3>
-                    <p class="text-xs text-slate-500 mb-4">Get structural analysis delivered to your inbox.</p>
+                    <p class="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-tighter">Get structural intelligence.</p>
                     <a href="https://thinkingglobal.substack.com/subscribe" class="block w-full bg-[#001a33] text-white text-center py-2 text-xs font-bold uppercase tracking-widest hover:bg-[#3399cc] transition">Join Newsletter</a>
                 </div>
             </aside>
         </div>
     </main>
 
-    <!-- Thinking Global Club (Membership) -->
     <section id="membership" class="bg-[#001a33] text-white py-20 px-6 mt-12 border-t-8 border-[#d4af37]">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="font-impact text-4xl mb-4 uppercase">Thinking Global Club</h2>
             <p class="serif italic text-[#3399cc] mb-12">Support the Vector of Strategic Intelligence</p>
-            
             <div class="grid md:grid-cols-3 gap-8 mb-12">
                 <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800/50 p-8 rounded-xl border-b-4 border-slate-600 hover:border-[#d4af37] transition group block">
                     <img src="tier1.png" alt="Sovereign" class="w-20 mx-auto mb-6 grayscale group-hover:grayscale-0 transition">
                     <h4 class="font-bold text-lg mb-4">🛡️ Sovereign Supporter</h4>
-                    <p class="text-xs opacity-70 text-left leading-relaxed">Directly fund our independence. Get exclusive custom Emojis & Badges for our community discussions.</p>
+                    <p class="text-xs opacity-70 text-left leading-relaxed">Directly fund our independence. Exclusive custom Emojis & Badges for community discussions.</p>
                 </a>
                 <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800/50 p-8 rounded-xl border-b-4 border-[#3399cc] scale-105 shadow-2xl group block">
                     <img src="tier2.png" alt="Analyst" class="w-20 mx-auto mb-6">
                     <h4 class="font-bold text-lg mb-4">📊 Multipolar Analyst</h4>
-                    <p class="text-xs opacity-70 text-left leading-relaxed">Early access to long-form videos and your handle credited in the video outro as a strategic supporter.</p>
+                    <p class="text-xs opacity-70 text-left leading-relaxed">Early access to long-form videos and your handle credited in video outros as a strategic supporter.</p>
                 </a>
-                <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800/50 p-8 rounded-xl border-b-4 border-[#d4af37] group block text-[#d4af37]">
+                <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800/50 p-8 rounded-xl border-b-4 border-[#d4af37] group block">
                     <img src="tier3.png" alt="Partner" class="w-20 mx-auto mb-6">
-                    <h4 class="font-bold text-lg mb-4 uppercase">🎓 Structural Partner</h4>
-                    <p class="text-xs opacity-70 text-left leading-relaxed text-white">Direct educational support, research source suggestions, and shared IR expertise via email.</p>
+                    <h4 class="font-bold text-lg mb-4 uppercase text-[#d4af37]">🎓 Structural Partner</h4>
+                    <p class="text-xs opacity-70 text-left leading-relaxed">Inner circle support. Direct educational guidance, source suggestions, and shared IR expertise via email.</p>
                 </a>
             </div>
-            <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-[#d4af37] text-[#001a33] font-bold py-4 px-12 rounded-sm hover:scale-105 transition uppercase tracking-widest text-sm">Join the Inner Circle</a>
+            <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-[#d4af37] text-[#001a33] font-bold py-4 px-12 rounded-sm hover:scale-105 transition uppercase tracking-widest text-sm">Support via YouTube</a>
         </div>
     </section>
 
@@ -121,7 +119,6 @@
         <p>&copy; 2026 Thinking Global. Decoding Geopolitics & Economy.</p>
     </footer>
 
-    <!-- Lógica de RSS e Feed -->
     <script>
         async function fetchSubstack() {
             const feedUrl = 'https://thinkingglobal.substack.com/feed';
@@ -136,20 +133,23 @@
                     container.innerHTML = '';
                     
                     data.items.slice(0, 10).forEach(post => {
-                        // Extração básica de imagem do conteúdo se o thumbnail não vier direto
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = post.description;
-                        const firstImg = tempDiv.querySelector('img')?.src || 'placeholder.jpg';
-                        const textSnippet = post.description.replace(/<[^>]*>?/gm, '').substring(0, 150);
+                        // Lógica extra para encontrar imagem caso o campo thumbnail esteja vazio
+                        let imgUrl = post.thumbnail;
+                        if(!imgUrl || imgUrl === ""){
+                            const doc = new DOMParser().parseFromString(post.description, 'text/html');
+                            imgUrl = doc.querySelector('img')?.src || 'placeholder.jpg';
+                        }
+
+                        const textSnippet = post.description.replace(/<[^>]*>?/gm, '').substring(0, 160);
 
                         container.innerHTML += `
                             <article class="group">
                                 <a href="${post.link}" target="_blank">
                                     <div class="aspect-video overflow-hidden border border-slate-100 mb-4 bg-slate-100">
-                                        <img src="${post.thumbnail || firstImg}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                        <img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='placeholder.jpg'">
                                     </div>
                                     <h3 class="serif text-xl font-bold leading-tight mb-2 group-hover:text-[#3399cc] transition">${post.title}</h3>
-                                    <p class="text-xs text-slate-500 mb-2 uppercase tracking-widest font-bold">${new Date(post.pubDate).toLocaleDateString()}</p>
+                                    <p class="text-[10px] text-slate-500 mb-2 uppercase tracking-widest font-bold">${new Date(post.pubDate).toLocaleDateString()}</p>
                                     <p class="text-sm text-slate-600 line-clamp-3 mb-4 leading-relaxed">${textSnippet}...</p>
                                     <span class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-[#001a33] pb-1">Read Analysis</span>
                                 </a>
@@ -157,9 +157,7 @@
                         `;
                     });
                 }
-            } catch (err) {
-                console.error("Feed error", err);
-            }
+            } catch (err) { console.error("Feed error", err); }
         }
         fetchSubstack();
     </script>
