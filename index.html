@@ -2,94 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes" />
   <title>Thinking Global | Decoding Geopolitics & Political Economy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta name="description" content="Thinking Global is an independent media outlet providing geopolitical intelligence and political economy analysis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #001a33; /* Azul Escuro do Logo */
-      --bg2: #00264d;
-      --bg3: #003366;
-      --border: #004080;
+      /* PALETA ATUALIZADA CONFORME LOGO */
+      --bg: #001a33; 
+      --bg2: #002344;
+      --bg3: #002b55;
+      --border: #003366;
+      --border-light: #003d7a;
       --text: #e8e4dc;
       --text-muted: #a3b8cc;
+      --text-faint: #668fb3;
       --accent: #3399cc; /* Azul Claro do Logo */
       --accent-dim: #267399;
-      --nav-h: 60px;
+      --red: #c84b3c;
+      --tag-bg: #002b55;
+      --nav-h: 56px;
+      --top-bar-h: 36px;
     }
-
+ 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
-    a { color: inherit; text-decoration: none; transition: 0.2s; }
-    a:hover { color: var(--accent); }
-
-    /* ── TOP BAR (Single Actions) ── */
-    .top-bar { background: #001122; border-bottom: 1px solid var(--border); padding: 10px 20px; }
-    .top-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .socials-top { display: flex; gap: 15px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); }
-    .btn-action { padding: 6px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 2px; }
-    .btn-support { border: 1px solid var(--accent); color: var(--accent); }
-    .btn-support:hover { background: var(--accent); color: white; }
-    .btn-subscribe { background: var(--accent); color: white; margin-left: 10px; }
-
-    /* ── NAV (YouTube Categories) ── */
-    .main-nav { background: var(--bg2); border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 100; }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; height: var(--nav-h); padding: 0 20px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.2rem; }
-    .nav-logo img { height: 35px; border-radius: 50%; border: 1px solid var(--accent); }
-    .nav-links { display: flex; list-style: none; gap: 15px; margin-left: 30px; overflow-x: auto; scrollbar-width: none; }
-    .nav-links a { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
-
-    /* ── CONTENT LAYOUT ── */
-    .site-body { max-width: 1200px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1fr 320px; gap: 50px; }
-    
-    /* Article Reader Mode */
-    #reader-view { display: none; }
-    .back-btn { display: inline-block; margin-bottom: 20px; color: var(--accent); font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 12px; }
-    .reader-content h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
-    .reader-body { font-family: 'Source Serif 4', serif; font-size: 1.1rem; color: var(--text-muted); }
-    .reader-body img { margin: 20px 0; border-radius: 8px; width: 100%; }
-
-    /* Cards */
-    .article-card { display: flex; gap: 20px; padding: 25px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
-    .thumb { width: 220px; aspect-ratio: 16/9; background: var(--bg3); object-fit: cover; border-radius: 4px; }
-    .article-info h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; }
-    .excerpt { font-size: 14px; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-    /* ── SIDEBAR (Popular Mirror) ── */
-    .widget-title { font-family: 'Playfair Display', serif; font-size: 18px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
-    .popular-item { display: flex; gap: 15px; margin-bottom: 20px; cursor: pointer; }
-    .rank-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: var(--accent-dim); }
-    .popular-title { font-size: 13px; font-weight: 600; line-height: 1.4; }
-
-    @media (max-width: 900px) {
-      .site-body { grid-template-columns: 1fr; }
-      .thumb { width: 120px; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
     }
+ 
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    img { display: block; max-width: 100%; }
+ 
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: #001122;
+      border-bottom: 1px solid var(--border);
+      height: var(--top-bar-h);
+      display: flex;
+      align-items: center;
+    }
+    .top-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar-socials { display: flex; gap: 14px; align-items: center; }
+    .top-bar-socials a { color: var(--text-muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; transition: color .2s; }
+    .top-bar-socials a:hover { color: var(--accent); }
+    
+    .top-bar-actions { display: flex; gap: 10px; }
+    .btn-small { padding: 4px 14px; border-radius: 2px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; cursor: pointer; }
+    .btn-outline { border: 1px solid var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .btn-solid { background: var(--accent); color: #fff; }
+    .btn-solid:hover { background: var(--accent-dim); }
+ 
+    /* ── MAIN NAV ── */
+    .main-nav {
+      background: var(--bg2);
+      border-bottom: 2px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: 28px; flex-shrink: 0; }
+    .nav-logo img { height: 34px; width: auto; border-radius: 50%; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--text); }
+    .nav-logo-text span { display: block; font-size: 9px; font-family: 'DM Sans', sans-serif; text-transform: uppercase; color: var(--accent); margin-top: 1px; }
+    
+    .nav-links { display: flex; list-style: none; height: 100%; flex: 1; overflow-x: auto; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links > li { height: 100%; display: flex; align-items: center; }
+    .nav-links > li > a { padding: 0 12px; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--text-muted); transition: color .2s; white-space: nowrap; }
+    .nav-links > li > a:hover { color: var(--accent); }
+ 
+    /* ── HERO BANNER ── */
+    .hero-banner {
+      background: linear-gradient(135deg, #001a33 0%, #002344 60%, #001122 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0 20px;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 20px; }
+    .hero-logo { height: 64px; width: auto; border-radius: 50%; }
+    .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--text); }
+    .hero-text p { font-size: 13px; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; margin-top: 3px; }
+ 
+    /* ── LAYOUT ── */
+    .site-body { max-width: 1200px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+ 
+    /* ── READER MODE (SPA) ── */
+    #reader-view { display: none; }
+    .back-btn { display: inline-block; margin-bottom: 25px; color: var(--accent); font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 12px; }
+    .reader-content h1 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 20px; line-height: 1.2; }
+    .reader-body { font-family: 'Source Serif 4', serif; font-size: 18px; color: var(--text-muted); line-height: 1.8; }
+    .reader-body img { width: 100%; border-radius: 4px; margin: 25px 0; }
+
+    /* ── ARTICLES ── */
+    .featured-article, .article-card { cursor: pointer; }
+    .featured-article h2, .article-card h3 { transition: color .2s; }
+    .featured-article:hover h2, .article-card:hover h3 { color: var(--accent); }
+
+    .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .featured-article { margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 28px; }
+    .thumb-wrap { position: relative; overflow: hidden; margin-bottom: 14px; background: var(--bg3); aspect-ratio: 16/9; }
+    .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .article-card { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border-light); }
+    .article-card h3 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; line-height: 1.35; }
+    .excerpt { font-size: 13px; color: var(--text-muted); line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ── SIDEBAR ── */
+    .sidebar-widget { background: var(--bg2); border: 1px solid var(--border); padding: 20px; margin-bottom: 28px; }
+    .widget-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px solid var(--accent); }
+    .popular-list li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-light); cursor: pointer; }
+    .popular-num { font-size: 20px; font-weight: 900; font-family: 'Playfair Display', serif; color: var(--accent); flex-shrink: 0; width: 20px; text-align: right; }
+    .popular-list span.title { font-size: 13px; line-height: 1.45; color: var(--text-muted); font-family: 'Source Serif 4', serif; }
+    .popular-list li:hover span.title { color: var(--accent); }
+
+    .btn-full { display: block; width: 100%; padding: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
+    .btn-full.outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    .site-footer { background: #001122; border-top: 2px solid var(--accent); padding: 40px 0 20px; margin-top: 40px; }
+    .footer-col h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .tag { display: inline-block; padding: 2px 8px; background: var(--bg3); border: 1px solid var(--border); font-size: 10px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+
+    @media (max-width: 900px) { .site-body { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-
+ 
   <div class="top-bar">
     <div class="top-bar-inner">
-      <div class="socials-top">
-        <a href="https://x.com/thinkinglobalYT" target="_blank">𝕏</a>
+      <div class="top-bar-socials">
+        <a href="https://x.com/thinkinglobalYT" target="_blank">𝕏 / Twitter</a>
         <a href="https://www.youtube.com/@ThinkingGlobal" target="_blank">YouTube</a>
         <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a>
       </div>
-      <div>
-        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-action btn-support">Support</a>
-        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-action btn-subscribe">Subscribe</a>
+      <div class="top-bar-actions">
+        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
+        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
       </div>
     </div>
   </div>
-
+ 
   <nav class="main-nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="logo.png" alt="Logo">
-        Thinking Global
+        <img src="logo.png" alt="Thinking Global" />
+        <div class="nav-logo-text">Thinking Global <span>Decoding Geopolitics</span></div>
       </a>
+ 
       <ul class="nav-links">
         <li><a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a></li>
         <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a></li>
@@ -103,96 +188,146 @@
     </div>
   </nav>
 
+  <div class="hero-banner" id="hero-section">
+    <div class="hero-inner">
+      <img src="logo.png" class="hero-logo" alt="Logo">
+      <div class="hero-text">
+        <h1>Thinking Global</h1>
+        <p>Thinking the world how it really is</p>
+      </div>
+    </div>
+  </div>
+ 
   <div class="site-body">
-    <main id="main-content">
-      <div id="articles-list">
-        <div class="widget-title">Latest Intelligence</div>
-        <div id="feed-container">Loading analysis...</div>
+    <main id="main-column">
+      <div id="articles-wrapper">
+        <!-- FEATURED ARTICLE -->
+        <article class="featured-article" onclick="loadContent(0)">
+          <span class="tag">Featured Analysis</span>
+          <div class="thumb-wrap"><img src="logo.png" id="feat-img" alt="Featured"></div>
+          <h2 id="feat-title">Loading the latest structural analysis...</h2>
+          <p class="excerpt" id="feat-desc">Decoding global power shifts, economic warfare, and multipolar transitions.</p>
+        </article>
+ 
+        <div class="category-section-header"><h2 class="widget-title">Latest Intelligence</h2></div>
+        <div id="latest-list">
+          <!-- Dinamic List -->
+        </div>
       </div>
 
+      <!-- READER VIEW -->
       <div id="reader-view">
-        <div class="back-btn" onclick="closeReader()">← Back to Intelligence Feed</div>
-        <div id="article-full" class="reader-content"></div>
+        <div class="back-btn" onclick="closeReader()">← Back to Feed</div>
+        <div id="reader-content" class="reader-content"></div>
       </div>
     </main>
-
+ 
     <aside class="sidebar">
-      <div class="widget-title">Popular Analysis</div>
-      <div id="popular-container">Loading top stories...</div>
-      
-      <div style="background: var(--bg2); padding: 20px; border-radius: 4px; margin-top: 30px; border: 1px solid var(--border);">
-        <h4 style="color: var(--accent); margin-bottom: 10px; font-size: 14px;">Thinking Global Club</h4>
-        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Support our independent structural analysis.</p>
-        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-action btn-subscribe" style="display: block; text-align: center; margin: 0;">Join via YouTube</a>
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Popular</h3>
+        <ol class="popular-list" id="popular-list">
+          <!-- Dinamic Top 5 -->
+        </ol>
+      </div>
+ 
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Weekly Dispatch</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Structural intelligence directly to your inbox.</p>
+        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Join Newsletter</a>
+        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Thinking Global Club</h3>
+        <div class="membership-tier">
+          <div style="font-size: 13px; font-weight: 600; color: var(--accent);">🛡️ Sovereign Supporter</div>
+          <div style="font-size: 12px; color: var(--text-faint);">Exclusive emojis & badges.</div>
+        </div>
+        <div class="membership-tier" style="margin-top:10px;">
+          <div style="font-size: 13px; font-weight: 600; color: var(--accent);">📊 Multipolar Analyst</div>
+          <div style="font-size: 12px; color: var(--text-faint);">Early access & credits.</div>
+        </div>
+        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:14px;">Support via YouTube</a>
       </div>
     </aside>
   </div>
+ 
+  <footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-bottom">
+            <span>© 2026 Thinking Global. Decoding Geopolitics & Economy.</span>
+            <span>Independent & Ad-Free Analysis</span>
+        </div>
+    </div>
+  </footer>
 
   <script>
-    let articlesData = [];
+    let cachedFeed = [];
 
-    async function getFeed() {
-      const RSS_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed&api_key=oynyv9t7e0vxm8m8y8y8y8y8y8y8y8y8`; // Use sua chave ou deixe assim
+    async function fetchFeed() {
+      const RSS_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed`;
       try {
         const response = await fetch(RSS_URL);
         const data = await response.json();
-        articlesData = data.items;
-        renderArticles();
-        renderPopular();
-      } catch (err) {
-        console.error("Feed error:", err);
-      }
+        if (data.status === 'ok') {
+          cachedFeed = data.items;
+          displayFeed();
+        }
+      } catch (e) { console.error("Error loading feed"); }
     }
 
-    function renderArticles() {
-      const container = document.getElementById('feed-container');
-      container.innerHTML = articlesData.map((item, index) => `
-        <div class="article-card" onclick="openReader(${index})">
-          <img src="${item.thumbnail || 'logo.png'}" class="thumb">
-          <div class="article-info">
-            <h2>${item.title}</h2>
-            <p class="excerpt">${item.description.replace(/<[^>]*>/g, '').substring(0, 180)}...</p>
-            <div style="font-size: 11px; color: var(--accent); margin-top: 10px;">${item.pubDate.split(' ')[0]}</div>
+    function displayFeed() {
+      const feat = cachedFeed[0];
+      document.getElementById('feat-title').innerText = feat.title;
+      document.getElementById('feat-desc').innerText = feat.description.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+      document.getElementById('feat-img').src = feat.thumbnail || 'logo.png';
+
+      const latestList = document.getElementById('latest-list');
+      latestList.innerHTML = cachedFeed.slice(1, 10).map((item, index) => `
+        <article class="article-card" onclick="loadContent(${index + 1})">
+          <div class="thumb-wrap"><img src="${item.thumbnail || 'logo.png'}"></div>
+          <div class="article-card-body">
+            <span class="section-label">Geopolitics</span>
+            <h3>${item.title}</h3>
+            <p class="excerpt">${item.description.replace(/<[^>]*>/g, '').substring(0, 120)}...</p>
           </div>
-        </div>
+        </article>
+      `).join('');
+
+      const popularList = document.getElementById('popular-list');
+      popularList.innerHTML = cachedFeed.slice(0, 5).map((item, index) => `
+        <li onclick="loadContent(${index})">
+          <span class="popular-num">${index + 1}</span>
+          <span class="title">${item.title}</span>
+        </li>
       `).join('');
     }
 
-    function renderPopular() {
-      const container = document.getElementById('popular-container');
-      // Simulando o Top 5 (RSS não envia ranking, então pegamos os 5 com mais conteúdo)
-      const popular = [...articlesData].slice(0, 5); 
-      container.innerHTML = popular.map((item, index) => `
-        <div class="popular-item" onclick="openReader(${index})">
-          <span class="rank-num">${index + 1}</span>
-          <div class="popular-title">${item.title}</div>
-        </div>
-      `).join('');
-    }
-
-    function openReader(index) {
-      const item = articlesData[index];
-      const reader = document.getElementById('article-full');
-      document.getElementById('articles-list').style.display = 'none';
+    function loadContent(index) {
+      const item = cachedFeed[index];
+      const reader = document.getElementById('reader-content');
+      document.getElementById('articles-wrapper').style.display = 'none';
+      document.getElementById('hero-section').style.display = 'none';
       document.getElementById('reader-view').style.display = 'block';
       window.scrollTo(0, 0);
 
       reader.innerHTML = `
         <h1>${item.title}</h1>
-        <div style="color: var(--accent); font-weight: 700; margin-bottom: 30px;">Published on ${item.pubDate}</div>
+        <div style="color: var(--accent); font-size: 12px; margin-bottom: 20px;">${item.pubDate}</div>
         <div class="reader-body">${item.content || item.description}</div>
-        <hr border="0" style="height: 1px; background: var(--border); margin: 40px 0;">
-        <p style="text-align: center;">Read the original on <a href="${item.link}" target="_blank" style="color: var(--accent); text-decoration: underline;">Substack</a></p>
+        <div style="margin-top: 40px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px;">
+          <p style="font-size: 13px;">Read the original and join the discussion on <a href="${item.link}" target="_blank" style="color:var(--accent); text-decoration:underline;">Substack</a></p>
+        </div>
       `;
     }
 
     function closeReader() {
-      document.getElementById('articles-list').style.display = 'block';
       document.getElementById('reader-view').style.display = 'none';
-      window.scrollTo(0, 0);
+      document.getElementById('articles-wrapper').style.display = 'block';
+      document.getElementById('hero-section').style.display = 'block';
     }
 
-    getFeed();
+    fetchFeed();
   </script>
 </body>
 </html>
