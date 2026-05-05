@@ -7,7 +7,7 @@
   <meta name="description" content="Thinking Global is an independent media outlet providing geopolitical intelligence and political economy analysis." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --navy:      #0b1c2e;
@@ -32,129 +32,263 @@
     img { display: block; max-width: 100%; }
     @keyframes spin { to { transform: rotate(360deg); } }
  
-    /* TOP BAR */
-    .top-bar { background: #07131f; border-bottom: 1px solid var(--border); height: 38px; display: flex; align-items: center; }
-    .top-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-    .top-bar-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; margin-right: 10px; }
-    .top-cat-nav { display: flex; gap: 2px; align-items: center; flex-wrap: nowrap; overflow-x: auto; }
-    .top-cat-nav a { padding: 4px 10px; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); border-radius: 2px; transition: all .2s; white-space: nowrap; }
-    .top-cat-nav a:hover { background: var(--blue); color: #fff; }
+    /* ── TOP BAR (social icons only) ── */
+    .top-bar {
+      background: #07131f;
+      border-bottom: 1px solid var(--border);
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .top-bar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+    }
+    .top-bar-left {
+      font-size: 11px; font-weight: 500; color: var(--text-faint);
+      letter-spacing: .04em;
+    }
+    .top-socials {
+      display: flex; gap: 6px; align-items: center;
+    }
+    .top-socials a {
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      border: 1px solid var(--border-lt);
+      border-radius: 4px;
+      color: var(--text-muted);
+      transition: all .2s;
+    }
+    .top-socials a:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .top-socials svg { width: 14px; height: 14px; fill: currentColor; }
  
-    /* MAIN NAV */
-    .main-nav { background: var(--navy2); border-bottom: 2px solid var(--blue-dim); position: sticky; top: 0; z-index: 100; height: 56px; }
-    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; height: 100%; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: 24px; flex-shrink: 0; cursor: pointer; }
+    /* ── MAIN NAV ── */
+    .main-nav {
+      background: var(--navy2);
+      border-bottom: 2px solid var(--blue-dim);
+      position: sticky; top: 0; z-index: 100; height: 56px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; height: 100%;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-right: 24px; flex-shrink: 0; cursor: pointer;
+    }
     .nav-logo img { height: 34px; width: auto; }
-    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; line-height: 1.1; color: var(--text); }
-    .nav-logo-text span { display: block; font-size: 9px; font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-top: 1px; }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700; line-height: 1.1; color: var(--text);
+    }
+    .nav-logo-text span {
+      display: block; font-size: 9px;
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-top: 1px;
+    }
     .nav-links { display: flex; list-style: none; height: 100%; flex: 1; overflow: hidden; }
     .nav-links > li { position: relative; height: 100%; display: flex; align-items: center; }
-    .nav-links > li > a { padding: 0 11px; font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted); height: 100%; display: flex; align-items: center; transition: color .2s; white-space: nowrap; }
+    .nav-links > li > a {
+      padding: 0 10px; font-size: 11px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--text-muted); height: 100%; display: flex; align-items: center;
+      transition: color .2s; white-space: nowrap;
+    }
     .nav-links > li > a:hover { color: var(--blue-glow); }
     .nav-right { margin-left: auto; display: flex; gap: 8px; flex-shrink: 0; }
-    .btn-small { padding: 5px 14px; border-radius: 2px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; white-space: nowrap; }
+    .btn-small {
+      padding: 5px 14px; border-radius: 2px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; transition: all .2s; white-space: nowrap;
+    }
     .btn-outline { border: 1px solid var(--blue-dim); color: var(--blue); }
     .btn-outline:hover { background: var(--blue); color: #fff; }
     .btn-solid { background: var(--blue); color: #fff; }
-    .btn-solid:hover { background: var(--blue-glow); color: #fff; }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; margin-left: auto; }
+    .btn-solid:hover { background: var(--blue-glow); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; margin-left: auto;
+    }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
     .mobile-menu { display: none; background: var(--navy2); border-bottom: 1px solid var(--border); padding: 12px 20px; }
     .mobile-menu.open { display: block; }
-    .mobile-menu a { display: block; padding: 10px 0; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border-lt); }
+    .mobile-menu a {
+      display: block; padding: 10px 0; font-size: 12px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: var(--text-muted); border-bottom: 1px solid var(--border-lt);
+    }
     .mobile-menu a:hover { color: var(--blue-glow); }
  
-    /* LAYOUT */
-    .site-body { max-width: 1200px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    /* ── LAYOUT ── */
+    .site-body {
+      max-width: 1200px; margin: 0 auto; padding: 30px 20px;
+      display: grid; grid-template-columns: 1fr 300px; gap: 40px;
+    }
  
-    /* LABELS */
-    .section-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); display: inline-block; margin-bottom: 5px; }
-    .tag { display: inline-block; padding: 2px 8px; background: var(--tag-bg); border: 1px solid var(--border); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+    /* ── LABELS ── */
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--blue); display: inline-block; margin-bottom: 5px;
+    }
+    .tag {
+      display: inline-block; padding: 2px 8px;
+      background: var(--tag-bg); border: 1px solid var(--border);
+      font-size: 10px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 6px;
+    }
  
-    /* FEATURED */
+    /* ── FEATURED ── */
     .featured-article { margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 26px; }
-    .featured-article .thumb-wrap { position: relative; overflow: hidden; margin-bottom: 14px; background: var(--navy3); aspect-ratio: 16/9; cursor: pointer; }
+    .featured-article .thumb-wrap {
+      position: relative; overflow: hidden; margin-bottom: 14px;
+      background: var(--navy3); aspect-ratio: 16/9; cursor: pointer;
+    }
     .featured-article .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
     .featured-article:hover .thumb-wrap img { transform: scale(1.03); }
-    .featured-article h2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; line-height: 1.28; color: var(--text); margin-bottom: 10px; transition: color .2s; cursor: pointer; }
+    .featured-article h2 {
+      font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700;
+      line-height: 1.28; color: var(--text); margin-bottom: 10px; transition: color .2s; cursor: pointer;
+    }
     .featured-article:hover h2 { color: var(--blue-glow); }
-    .featured-article p.excerpt { font-family: 'Source Serif 4', serif; font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; }
-    .article-meta { font-size: 12px; color: var(--text-faint); display: flex; align-items: center; gap: 10px; }
-    .article-meta .author { color: var(--blue-dim); }
+    .featured-article p.excerpt {
+      font-family: 'Source Serif 4', serif; font-size: 15px;
+      color: var(--text-muted); line-height: 1.65; margin-bottom: 12px;
+    }
+    .article-meta { font-size: 12px; color: var(--text-faint); display: flex; align-items: center; gap: 8px; }
+    .article-meta .author { color: var(--blue-dim); font-weight: 500; }
  
-    /* ARTICLE LIST */
+    /* ── ARTICLE LIST ── */
     .article-list { margin-bottom: 28px; }
-    .article-card { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border-lt); cursor: pointer; }
+    .article-card {
+      display: grid; grid-template-columns: 160px 1fr; gap: 16px;
+      padding: 16px 0; border-bottom: 1px solid var(--border-lt); cursor: pointer;
+    }
     .article-card:first-child { border-top: 1px solid var(--border-lt); }
-    .article-card .thumb-wrap { overflow: hidden; background: var(--navy3); aspect-ratio: 16/9; }
+    .article-card .thumb-wrap { overflow: hidden; background: var(--navy3); aspect-ratio: 16/9; border-radius: 2px; }
     .article-card .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
-    .article-card:hover .thumb-wrap img { transform: scale(1.05); }
+    .article-card:hover .thumb-wrap img { transform: scale(1.06); }
     .article-card-body { display: flex; flex-direction: column; justify-content: center; }
-    .article-card h3 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; line-height: 1.35; color: var(--text); margin-bottom: 6px; transition: color .2s; }
+    .article-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600;
+      line-height: 1.35; color: var(--text); margin-bottom: 6px; transition: color .2s;
+    }
     .article-card:hover h3 { color: var(--blue-glow); }
-    .article-card p.excerpt { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--navy3), var(--navy4)); display: flex; align-items: center; justify-content: center; color: var(--text-faint); font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    .article-card p.excerpt {
+      font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .thumb-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--navy3), var(--navy4));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-faint); font-size: 10px; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .loading-spinner {
+      display: inline-block; width: 28px; height: 28px;
+      border: 2px solid var(--border); border-top-color: var(--blue);
+      border-radius: 50%; animation: spin .8s linear infinite;
+    }
  
-    /* PAGINATION */
-    .pagination { display: flex; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
-    .pagination a, .pagination span { padding: 6px 12px; border: 1px solid var(--border); font-size: 13px; color: var(--text-muted); transition: all .2s; cursor: pointer; }
-    .pagination a:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
-    .pagination .current { background: var(--blue); color: #fff; border-color: var(--blue); }
- 
-    /* SIDEBAR */
+    /* ── SIDEBAR ── */
     .sidebar-widget { background: var(--navy2); border: 1px solid var(--border); padding: 20px; margin-bottom: 28px; }
-    .widget-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--text); padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px solid var(--blue-dim); }
+    .widget-title {
+      font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700;
+      color: var(--text); padding-bottom: 12px; margin-bottom: 14px;
+      border-bottom: 2px solid var(--blue-dim);
+    }
     .popular-list { list-style: none; }
-    .popular-list li { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border-lt); align-items: flex-start; cursor: pointer; }
+    .popular-list li {
+      display: flex; gap: 10px; padding: 10px 0;
+      border-bottom: 1px solid var(--border-lt); align-items: flex-start; cursor: pointer;
+    }
     .popular-list li:last-child { border-bottom: none; }
-    .popular-num { font-size: 20px; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--blue-dim); line-height: 1; flex-shrink: 0; width: 20px; text-align: right; }
+    .popular-num {
+      font-size: 20px; font-weight: 700; font-family: 'Playfair Display', serif;
+      color: var(--blue-dim); line-height: 1; flex-shrink: 0; width: 20px; text-align: right;
+    }
     .p-title { font-size: 13px; line-height: 1.45; color: var(--text-muted); transition: color .2s; font-family: 'Source Serif 4', serif; }
     .popular-list li:hover .p-title { color: var(--blue-glow); }
     .newsletter-widget p { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.55; }
-    .btn-full { display: block; width: 100%; padding: 10px; background: var(--blue); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; text-align: center; transition: background .2s; margin-bottom: 8px; }
+    .btn-full {
+      display: block; width: 100%; padding: 10px;
+      background: var(--blue); color: #fff; font-weight: 700;
+      font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+      text-align: center; transition: background .2s; margin-bottom: 8px;
+    }
     .btn-full:hover { background: var(--blue-glow); color: #fff; }
     .btn-full.outline { background: transparent; border: 1px solid var(--blue-dim); color: var(--blue); }
     .btn-full.outline:hover { background: var(--blue); color: #fff; }
-    .cat-list { list-style: none; }
-    .cat-list li { border-bottom: 1px solid var(--border-lt); }
-    .cat-list a { display: flex; justify-content: space-between; padding: 9px 0; font-size: 13px; color: var(--text-muted); transition: all .2s; }
-    .cat-list a:hover { color: var(--blue-glow); padding-left: 6px; }
     .membership-tier { padding: 12px 0; border-bottom: 1px solid var(--border-lt); }
     .membership-tier:last-child { border-bottom: none; }
     .tier-name { font-size: 13px; font-weight: 600; color: var(--blue-glow); margin-bottom: 3px; }
     .tier-desc { font-size: 12px; color: var(--text-faint); line-height: 1.45; }
-    .loading-spinner { display: inline-block; width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin .8s linear infinite; margin: 12px auto; }
  
-    /* ARTICLE READER */
-    #article-page { display: none; max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
-    #article-page.visible { display: block; }
-    .article-back { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; cursor: pointer; transition: color .2s; border: 1px solid var(--blue-dim); padding: 6px 14px; }
+    /* ── ARTICLE READER ── */
+    #article-page { display: none; max-width: 1200px; margin: 0 auto; padding: 24px 20px 40px; }
+    .article-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 24px;
+      cursor: pointer; border: 1px solid var(--blue-dim); padding: 6px 14px;
+      transition: all .2s; border-radius: 2px;
+    }
     .article-back:hover { color: var(--blue-glow); border-color: var(--blue-glow); }
     .article-reader { display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
     .reader-tag { margin-bottom: 10px; }
-    .reader-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; line-height: 1.22; color: var(--text); margin-bottom: 14px; }
-    .reader-meta { font-size: 13px; color: var(--text-faint); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .reader-title {
+      font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900;
+      line-height: 1.22; color: var(--text); margin-bottom: 14px;
+    }
+    .reader-meta {
+      font-size: 13px; color: var(--text-faint);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
     .reader-meta .author { color: var(--blue); font-weight: 600; }
-    .reader-hero { aspect-ratio: 16/9; overflow: hidden; background: var(--navy3); margin-bottom: 28px; }
+    .reader-hero { aspect-ratio: 16/9; overflow: hidden; background: var(--navy3); margin-bottom: 28px; border-radius: 2px; }
     .reader-hero img { width: 100%; height: 100%; object-fit: cover; }
-    .reader-body { font-family: 'Source Serif 4', serif; font-size: 17px; color: var(--text-muted); line-height: 1.8; }
+ 
+    /* Injected Substack body styles */
+    .reader-body {
+      font-family: 'Source Serif 4', serif; font-size: 18px;
+      color: var(--text-muted); line-height: 1.82;
+    }
     .reader-body p { margin-bottom: 1.4em; }
-    .reader-body h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text); margin: 1.8em 0 .8em; }
-    .reader-body h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text); margin: 1.5em 0 .6em; }
-    .reader-body blockquote { border-left: 3px solid var(--blue); padding: 12px 20px; background: var(--navy2); margin: 1.5em 0; color: var(--text); }
+    .reader-body h2 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--text); margin: 2em 0 .8em; font-weight: 700; }
+    .reader-body h3 { font-family: 'Playfair Display', serif; font-size: 19px; color: var(--text); margin: 1.6em 0 .6em; font-weight: 600; }
+    .reader-body h4 { font-size: 16px; color: var(--text); margin: 1.4em 0 .5em; font-weight: 600; }
+    .reader-body blockquote {
+      border-left: 3px solid var(--blue); padding: 14px 20px;
+      background: var(--navy2); margin: 1.8em 0; color: var(--text); border-radius: 0 4px 4px 0;
+    }
     .reader-body a { color: var(--blue-glow); text-decoration: underline; text-underline-offset: 3px; }
-    .reader-body img { max-width: 100%; margin: 1.5em auto; }
-    .reader-loading { padding: 60px 0; text-align: center; color: var(--text-faint); font-size: 14px; }
-    .reader-cta { background: var(--navy2); border: 1px solid var(--border); padding: 28px; margin-top: 36px; text-align: center; border-top: 2px solid var(--blue-dim); }
+    .reader-body img { max-width: 100%; margin: 1.5em auto; border-radius: 2px; }
+    .reader-body ul, .reader-body ol { padding-left: 1.6em; margin-bottom: 1.4em; }
+    .reader-body li { margin-bottom: .5em; }
+    .reader-body hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+    /* Override Substack injected styles */
+    .reader-body .paywall, .reader-body .subscription-widget { display: none !important; }
+    .reader-body figure { margin: 1.5em 0; }
+    .reader-body figcaption { font-size: 13px; color: var(--text-faint); text-align: center; margin-top: 6px; font-family: 'DM Sans', sans-serif; }
+ 
+    .reader-loading { padding: 60px 0; text-align: center; color: var(--text-faint); }
+    .reader-cta {
+      background: var(--navy2); border: 1px solid var(--border);
+      padding: 28px; margin-top: 40px; text-align: center; border-top: 2px solid var(--blue-dim);
+    }
     .reader-cta h4 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 8px; color: var(--text); }
     .reader-cta p { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; }
     .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .cta-btns a { display: inline-block; padding: 10px 22px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; }
  
-    /* FOOTER */
+    /* ── FOOTER ── */
     .site-footer { background: #07131f; border-top: 2px solid var(--blue-dim); padding: 40px 0 20px; margin-top: 40px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+    .footer-top {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 24px;
+    }
     .footer-brand img { height: 40px; margin-bottom: 12px; }
     .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 16px; margin-bottom: 8px; }
     .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
@@ -164,45 +298,57 @@
     .footer-col ul a { font-size: 13px; color: var(--text-muted); transition: color .2s; }
     .footer-col ul a:hover { color: var(--blue-glow); }
     .footer-socials { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-    .footer-socials a { padding: 4px 10px; border: 1px solid var(--border); color: var(--text-muted); font-size: 12px; font-weight: 600; transition: all .2s; border-radius: 2px; }
+    .footer-socials a {
+      padding: 4px 10px; border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 12px; font-weight: 600;
+      transition: all .2s; border-radius: 2px;
+    }
     .footer-socials a:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-faint); }
  
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .nav-links, .nav-right { display: none; }
       .nav-hamburger { display: flex; }
       .site-body, .article-reader { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
-      .top-cat-nav { display: none; }
     }
     @media (max-width: 600px) {
       .article-card { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
-      .reader-title { font-size: 22px; }
+      .reader-title { font-size: 24px; }
+      .reader-body { font-size: 16px; }
     }
   </style>
 </head>
 <body>
  
-<!-- TOP BAR -->
+<!-- ══ TOP BAR: social icons only ══ -->
 <div class="top-bar">
   <div class="top-bar-inner">
-    <span class="top-bar-label">▶ Watch:</span>
-    <nav class="top-cat-nav">
-      <a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
-      <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
-    </nav>
+    <span class="top-bar-left">Thinking Global — Decoding Geopolitics & Political Economy</span>
+    <div class="top-socials">
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      </a>
+      <!-- X / Twitter -->
+      <a href="https://x.com/thinkinglobalYT" target="_blank" title="X / Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@thinking.global" target="_blank" title="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
   </div>
 </div>
  
-<!-- MAIN NAV -->
+<!-- ══ MAIN NAV (logo + playlist categories) ══ -->
 <nav class="main-nav">
   <div class="nav-inner">
     <div class="nav-logo" onclick="showHome()">
@@ -227,6 +373,7 @@
     <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
+ 
 <div class="mobile-menu" id="mobileMenu">
   <a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a>
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a>
@@ -241,7 +388,7 @@
   <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
 </div>
  
-<!-- HOME PAGE -->
+<!-- ══ HOME PAGE ══ -->
 <div id="home-page">
   <div class="site-body">
     <main>
@@ -252,67 +399,92 @@
         </div>
       </div>
     </main>
+ 
     <aside class="sidebar">
+ 
+      <!-- Popular (top 5 from Substack) -->
       <div class="sidebar-widget">
         <h3 class="widget-title">Popular</h3>
-        <div id="popularLoading" style="text-align:center;padding:10px 0;"><div class="loading-spinner" style="display:inline-block;width:20px;height:20px;"></div></div>
+        <div id="popularLoading" style="text-align:center;padding:14px 0;">
+          <div class="loading-spinner" style="display:inline-block;width:20px;height:20px;"></div>
+        </div>
         <ol class="popular-list" id="popularList" style="display:none"></ol>
       </div>
+ 
+      <!-- Thinking Global Club -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Thinking Global Club</h3>
+        <div class="membership-tier">
+          <div class="tier-name">🛡️ Sovereign Supporter</div>
+          <div class="tier-desc">Directly fund our independence. Exclusive emojis & badges for community discussions.</div>
+        </div>
+        <div class="membership-tier">
+          <div class="tier-name">📊 Multipolar Analyst</div>
+          <div class="tier-desc">Early access to long-form videos. Your handle credited in video outros.</div>
+        </div>
+        <div class="membership-tier">
+          <div class="tier-name">🎓 Structural Partner</div>
+          <div class="tier-desc">Inner circle. Direct educational guidance and IR expertise via email.</div>
+        </div>
+        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:16px;">Join via YouTube</a>
+      </div>
+ 
+      <!-- Newsletter -->
       <div class="sidebar-widget newsletter-widget">
         <h3 class="widget-title">Weekly Dispatch</h3>
         <p>Structural intelligence on geopolitics and political economy — directly to your inbox.</p>
         <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Join the Newsletter</a>
         <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
       </div>
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Watch by Region</h3>
-        <ul class="cat-list">
-          <li><a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S. ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania ▶</a></li>
-          <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory ▶</a></li>
-        </ul>
+ 
+    </aside>
+  </div>
+</div>
+ 
+<!-- ══ ARTICLE PAGE ══ -->
+<div id="article-page">
+  <span class="article-back" onclick="showHome()">← Back to Home</span>
+  <div class="article-reader">
+    <main>
+      <div id="article-content">
+        <div class="reader-loading">
+          <div class="loading-spinner" style="display:block;margin:0 auto;"></div>
+          <p style="margin-top:14px;font-size:13px;">Loading article…</p>
+        </div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <div class="sidebar-widget newsletter-widget">
+        <h3 class="widget-title">Weekly Dispatch</h3>
+        <p>Structural geopolitical intelligence — directly to your inbox.</p>
+        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Subscribe Free</a>
+        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
       </div>
       <div class="sidebar-widget">
         <h3 class="widget-title">Thinking Global Club</h3>
-        <div class="membership-tier"><div class="tier-name">🛡️ Sovereign Supporter</div><div class="tier-desc">Directly fund our independence. Exclusive emojis & badges.</div></div>
-        <div class="membership-tier"><div class="tier-name">📊 Multipolar Analyst</div><div class="tier-desc">Early access to long-form videos. Handle credited in outros.</div></div>
-        <div class="membership-tier"><div class="tier-name">🎓 Structural Partner</div><div class="tier-desc">Inner circle. Direct educational guidance and IR expertise via email.</div></div>
+        <div class="membership-tier">
+          <div class="tier-name">🛡️ Sovereign Supporter</div>
+          <div class="tier-desc">Fund our independence. Exclusive emojis & badges.</div>
+        </div>
+        <div class="membership-tier">
+          <div class="tier-name">📊 Multipolar Analyst</div>
+          <div class="tier-desc">Early access & handle credited in outros.</div>
+        </div>
+        <div class="membership-tier">
+          <div class="tier-name">🎓 Structural Partner</div>
+          <div class="tier-desc">Inner circle guidance and IR expertise via email.</div>
+        </div>
         <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:14px;">Join via YouTube</a>
+      </div>
+      <div class="sidebar-widget">
+        <h3 class="widget-title">Popular</h3>
+        <ol class="popular-list" id="popularListArticle"></ol>
       </div>
     </aside>
   </div>
 </div>
  
-<!-- ARTICLE PAGE -->
-<div id="article-page">
-  <div style="max-width:1200px;margin:0 auto;padding:20px 20px 0;">
-    <span class="article-back" onclick="showHome()">← Back to Home</span>
-  </div>
-  <div style="max-width:1200px;margin:0 auto;padding:0 20px 30px;">
-    <div class="article-reader">
-      <main><div id="article-content"><div class="reader-loading"><div class="loading-spinner" style="display:block;margin:0 auto;width:32px;height:32px;"></div><p style="margin-top:14px;">Loading article…</p></div></div></main>
-      <aside class="sidebar">
-        <div class="sidebar-widget newsletter-widget">
-          <h3 class="widget-title">Weekly Dispatch</h3>
-          <p>Structural geopolitical intelligence — directly to your inbox.</p>
-          <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Subscribe Free</a>
-          <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
-        </div>
-        <div class="sidebar-widget">
-          <h3 class="widget-title">Popular</h3>
-          <ol class="popular-list" id="popularListArticle"></ol>
-        </div>
-      </aside>
-    </div>
-  </div>
-</div>
- 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
@@ -321,8 +493,8 @@
         <h3>Thinking Global</h3>
         <p>Decoding Geopolitics & Political Economy. Independent analysis for a multipolar world.</p>
         <div class="footer-socials">
-          <a href="https://x.com/thinkinglobalYT" target="_blank">X</a>
           <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">YouTube</a>
+          <a href="https://x.com/thinkinglobalYT" target="_blank">X</a>
           <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a>
           <a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a>
         </div>
@@ -362,100 +534,141 @@
 </footer>
  
 <script>
-  let allPosts = [], topPosts = [];
+  // ─── State ───────────────────────────────────────────────────────
+  let allPosts = [];
+  let topPosts = [];
  
+  // ─── Nav ─────────────────────────────────────────────────────────
   function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+ 
   function showHome() {
     document.getElementById('home-page').style.display = '';
     document.getElementById('article-page').style.display = 'none';
     window.scrollTo(0, 0);
   }
  
-  // ── Fetch latest posts ──────────────────────────────────────
+  // ─── Fetch latest posts ───────────────────────────────────────────
   async function fetchPosts() {
     try {
       const r = await fetch('https://thinkingglobal.substack.com/api/v1/posts?limit=20&sort=new');
-      if (!r.ok) throw new Error();
+      if (!r.ok) throw new Error('API error');
       allPosts = await r.json();
       renderArticles(allPosts);
     } catch { renderFallbackArticles(); }
   }
  
-  // ── Fetch top posts ─────────────────────────────────────────
+  // ─── Fetch top posts ──────────────────────────────────────────────
   async function fetchTopPosts() {
     try {
       const r = await fetch('https://thinkingglobal.substack.com/api/v1/posts?limit=5&sort=top_all_time');
-      if (!r.ok) throw new Error();
+      if (!r.ok) throw new Error('API error');
       topPosts = await r.json();
       renderPopular(topPosts);
     } catch { renderPopularFallback(); }
   }
  
-  // ── Render homepage article list ────────────────────────────
+  // ─── Render article list ──────────────────────────────────────────
   function renderArticles(posts) {
     if (!posts || posts.length === 0) { renderFallbackArticles(); return; }
     const c = document.getElementById('articles-container');
     const f = posts[0];
-    let html = `<article class="featured-article">
-      <span class="tag">${escTag(f.section_name || 'Analysis')}</span>
-      <div onclick="openArticle('${f.slug}')" style="cursor:pointer">
-        <div class="thumb-wrap">
-          ${f.cover_image ? `<img src="${f.cover_image}" alt="${esc(f.title)}" loading="lazy"/>` : `<div class="thumb-placeholder">Thinking Global</div>`}
+ 
+    // Helper to build a thumbnail tag from a post object
+    function thumb(p, cls) {
+      // Substack exposes cover_image on list endpoints
+      const src = p.cover_image || (p.thumbnail_url) || null;
+      if (src) return `<img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
+      return `<div class="thumb-placeholder">Thinking Global</div>`;
+    }
+ 
+    let html = `
+      <article class="featured-article">
+        <span class="tag">${escTag(f.section_name || 'Analysis')}</span>
+        <div onclick="openReader('${f.slug}')" style="cursor:pointer">
+          <div class="thumb-wrap">${thumb(f)}</div>
+          <h2>${esc(f.title)}</h2>
         </div>
-        <h2>${esc(f.title)}</h2>
+        <p class="excerpt">${esc(f.subtitle || '')}</p>
+        <div class="article-meta">
+          <span class="author">Thinking Global</span><span>·</span><span>${fmtDate(f.post_date)}</span>
+        </div>
+      </article>
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
+        <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">Latest Analysis</h2>
       </div>
-      <p class="excerpt">${esc(f.subtitle || '')}</p>
-      <div class="article-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(f.post_date)}</span></div>
-    </article>
-    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
-      <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">Latest Analysis</h2>
-    </div>
-    <div class="article-list">`;
-    for (let i = 1; i < Math.min(posts.length, 9); i++) {
+      <div class="article-list">`;
+ 
+    for (let i = 1; i < Math.min(posts.length, 10); i++) {
       const p = posts[i];
-      html += `<article class="article-card" onclick="openArticle('${p.slug}')">
-        <div class="thumb-wrap">${p.cover_image ? `<img src="${p.cover_image}" alt="${esc(p.title)}" loading="lazy"/>` : `<div class="thumb-placeholder">${escTag(p.section_name||'Analysis')}</div>`}</div>
-        <div class="article-card-body">
-          <span class="section-label">${escTag(p.section_name||'Analysis')}</span>
-          <h3>${esc(p.title)}</h3>
-          <p class="excerpt">${esc(p.subtitle||'')}</p>
-          <div class="article-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span></div>
-        </div>
-      </article>`;
+      html += `
+        <article class="article-card" onclick="openReader('${p.slug}')">
+          <div class="thumb-wrap">${thumb(p)}</div>
+          <div class="article-card-body">
+            <span class="section-label">${escTag(p.section_name || 'Analysis')}</span>
+            <h3>${esc(p.title)}</h3>
+            <p class="excerpt">${esc(p.subtitle || '')}</p>
+            <div class="article-meta">
+              <span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span>
+            </div>
+          </div>
+        </article>`;
     }
     html += `</div>`;
     c.innerHTML = html;
   }
  
-  // ── Open article reader ──────────────────────────────────────
-  async function openArticle(slug) {
+  // ─── openReader(): fetch full post & display in-site reader ───────
+  async function openReader(slug) {
+    // Switch to reader view
     document.getElementById('home-page').style.display = 'none';
-    document.getElementById('article-page').style.display = 'block';
-    document.getElementById('article-content').innerHTML = `<div class="reader-loading"><div class="loading-spinner" style="display:block;margin:0 auto;width:32px;height:32px;"></div><p style="margin-top:14px;">Loading article…</p></div>`;
+    const ap = document.getElementById('article-page');
+    ap.style.display = 'block';
+    const content = document.getElementById('article-content');
+    content.innerHTML = `
+      <div class="reader-loading">
+        <div class="loading-spinner" style="display:block;margin:0 auto;"></div>
+        <p style="margin-top:14px;font-size:13px;">Loading article…</p>
+      </div>`;
+    window.scrollTo(0, 0);
+ 
     // Mirror popular list to article sidebar
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
-    window.scrollTo(0, 0);
+ 
+    // 1️⃣ Try full post endpoint (returns body_html for free/public posts)
     try {
       const r = await fetch(`https://thinkingglobal.substack.com/api/v1/posts/${slug}`);
-      if (!r.ok) throw new Error();
+      if (!r.ok) throw new Error('not ok');
       const p = await r.json();
-      renderFullReader(p);
+ 
+      // If we got body_html, render the full article
+      if (p.body_html) {
+        renderFullArticle(p);
+        return;
+      }
+      // Otherwise render preview + CTA
+      renderPreviewArticle(p);
     } catch {
-      const p = allPosts.find(x=>x.slug===slug) || topPosts.find(x=>x.slug===slug);
-      if (p) renderBasicReader(p); else renderReaderError(slug);
+      // 2️⃣ Fallback: find in cache
+      const p = allPosts.find(x => x.slug === slug) || topPosts.find(x => x.slug === slug);
+      if (p) { renderPreviewArticle(p); } else { renderErrorState(slug); }
     }
   }
  
-  function renderFullReader(p) {
+  function renderFullArticle(p) {
+    const img = p.cover_image || p.thumbnail_url || '';
     document.getElementById('article-content').innerHTML = `
-      <span class="tag">${escTag(p.section_name||'Analysis')}</span>
+      <span class="tag">${escTag(p.section_name || 'Analysis')}</span>
       <h1 class="reader-title">${esc(p.title)}</h1>
-      <div class="reader-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span></div>
-      ${p.cover_image?`<div class="reader-hero"><img src="${p.cover_image}" alt="${esc(p.title)}"/></div>`:''}
-      <div class="reader-body">${p.body_html||`<p>${esc(p.subtitle||'')}</p>`}</div>
+      <div class="reader-meta">
+        <span class="author">Thinking Global</span>
+        <span>·</span>
+        <span>${fmtDate(p.post_date)}</span>
+      </div>
+      ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
+      <div class="reader-body">${sanitizeSubstackHTML(p.body_html)}</div>
       <div class="reader-cta">
         <h4>Enjoy this analysis?</h4>
-        <p>Subscribe to receive structural geopolitical intelligence weekly.</p>
+        <p>Subscribe to receive structural geopolitical intelligence weekly — free.</p>
         <div class="cta-btns">
           <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full" style="max-width:220px;">Subscribe Free</a>
           <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline" style="max-width:220px;">Support on Patreon</a>
@@ -463,16 +676,24 @@
       </div>`;
   }
  
-  function renderBasicReader(p) {
+  function renderPreviewArticle(p) {
+    const img = p.cover_image || p.thumbnail_url || '';
+    const truncatedBody = p.truncated_body_text
+      ? `<p>${esc(p.truncated_body_text)}</p>`
+      : `<p style="font-size:18px;color:var(--text);">${esc(p.subtitle || '')}</p>`;
     document.getElementById('article-content').innerHTML = `
-      <span class="tag">${escTag(p.section_name||'Analysis')}</span>
+      <span class="tag">${escTag(p.section_name || 'Analysis')}</span>
       <h1 class="reader-title">${esc(p.title)}</h1>
-      <div class="reader-meta"><span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span></div>
-      ${p.cover_image?`<div class="reader-hero"><img src="${p.cover_image}" alt="${esc(p.title)}"/></div>`:''}
-      <div class="reader-body"><p style="font-size:18px;color:var(--text);">${esc(p.subtitle||'')}</p></div>
+      <div class="reader-meta">
+        <span class="author">Thinking Global</span>
+        <span>·</span>
+        <span>${fmtDate(p.post_date)}</span>
+      </div>
+      ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
+      <div class="reader-body">${truncatedBody}</div>
       <div class="reader-cta">
         <h4>Read the full article</h4>
-        <p>Subscribe to Thinking Global to access the complete analysis.</p>
+        <p>This article is available in full on Substack. Subscribe for free to read everything.</p>
         <div class="cta-btns">
           <a href="https://thinkingglobal.substack.com/p/${p.slug}" target="_blank" class="btn-full" style="max-width:220px;">Read on Substack ↗</a>
           <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full outline" style="max-width:220px;">Subscribe Free</a>
@@ -480,53 +701,65 @@
       </div>`;
   }
  
-  function renderReaderError(slug) {
+  function renderErrorState(slug) {
     document.getElementById('article-content').innerHTML = `
-      <div style="padding:40px 0;text-align:center;color:var(--text-faint);">
-        <p style="margin-bottom:16px;">Could not load this article directly.</p>
+      <div style="padding:50px 0;text-align:center;color:var(--text-faint);">
+        <p style="font-size:15px;margin-bottom:18px;">Could not load this article.</p>
         <a href="https://thinkingglobal.substack.com/p/${slug}" target="_blank" class="btn-full" style="display:inline-block;max-width:260px;">Read on Substack ↗</a>
       </div>`;
   }
  
-  // ── Popular list ─────────────────────────────────────────────
+  // Strip Substack paywall/subscription widgets from injected HTML
+  function sanitizeSubstackHTML(html) {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    // Remove paywall / subscribe prompts
+    div.querySelectorAll('.paywall, .subscription-widget, .paywall-cta, [data-component-name="PaywallBodyText"]').forEach(el => el.remove());
+    return div.innerHTML;
+  }
+ 
+  // ─── Popular sidebar ───────────────────────────────────────────────
   function renderPopular(posts) {
     document.getElementById('popularLoading').style.display = 'none';
     const list = document.getElementById('popularList');
     list.style.display = '';
-    list.innerHTML = posts.slice(0,5).map((p,i)=>`
-      <li onclick="openArticle('${p.slug}')">
-        <span class="popular-num">${i+1}</span>
+    list.innerHTML = posts.slice(0, 5).map((p, i) => `
+      <li onclick="openReader('${p.slug}')">
+        <span class="popular-num">${i + 1}</span>
         <span class="p-title">${esc(p.title)}</span>
       </li>`).join('');
   }
  
   function renderPopularFallback() {
-    const fb = [
-      {slug:'taiwan-collapse-us-trust', title:'Why Taiwan is Turning Away from the US: The 14% Collapse'},
-      {slug:'indonesia-5-trillion-blind-spot', title:'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power'},
-      {slug:'mercosur-eu-agreement-colonial-pact', title:'The Mercosur-EU Agreement: A New Colonial Pact'},
-      {slug:'iran-missile-defense-timeline', title:'Strategic Timeline: Iranian Missile Interceptions in March 2026'},
-      {slug:'greenland-geopolitics-europe-sovereignty', title:'Greenland: The Strategic Test for European Sovereignty'},
-    ];
-    renderPopular(fb);
-  }
- 
-  function renderFallbackArticles() {
-    renderArticles([
-      {slug:'indonesia-5-trillion-blind-spot', title:'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', subtitle:'The world\'s fourth most populous nation commands critical maritime chokepoints and a rapidly expanding economy most Western analysts underestimate.', section_name:'Economy', post_date:'2026-05-01', cover_image:null},
-      {slug:'taiwan-collapse-us-trust', title:'Why Taiwan is Turning Away from the US: The 14% Collapse', subtitle:'Trust in Washington\'s security guarantees has fallen to historic lows in Taipei, reshaping the island\'s geopolitical posture in real time.', section_name:'Eurasia', post_date:'2026-04-28', cover_image:null},
-      {slug:'iran-missile-defense-timeline', title:'Strategic Timeline: Iranian Missile Interceptions in March 2026', subtitle:'A detailed chronological breakdown of Iran\'s asymmetric defense posture and what it reveals about the evolving balance of power.', section_name:'Eurasia', post_date:'2026-04-15', cover_image:null},
-      {slug:'mercosur-eu-agreement-colonial-pact', title:'The Mercosur-EU Agreement: A New Colonial Pact', subtitle:'Beneath the diplomatic surface, the landmark trade deal encodes structural asymmetries that echo centuries of unequal exchange.', section_name:'Americas', post_date:'2026-04-02', cover_image:null},
-      {slug:'greenland-geopolitics-europe-sovereignty', title:'Greenland: The Strategic Test for European Sovereignty', subtitle:'European capitals face a defining test of whether they can act as an autonomous geopolitical actor.', section_name:'Eurasia', post_date:'2026-03-20', cover_image:null},
+    renderPopular([
+      { slug: 'taiwan-collapse-us-trust',             title: 'Why Taiwan is Turning Away from the US: The 14% Collapse' },
+      { slug: 'indonesia-5-trillion-blind-spot',       title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power' },
+      { slug: 'mercosur-eu-agreement-colonial-pact',   title: 'The Mercosur-EU Agreement: A New Colonial Pact' },
+      { slug: 'iran-missile-defense-timeline',         title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026' },
+      { slug: 'greenland-geopolitics-europe-sovereignty', title: 'Greenland: The Strategic Test for European Sovereignty' },
     ]);
   }
  
-  // ── Utils ──────────────────────────────────────────────────
-  function esc(s){ if(!s)return''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function escTag(s){ return esc(s).substring(0,30); }
-  function fmtDate(d){ return d?d.substring(0,10):''; }
+  // ─── Fallback article list ─────────────────────────────────────────
+  function renderFallbackArticles() {
+    renderArticles([
+      { slug: 'indonesia-5-trillion-blind-spot',       title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power',       subtitle: 'The world\'s fourth most populous nation commands critical maritime chokepoints and a rapidly expanding economy most Western analysts underestimate.', section_name: 'Economy',  post_date: '2026-05-01', cover_image: null },
+      { slug: 'taiwan-collapse-us-trust',             title: 'Why Taiwan is Turning Away from the US: The 14% Collapse',           subtitle: 'Trust in Washington\'s security guarantees has fallen to historic lows in Taipei, reshaping the island\'s geopolitical posture in real time.',         section_name: 'Eurasia',  post_date: '2026-04-28', cover_image: null },
+      { slug: 'iran-missile-defense-timeline',         title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026',   subtitle: 'A detailed chronological breakdown of Iran\'s asymmetric defense posture and the evolving regional balance of power.',                            section_name: 'Eurasia',  post_date: '2026-04-15', cover_image: null },
+      { slug: 'mercosur-eu-agreement-colonial-pact',   title: 'The Mercosur-EU Agreement: A New Colonial Pact',                    subtitle: 'Beneath the diplomatic surface, the trade deal encodes structural asymmetries echoing centuries of unequal exchange.',                           section_name: 'Americas', post_date: '2026-04-02', cover_image: null },
+      { slug: 'greenland-geopolitics-europe-sovereignty', title: 'Greenland: The Strategic Test for European Sovereignty',         subtitle: 'European capitals face a defining test of whether they can act as an autonomous geopolitical actor.',                                             section_name: 'Eurasia',  post_date: '2026-03-20', cover_image: null },
+    ]);
+  }
  
-  // ── Init ──────────────────────────────────────────────────
+  // ─── Utilities ─────────────────────────────────────────────────────
+  function esc(s) {
+    if (!s) return '';
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function escTag(s) { return esc((s||'').toString()).substring(0, 30); }
+  function fmtDate(d) { return d ? d.substring(0, 10) : ''; }
+ 
+  // ─── Init ───────────────────────────────────────────────────────────
   fetchPosts();
   fetchTopPosts();
 </script>
