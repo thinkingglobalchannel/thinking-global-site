@@ -3,93 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thinking Global | Structural Analysis for a Multipolar World</title>
+    <title>Thinking Global | Decoding Geopolitics & Economy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Fontes que espelham sua marca: Anton (Impactful) e Libre Baskerville (Séria) -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:italic,wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2 { font-family: 'Playfair Display', serif; }
-        .bg-geopolitic { background-color: #0f172a; } /* Navy Blue Deep */
+        :root {
+            --tg-navy: #001a33;
+            --tg-blue: #3399cc;
+            --tg-gold: #d4af37;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        h1 { font-family: 'Anton', sans-serif; letter-spacing: 0.05em; }
+        .serif-slogan { font-family: 'Libre Baskerville', serif; font-style: italic; }
+        .bg-tg-navy { background-color: var(--tg-navy); }
+        .text-tg-blue { color: var(--tg-blue); }
+        .border-tg-gold { border-color: var(--tg-gold); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-slate-900">
 
-    <!-- Header / Hero Section -->
-    <header class="bg-geopolitic text-white py-16 px-6 text-center border-b-4 border-yellow-600">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-6xl mb-4">Thinking Global</h1>
-            <p class="text-xl md:text-2xl text-gray-300 font-light italic">
-                "Uncovering the power structures of a multipolar world."
+    <!-- Top Bar: Slogan Superior -->
+    <div class="bg-tg-navy text-white py-2 px-6 text-center border-b border-tg-blue shadow-lg">
+        <span class="text-tg-blue font-bold tracking-widest text-xs uppercase">Decoding Geopolitics & Economy</span>
+    </div>
+
+    <!-- Header Principal -->
+    <header class="bg-tg-navy text-white py-10 px-6 text-center relative overflow-hidden">
+        <!-- Overlay de Grade (Simulando seu banner) -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <!-- Espaço para seu Logotipo Circular -->
+            <img src="logo.png" alt="Thinking Global Logo" class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white shadow-2xl">
+            
+            <h1 class="text-6xl md:text-8xl uppercase leading-none mb-2">Thinking Global</h1>
+            <div class="w-full h-1 bg-tg-blue max-w-2xl mx-auto mb-4"></div>
+            <p class="serif-slogan text-lg md:text-2xl text-white opacity-90 uppercase tracking-tighter">
+                Thinking the world how it really is
             </p>
-            <div class="mt-8 flex justify-center gap-4">
-                <a href="https://thinkingglobal.substack.com/" target="_blank" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded transition">Read Analysis</a>
-                <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="bg-white text-geopolitic hover:bg-gray-200 font-bold py-3 px-8 rounded transition">Support the Project</a>
-            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto py-12 px-6">
+    <!-- Navegação Rápida -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto flex justify-center gap-8 py-4 font-bold text-xs uppercase tracking-widest">
+            <a href="https://thinkingglobal.substack.com/" class="hover:text-tg-blue transition">Analysis</a>
+            <a href="https://www.youtube.com/@ThinkingGlobal" class="hover:text-tg-blue transition">Video Hub</a>
+            <a href="#membership" class="hover:text-tg-gold transition">Membership</a>
+            <a href="https://www.patreon.com/c/ThinkingGlobalChannel" class="hover:text-tg-blue transition">Patreon</a>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal: Estilo Journal -->
+    <main class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-12">
         
-        <!-- About Section -->
-        <section class="grid md:grid-cols-2 gap-12 items-center mb-20">
-            <div>
-                <h2 class="text-3xl mb-6">Structural Geopolitics from a Global South Perspective</h2>
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    Breaking down how global power really works, beyond official narratives. We analyze imperialism, economic warfare, and the strategic shift toward a multipolar world.
+        <!-- Coluna da Esquerda: Vídeo e Manifesto -->
+        <div class="md:col-span-2 space-y-12">
+            <section>
+                <h2 class="text-3xl font-bold mb-6 border-l-8 border-tg-navy pl-4">Latest Structural Analysis</h2>
+                <div class="aspect-video bg-black shadow-2xl rounded-lg overflow-hidden border-4 border-tg-navy">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed?listType=user_uploads&list=ThinkingGlobal" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section class="prose prose-slate max-w-none">
+                <h3 class="serif-slogan text-2xl mb-4">A Global South Perspective</h3>
+                <p class="text-lg text-slate-700 leading-relaxed">
+                    We break down how global power really works, beyond official narratives. Looking at imperialism, foreign policies, and the shift toward a multipolar world.
                 </p>
-                <p class="text-gray-700 leading-relaxed">
-                    Connecting geopolitics and political economy to explain today’s crises across Latin America, Africa, and Eurasia.
-                </p>
-            </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-geopolitic">
-                <h3 class="text-xl font-bold mb-4">Central Hub</h3>
-                <ul class="space-y-4">
-                    <li>
-                        <a href="https://thinkingglobal.substack.com/" class="flex items-center text-geopolitic hover:underline">
-                            <span class="font-semibold">Substack:</span> &nbsp; Deep-dive articles and newsletters.
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" class="flex items-center text-geopolitic hover:underline">
-                            <span class="font-semibold">Patreon:</span> &nbsp; Support independent structural analysis.
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://x.com/thinkinglobalYT" class="flex items-center text-geopolitic hover:underline">
-                            <span class="font-semibold">X (Twitter):</span> &nbsp; Real-time geopolitical updates.
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Video Call to Action -->
-        <section class="bg-gray-900 text-white rounded-2xl p-10 text-center mb-20">
-            <h2 class="text-3xl mb-4">Watch the Latest Analysis</h2>
-            <p class="text-gray-400 mb-8">Join thousands of viewers exploring the complexities of the international system.</p>
-            <a href="https://www.youtube.com/@ThinkingGlobal" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full transition uppercase tracking-widest">
-                Go to YouTube Channel
-            </a>
-        </section>
-
-        <!-- Social Media Grid -->
-        <section class="text-center">
-            <h2 class="text-2xl mb-8">Follow the Ecosystem</h2>
-            <div class="flex justify-center gap-8">
-                <a href="https://www.instagram.com/thinkingglobalchannel/" class="text-gray-600 hover:text-geopolitic transition text-sm font-bold">INSTAGRAM</a>
-                <a href="https://www.tiktok.com/@thinking.global" class="text-gray-600 hover:text-geopolitic transition text-sm font-bold">TIKTOK</a>
-                <a href="https://x.com/thinkinglobalYT" class="text-gray-600 hover:text-geopolitic transition text-sm font-bold">X / TWITTER</a>
+        <!-- Coluna da Direita: Sidebar Social -->
+        <aside class="space-y-8">
+            <div class="bg-tg-navy text-white p-8 rounded-xl shadow-xl">
+                <h3 class="font-bold text-tg-blue uppercase tracking-widest mb-4">Strategic Dispatch</h3>
+                <p class="text-sm mb-6 opacity-80">Receive our long-form essays and reports directly in your inbox.</p>
+                <a href="https://thinkingglobal.substack.com/" class="block w-full bg-tg-blue text-center py-3 font-bold rounded hover:bg-sky-600 transition">SUBSCRIBE SUBSTACK</a>
             </div>
-        </section>
 
+            <div class="grid grid-cols-1 gap-4">
+                <a href="https://x.com/thinkinglobalYT" class="flex items-center gap-4 p-4 border border-slate-200 rounded hover:bg-slate-50 transition">
+                    <span class="font-bold uppercase text-xs tracking-widest">X / Twitter</span>
+                </a>
+                <a href="https://www.tiktok.com/@thinking.global" class="flex items-center gap-4 p-4 border border-slate-200 rounded hover:bg-slate-50 transition">
+                    <span class="font-bold uppercase text-xs tracking-widest">TikTok</span>
+                </a>
+            </div>
+        </aside>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 py-10 border-t mt-12">
-        <div class="text-center text-gray-500 text-sm">
-            <p>&copy; 2026 Thinking Global. Keep thinking about the world as it really is.</p>
+    <!-- Seção de Membros: O Clube de Membros -->
+    <section id="membership" class="bg-slate-900 text-white py-20 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 uppercase">Thinking Global Club</h2>
+            <p class="serif-slogan text-tg-blue mb-12">Support the Vector of Strategic Intelligence</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Nível 1 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border-b-8 border-slate-600 hover:border-tg-gold transition group">
+                    <img src="tier1.png" alt="Sovereign Supporter" class="w-24 mx-auto mb-6 grayscale group-hover:grayscale-0 transition">
+                    <h4 class="font-bold text-xl mb-2">Sovereign Supporter</h4>
+                    <p class="text-sm opacity-70 mb-6">Base support for independent analysis.</p>
+                </div>
+                <!-- Nível 2 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border-b-8 border-tg-blue scale-105 shadow-2xl relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-tg-blue text-xs font-bold px-4 py-1 rounded-full uppercase">Most Strategic</div>
+                    <img src="tier2.png" alt="Multipolar Analyst" class="w-24 mx-auto mb-6">
+                    <h4 class="font-bold text-xl mb-2">Multipolar Analyst</h4>
+                    <p class="text-sm opacity-70 mb-6">Advanced access and deep-dive participation.</p>
+                </div>
+                <!-- Nível 3 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border-b-8 border-tg-gold">
+                    <img src="tier3.png" alt="Structural Partner" class="w-24 mx-auto mb-6">
+                    <h4 class="font-bold text-xl mb-2 text-tg-gold">Structural Partner</h4>
+                    <p class="text-sm opacity-70 mb-6">The highest tier of strategic partnership.</p>
+                </div>
+            </div>
+            
+            <a href="https://www.youtube.com/@ThinkingGlobal/join" class="mt-12 inline-block bg-tg-gold text-slate-900 font-bold py-4 px-12 rounded-full text-lg hover:scale-105 transition shadow-lg">JOIN THE PROGRAM</a>
         </div>
+    </section>
+
+    <footer class="py-12 text-center text-slate-400 text-xs uppercase tracking-[0.2em] bg-white">
+        <p>&copy; 2026 Thinking Global. Keep thinking about the world how it really is.</p>
     </footer>
 
 </body>
