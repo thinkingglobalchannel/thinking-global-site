@@ -3,131 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thinking Global | Decoding Geopolitics & Economy</title>
+    <title>Thinking Global | Geopolitical Economy Analysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:italic,wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --tg-navy: #001a33; --tg-blue: #3399cc; --tg-gold: #d4af37; }
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        h1 { font-family: 'Anton', sans-serif; letter-spacing: 0.05em; }
-        .serif-slogan { font-family: 'Libre Baskerville', serif; font-style: italic; }
-        .bg-header-banner { 
-            background-image: linear-gradient(rgba(0, 26, 51, 0.7), rgba(0, 26, 51, 0.7)), url('channels4_banner.jpg');
-            background-size: cover; background-position: center;
-        }
-        .substack-content img { width: 100%; height: auto; border-radius: 0.5rem; margin-bottom: 1rem; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Libre Baskerville', serif; }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     </style>
 </head>
-<body class="text-slate-900">
+<body class="bg-white text-gray-900">
 
-    <!-- Top Bar -->
-    <div class="bg-[#001a33] text-white py-2 px-6 text-center border-b border-[#3399cc] shadow-lg">
-        <span class="text-[#3399cc] font-bold tracking-widest text-xs uppercase">Decoding Geopolitics & Economy</span>
+    <!-- Barra Superior: Redes e Botões -->
+    <div class="border-b border-gray-200 py-2 px-6 flex justify-between items-center bg-gray-50">
+        <div class="flex gap-4 items-center">
+            <a href="https://x.com/thinkinglobalYT" target="_blank" class="opacity-60 hover:opacity-100"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-4"></a>
+            <a href="https://www.tiktok.com/@thinking.global" target="_blank" class="opacity-60 hover:opacity-100"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-4"></a>
+            <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" class="opacity-60 hover:opacity-100"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="w-4"></a>
+        </div>
+        <div class="flex gap-4">
+            <a href="https://www.patreon.com/c/ThinkingGlobalChannel" class="text-xs font-bold uppercase tracking-widest bg-red-700 text-white px-4 py-1 hover:bg-red-800 transition">Support</a>
+            <a href="https://thinkingglobal.substack.com/subscribe" class="text-xs font-bold uppercase tracking-widest border border-black px-4 py-1 hover:bg-black hover:text-white transition">Subscribe</a>
+        </div>
     </div>
 
-    <!-- Header -->
-    <header class="bg-header-banner text-white py-16 px-6 text-center relative">
-        <div class="max-w-5xl mx-auto relative z-10">
-            <img src="logo.png" alt="Thinking Global Logo" class="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white shadow-2xl">
-            <h1 class="text-6xl md:text-8xl uppercase leading-none mb-2 drop-shadow-lg text-white">Thinking Global</h1>
-            <div class="w-full h-1 bg-[#3399cc] max-w-2xl mx-auto mb-4"></div>
-            <p class="serif-slogan text-lg md:text-2xl text-white uppercase tracking-tighter drop-shadow-md">Thinking the world how it really is</p>
-        </div>
+    <!-- Header Principal -->
+    <header class="py-10 border-b-4 border-black text-center">
+        <h1 class="text-5xl md:text-7xl font-bold uppercase tracking-tighter">Thinking Global</h1>
+        <p class="mt-4 serif italic text-gray-600">Thinking the world how it really is</p>
     </header>
 
-    <!-- Navigation -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto flex justify-center gap-8 py-4 font-bold text-xs uppercase tracking-widest">
-            <a href="#latest-intel" class="hover:text-[#3399cc] transition">Latest Analysis</a>
-            <a href="https://www.youtube.com/@ThinkingGlobal" class="hover:text-[#3399cc] transition">Video Hub</a>
-            <a href="#membership" class="hover:text-[#d4af37] transition">Membership</a>
-            <a href="https://www.patreon.com/c/ThinkingGlobalChannel" class="hover:text-[#3399cc] transition">Patreon</a>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-12">
-        <div class="md:col-span-2 space-y-12">
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-4 gap-12">
             
-            <!-- Dynamic Substack Section -->
-            <section id="latest-intel" class="bg-white p-8 rounded-lg shadow-sm border border-slate-100">
-                <h2 class="text-3xl font-bold mb-6 border-l-8 border-[#001a33] pl-4 uppercase tracking-tighter">Latest Strategic Dispatch</h2>
-                <div id="substack-feed" class="animate-pulse">
-                    <p class="text-slate-400">Fetching latest structural analysis from Substack...</p>
+            <!-- Bloco Esquerdo: 10 Postagens do Substack (Colunas 1, 2 e 3) -->
+            <div class="md:col-span-3">
+                <h2 class="text-xs font-bold uppercase tracking-[0.3em] mb-8 border-b border-black pb-2">Latest Analysis</h2>
+                <div id="substack-grid" class="grid md:grid-cols-2 gap-10">
+                    <!-- Gerado dinamicamente via JS -->
+                    <p class="animate-pulse">Loading intelligence feed...</p>
                 </div>
-            </section>
+            </div>
 
-            <!-- Video Section -->
-            <section>
-                <h2 class="text-3xl font-bold mb-6 border-l-8 border-[#001a33] pl-4 uppercase tracking-tighter">Video Intelligence</h2>
-                <div class="aspect-video bg-black shadow-2xl rounded-lg overflow-hidden border-4 border-[#001a33]">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed?listType=user_uploads&list=ThinkingGlobal" frameborder="0" allowfullscreen></iframe>
+            <!-- Bloco Direito: Ranking Top 5 (Coluna 4) -->
+            <div class="md:col-span-1">
+                <h2 class="text-xs font-bold uppercase tracking-[0.3em] mb-8 border-b border-black pb-2">Top Analysis</h2>
+                <div id="top-ranking" class="space-y-6">
+                    <!-- Aqui você deve preencher com seus links mais vistos manualmente ou via ID -->
+                    <div class="flex gap-4">
+                        <span class="text-3xl font-bold text-gray-200">1</span>
+                        <a href="#" class="text-sm font-bold hover:text-red-700 leading-tight">The De-dollarization Movement: A Structural Shift</a>
+                    </div>
+                    <div class="flex gap-4 border-t pt-4">
+                        <span class="text-3xl font-bold text-gray-200">2</span>
+                        <a href="#" class="text-sm font-bold hover:text-red-700 leading-tight">BRICS+ and the New Financial Architecture</a>
+                    </div>
                 </div>
-            </section>
+            </div>
         </div>
-
-        <!-- Sidebar -->
-        <aside class="space-y-8">
-            <div class="bg-[#001a33] text-white p-8 rounded-xl shadow-xl">
-                <h3 class="font-bold text-[#3399cc] uppercase tracking-widest mb-4">Strategic Partnership</h3>
-                <p class="text-sm mb-6 opacity-80 italic">"The inner circle of multipolar analysis."</p>
-                <a href="#membership" class="block w-full bg-[#d4af37] text-[#001a33] text-center py-3 font-bold rounded hover:bg-yellow-500 transition">JOIN THE CLUB</a>
-            </div>
-            
-            <div class="grid grid-cols-1 gap-4">
-                <a href="https://x.com/thinkinglobalYT" class="flex items-center gap-4 p-4 border border-slate-200 rounded hover:bg-slate-50 transition">
-                    <span class="font-bold uppercase text-xs tracking-widest text-slate-600">X / Twitter</span>
-                </a>
-                <a href="https://www.tiktok.com/@thinking.global" class="flex items-center gap-4 p-4 border border-slate-200 rounded hover:bg-slate-50 transition">
-                    <span class="font-bold uppercase text-xs tracking-widest text-slate-600">TikTok</span>
-                </a>
-                <a href="https://www.instagram.com/thinkingglobalchannel/" class="flex items-center gap-4 p-4 border border-slate-200 rounded hover:bg-slate-50 transition">
-                    <span class="font-bold uppercase text-xs tracking-widest text-slate-600">Instagram</span>
-                </a>
-            </div>
-        </aside>
     </main>
 
-    <!-- Membership Section (COMPLETE) -->
-    <section id="membership" class="bg-slate-900 text-white py-20 px-6">
+    <!-- Thinking Global Club (Mantido como solicitado) -->
+    <section id="membership" class="bg-slate-900 text-white py-20 px-6 mt-12">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-4 uppercase">Thinking Global Club</h2>
-            <p class="serif-slogan text-[#3399cc] mb-12">Support the Vector of Strategic Intelligence</p>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- Sovereign Supporter -->
+            <p class="serif text-[#3399cc] italic mb-12">Support the Vector of Strategic Intelligence</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Nível 1 -->
                 <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800 p-8 rounded-2xl border-b-8 border-slate-600 hover:border-[#d4af37] transition group block">
                     <img src="tier1.png" alt="Sovereign Supporter" class="w-24 mx-auto mb-6 grayscale group-hover:grayscale-0 transition">
                     <h4 class="font-bold text-xl mb-4">🛡️ Sovereign Supporter</h4>
-                    <p class="text-sm opacity-80 leading-relaxed text-left">Directly fund our independence, cheaper than a cup of coffee, and get exclusive custom Emojis & Badges to use in our discussions.</p>
+                    <p class="text-sm opacity-80 leading-relaxed text-left">Directly fund our independence and get exclusive custom Emojis & Badges.</p>
                 </a>
-                <!-- Multipolar Analyst -->
+                <!-- Nível 2 -->
                 <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800 p-8 rounded-2xl border-b-8 border-[#3399cc] scale-105 shadow-2xl relative group block">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#3399cc] text-xs font-bold px-4 py-1 rounded-full uppercase">Most Strategic</div>
                     <img src="tier2.png" alt="Multipolar Analyst" class="w-24 mx-auto mb-6">
                     <h4 class="font-bold text-xl mb-4">📊 Multipolar Analyst</h4>
-                    <p class="text-sm opacity-80 leading-relaxed text-left">Stay ahead of the curve. Get Early Access to our long-form videos and have your name credited in the video outro as a strategic supporter.</p>
+                    <p class="text-sm opacity-80 leading-relaxed text-left">Get Early Access to our long-form videos and have your name credited as a strategic supporter.</p>
                 </a>
-                <!-- Structural Partner -->
+                <!-- Nível 3 -->
                 <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="bg-slate-800 p-8 rounded-2xl border-b-8 border-[#d4af37] group block">
                     <img src="tier3.png" alt="Structural Partner" class="w-24 mx-auto mb-6">
                     <h4 class="font-bold text-xl mb-4 text-[#d4af37]">🎓 Structural Partner</h4>
-                    <p class="text-sm opacity-80 leading-relaxed text-left">The inner circle. Direct Educational Support for your projects, including source suggestions and shared IR expertise via email.</p>
+                    <p class="text-sm opacity-80 leading-relaxed text-left">Inner circle. Direct Educational Support for your projects, including source suggestions and IR expertise via email.</p>
                 </a>
             </div>
-            
-            <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="inline-block bg-[#d4af37] text-slate-900 font-bold py-4 px-12 rounded-full text-lg hover:scale-105 transition shadow-lg uppercase tracking-widest">
-                Support via YouTube
-            </a>
-            <p class="mt-6 text-sm text-slate-400">Prefer other platforms? Check our <a href="https://www.patreon.com/c/ThinkingGlobalChannel" class="underline hover:text-white">Patreon</a>.</p>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-slate-500 text-xs uppercase tracking-[0.2em] bg-white border-t border-slate-200">
-        <p>&copy; 2026 Thinking Global. Keep thinking about the world how it really is.</p>
-    </footer>
-
-    <!-- Script for Dynamic Substack Fetching -->
     <script>
         async function fetchSubstack() {
             const feedUrl = 'https://thinkingglobal.substack.com/feed';
@@ -136,19 +100,23 @@
                 const response = await fetch(apiEndpoint);
                 const data = await response.json();
                 if (data.status === 'ok') {
-                    const latestPost = data.items[0];
-                    const container = document.getElementById('substack-feed');
-                    container.classList.remove('animate-pulse');
-                    container.innerHTML = `
-                        <h3 class="serif-slogan text-2xl font-bold mb-2 text-[#001a33]">${latestPost.title}</h3>
-                        <p class="text-xs text-slate-400 mb-4 uppercase tracking-widest">${new Date(latestPost.pubDate).toLocaleDateString()}</p>
-                        <div class="substack-content text-slate-700 leading-relaxed mb-6">${latestPost.description}</div>
-                        <a href="${latestPost.link}" target="_blank" class="text-[#3399cc] font-bold border-b-2 border-[#3399cc] hover:text-[#001a33] transition">READ FULL ANALYSIS &rarr;</a>
-                    `;
+                    const container = document.getElementById('substack-grid');
+                    container.innerHTML = '';
+                    // Pega os últimos 10 posts
+                    data.items.slice(0, 10).forEach(post => {
+                        container.innerHTML += `
+                            <article class="space-y-4 border-b border-gray-100 pb-8">
+                                <img src="${post.thumbnail}" class="w-full h-48 object-cover border border-gray-200">
+                                <h3 class="serif text-xl font-bold leading-tight hover:text-red-700">
+                                    <a href="${post.link}" target="_blank">${post.title}</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 line-clamp-3">${post.description.replace(/<[^>]*>?/gm, '')}</p>
+                                <a href="${post.link}" target="_blank" class="text-xs font-bold uppercase tracking-widest border-b-2 border-black">Read More</a>
+                            </article>
+                        `;
+                    });
                 }
-            } catch (error) {
-                document.getElementById('substack-feed').innerHTML = '<p class="text-red-500">Could not load latest dispatch.</p>';
-            }
+            } catch (e) { console.error(e); }
         }
         fetchSubstack();
     </script>
