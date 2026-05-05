@@ -2,1057 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thinking Global | Decoding Geopolitics & Political Economy</title>
-  <meta name="description" content="Thinking Global is an independent media outlet providing geopolitical intelligence and political economy analysis." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0d0d0d;
-      --bg2: #141414;
-      --bg3: #1a1a1a;
-      --border: #2a2a2a;
-      --border-light: #222;
+      --bg: #001a33; /* Azul Escuro do Logo */
+      --bg2: #00264d;
+      --bg3: #003366;
+      --border: #004080;
       --text: #e8e4dc;
-      --text-muted: #888;
-      --text-faint: #555;
-      --accent: #c8a96e;
-      --accent-dim: #a08040;
-      --red: #c84b3c;
-      --tag-bg: #1e1e1e;
-      --nav-h: 56px;
-      --top-bar-h: 36px;
+      --text-muted: #a3b8cc;
+      --accent: #3399cc; /* Azul Claro do Logo */
+      --accent-dim: #267399;
+      --nav-h: 60px;
     }
- 
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-    html { scroll-behavior: smooth; }
- 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
-    }
- 
-    a { color: inherit; text-decoration: none; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; transition: 0.2s; }
     a:hover { color: var(--accent); }
-    img { display: block; max-width: 100%; }
- 
-    /* ── TOP BAR ── */
-    .top-bar {
-      background: #080808;
-      border-bottom: 1px solid var(--border);
-      height: var(--top-bar-h);
-      display: flex;
-      align-items: center;
-    }
-    .top-bar-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .top-bar-socials {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-    .top-bar-socials a {
-      color: var(--text-muted);
-      font-size: 13px;
-      letter-spacing: .04em;
-      font-weight: 500;
-      transition: color .2s;
-    }
-    .top-bar-socials a:hover { color: var(--accent); }
-    .top-bar-actions {
-      display: flex;
-      gap: 10px;
-    }
-    .btn-small {
-      padding: 4px 14px;
-      border-radius: 2px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      transition: all .2s;
-    }
-    .btn-outline {
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-    }
-    .btn-outline:hover { background: var(--accent); color: #000; }
-    .btn-solid {
-      background: var(--accent);
-      color: #000;
-    }
-    .btn-solid:hover { background: #e0c080; }
- 
-    /* ── MAIN NAV ── */
-    .main-nav {
-      background: var(--bg2);
-      border-bottom: 2px solid var(--accent-dim);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: var(--nav-h);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      height: 100%;
-      gap: 0;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-right: 28px;
-      flex-shrink: 0;
-    }
-    .nav-logo img {
-      height: 34px;
-      width: auto;
-    }
-    .nav-logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: .01em;
-      line-height: 1.1;
-      color: var(--text);
-    }
-    .nav-logo-text span {
-      display: block;
-      font-size: 9px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-top: 1px;
-    }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      height: 100%;
-      flex: 1;
-    }
-    .nav-links > li {
-      position: relative;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-    .nav-links > li > a {
-      padding: 0 14px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      height: 100%;
-      display: flex;
-      align-items: center;
-      transition: color .2s;
-      white-space: nowrap;
-    }
-    .nav-links > li > a:hover,
-    .nav-links > li:hover > a { color: var(--accent); }
-    .nav-links > li > a.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
- 
-    /* Dropdown */
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
-      min-width: 260px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(6px);
-      transition: all .2s;
-      z-index: 200;
-    }
-    .nav-links > li:hover .dropdown {
-      opacity: 1;
-      pointer-events: all;
-      transform: translateY(0);
-    }
-    .dropdown a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border-light);
-      transition: all .15s;
-    }
-    .dropdown a:hover { color: var(--accent); background: var(--bg3); padding-left: 22px; }
-    .dropdown-title {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      padding: 10px 16px 6px;
-      border-bottom: 1px solid var(--border);
-    }
- 
-    .nav-right {
-      margin-left: auto;
-      display: flex;
-      gap: 8px;
-    }
- 
-    /* Hamburger */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      margin-left: auto;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      transition: all .3s;
-    }
- 
-    /* ── HERO BANNER ── */
-    .hero-banner {
-      background: linear-gradient(135deg, #0a0a0a 0%, #111 60%, #181208 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 28px 0 20px;
-    }
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .hero-logo { height: 64px; width: auto; }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -.01em;
-      color: var(--text);
-    }
-    .hero-text p {
-      font-size: 13px;
-      color: var(--text-muted);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
- 
-    /* ── LAYOUT ── */
-    .site-body {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 40px;
-    }
- 
-    /* ── SECTION LABEL ── */
-    .section-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: inline-block;
-      margin-bottom: 6px;
-    }
- 
-    /* ── FEATURED ARTICLE (large) ── */
-    .featured-article {
-      margin-bottom: 32px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 28px;
-    }
-    .featured-article .thumb-wrap {
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 14px;
-      background: var(--bg3);
-      aspect-ratio: 16/9;
-    }
-    .featured-article .thumb-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .4s;
-    }
-    .featured-article:hover .thumb-wrap img { transform: scale(1.03); }
-    .featured-article h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.28;
-      color: var(--text);
-      margin-bottom: 10px;
-      transition: color .2s;
-    }
-    .featured-article:hover h2 { color: var(--accent); }
-    .featured-article p.excerpt {
-      font-family: 'Source Serif 4', serif;
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 12px;
-    }
-    .article-meta {
-      font-size: 12px;
-      color: var(--text-faint);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .article-meta .author { color: var(--accent-dim); }
-    .article-meta .dot { color: var(--border); }
- 
-    /* ── ARTICLE LIST (medium) ── */
-    .article-list { margin-bottom: 32px; }
-    .article-card {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border-light);
-      transition: all .2s;
-    }
-    .article-card:first-child { border-top: 1px solid var(--border-light); }
-    .article-card .thumb-wrap {
-      overflow: hidden;
-      background: var(--bg3);
-      aspect-ratio: 16/9;
-      flex-shrink: 0;
-    }
-    .article-card .thumb-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .3s;
-    }
-    .article-card:hover .thumb-wrap img { transform: scale(1.05); }
-    .article-card-body { display: flex; flex-direction: column; justify-content: center; }
-    .article-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 6px;
-      transition: color .2s;
-    }
-    .article-card:hover h3 { color: var(--accent); }
-    .article-card p.excerpt {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 8px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
- 
-    /* Placeholder thumbs */
-    .thumb-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #1a1a1a, #222);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-faint);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
- 
-    /* ── PAGINATION ── */
-    .pagination {
-      display: flex;
-      gap: 4px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-    .pagination a, .pagination span {
-      padding: 6px 12px;
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: all .2s;
-    }
-    .pagination a:hover { background: var(--accent); color: #000; border-color: var(--accent); }
-    .pagination .current { background: var(--accent); color: #000; border-color: var(--accent); }
- 
-    /* ── SIDEBAR ── */
-    .sidebar { }
-    .sidebar-widget {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      padding: 20px;
-      margin-bottom: 28px;
-    }
-    .widget-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-      border-bottom: 2px solid var(--accent-dim);
-    }
- 
-    /* Popular list */
-    .popular-list { list-style: none; }
-    .popular-list li {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border-light);
-      align-items: flex-start;
-    }
-    .popular-list li:last-child { border-bottom: none; }
-    .popular-num {
-      font-size: 20px;
-      font-weight: 700;
-      font-family: 'Playfair Display', serif;
-      color: var(--accent-dim);
-      line-height: 1;
-      flex-shrink: 0;
-      width: 20px;
-      text-align: right;
-    }
-    .popular-list a {
-      font-size: 13px;
-      line-height: 1.45;
-      color: var(--text-muted);
-      transition: color .2s;
-      font-family: 'Source Serif 4', serif;
-    }
-    .popular-list a:hover { color: var(--accent); }
-    .popular-thumb {
-      width: 60px;
-      height: 44px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
- 
-    /* Newsletter widget */
-    .newsletter-widget p {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      line-height: 1.55;
-    }
-    .btn-full {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      text-align: center;
-      transition: background .2s;
-      margin-bottom: 8px;
-    }
-    .btn-full:hover { background: #e0c080; color: #000; }
-    .btn-full.outline {
-      background: transparent;
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-    }
-    .btn-full.outline:hover { background: var(--accent); color: #000; }
- 
-    /* Categories widget */
-    .cat-list { list-style: none; }
-    .cat-list li { border-bottom: 1px solid var(--border-light); }
-    .cat-list a {
-      display: flex;
-      justify-content: space-between;
-      padding: 9px 0;
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: all .2s;
-    }
-    .cat-list a:hover { color: var(--accent); padding-left: 6px; }
-    .cat-list .cat-count {
-      font-size: 11px;
-      color: var(--text-faint);
-      background: var(--bg3);
-      padding: 1px 7px;
-      border-radius: 2px;
-    }
- 
-    /* Membership widget */
-    .membership-tier {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .membership-tier:last-child { border-bottom: none; }
-    .tier-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 3px;
-    }
-    .tier-desc {
-      font-size: 12px;
-      color: var(--text-faint);
-      line-height: 1.45;
-    }
- 
-    /* ── CATEGORY SECTIONS ── */
-    .category-section {
-      margin-bottom: 36px;
-      padding-bottom: 28px;
-      border-bottom: 2px solid var(--border);
-    }
-    .category-section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-    .category-section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-    }
-    .category-section-header a.see-all {
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--accent-dim);
-      font-weight: 600;
-    }
-    .category-section-header a.see-all:hover { color: var(--accent); }
- 
-    /* Mini cards grid */
-    .mini-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .mini-card .thumb-wrap {
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      background: var(--bg3);
-      margin-bottom: 8px;
-    }
-    .mini-card .thumb-wrap img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform .3s;
-    }
-    .mini-card:hover .thumb-wrap img { transform: scale(1.05); }
-    .mini-card h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.35;
-      color: var(--text);
-      transition: color .2s;
-    }
-    .mini-card:hover h4 { color: var(--accent); }
- 
-    /* ── FOOTER ── */
-    .site-footer {
-      background: #080808;
-      border-top: 2px solid var(--accent-dim);
-      padding: 40px 0 20px;
-      margin-top: 40px;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 32px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
-    }
-    .footer-brand img { height: 40px; margin-bottom: 12px; }
-    .footer-brand h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-    .footer-brand p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-    .footer-col h4 {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; }
-    .footer-col ul a {
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: color .2s;
-    }
-    .footer-col ul a:hover { color: var(--accent); }
-    .footer-socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .footer-socials a {
-      width: 32px;
-      height: 32px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 13px;
-      transition: all .2s;
-      border-radius: 2px;
-    }
-    .footer-socials a:hover { background: var(--accent); border-color: var(--accent); color: #000; }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: var(--text-faint);
-    }
- 
-    /* ── TAG BADGE ── */
-    .tag {
-      display: inline-block;
-      padding: 2px 8px;
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
- 
-    /* ── MOBILE ── */
-    .mobile-menu {
-      display: none;
-      background: var(--bg2);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
-    }
-    .mobile-menu.open { display: block; }
-    .mobile-menu a {
-      display: block;
-      padding: 10px 0;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .mobile-menu a:hover { color: var(--accent); }
- 
+
+    /* ── TOP BAR (Single Actions) ── */
+    .top-bar { background: #001122; border-bottom: 1px solid var(--border); padding: 10px 20px; }
+    .top-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .socials-top { display: flex; gap: 15px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); }
+    .btn-action { padding: 6px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 2px; }
+    .btn-support { border: 1px solid var(--accent); color: var(--accent); }
+    .btn-support:hover { background: var(--accent); color: white; }
+    .btn-subscribe { background: var(--accent); color: white; margin-left: 10px; }
+
+    /* ── NAV (YouTube Categories) ── */
+    .main-nav { background: var(--bg2); border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; height: var(--nav-h); padding: 0 20px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.2rem; }
+    .nav-logo img { height: 35px; border-radius: 50%; border: 1px solid var(--accent); }
+    .nav-links { display: flex; list-style: none; gap: 15px; margin-left: 30px; overflow-x: auto; scrollbar-width: none; }
+    .nav-links a { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+
+    /* ── CONTENT LAYOUT ── */
+    .site-body { max-width: 1200px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 1fr 320px; gap: 50px; }
+    
+    /* Article Reader Mode */
+    #reader-view { display: none; }
+    .back-btn { display: inline-block; margin-bottom: 20px; color: var(--accent); font-weight: 700; cursor: pointer; text-transform: uppercase; font-size: 12px; }
+    .reader-content h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px; }
+    .reader-body { font-family: 'Source Serif 4', serif; font-size: 1.1rem; color: var(--text-muted); }
+    .reader-body img { margin: 20px 0; border-radius: 8px; width: 100%; }
+
+    /* Cards */
+    .article-card { display: flex; gap: 20px; padding: 25px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .thumb { width: 220px; aspect-ratio: 16/9; background: var(--bg3); object-fit: cover; border-radius: 4px; }
+    .article-info h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; }
+    .excerpt { font-size: 14px; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    /* ── SIDEBAR (Popular Mirror) ── */
+    .widget-title { font-family: 'Playfair Display', serif; font-size: 18px; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 20px; }
+    .popular-item { display: flex; gap: 15px; margin-bottom: 20px; cursor: pointer; }
+    .rank-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: var(--accent-dim); }
+    .popular-title { font-size: 13px; font-weight: 600; line-height: 1.4; }
+
     @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .nav-right { display: none; }
-      .nav-hamburger { display: flex; }
       .site-body { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .mini-cards { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .article-card { grid-template-columns: 1fr; }
-      .article-card .thumb-wrap { aspect-ratio: 16/9; }
-      .footer-top { grid-template-columns: 1fr; }
-      .top-bar-socials { display: none; }
-      .hero-text h1 { font-size: 22px; }
+      .thumb { width: 120px; }
     }
   </style>
 </head>
 <body>
- 
-  <!-- TOP BAR -->
+
   <div class="top-bar">
     <div class="top-bar-inner">
-      <div class="top-bar-socials">
-        <a href="https://x.com/thinkinglobalYT" target="_blank">X / Twitter</a>
-        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">YouTube</a>
+      <div class="socials-top">
+        <a href="https://x.com/thinkinglobalYT" target="_blank">𝕏</a>
+        <a href="https://www.youtube.com/@ThinkingGlobal" target="_blank">YouTube</a>
         <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a>
       </div>
-      <div class="top-bar-actions">
-        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
-        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
+      <div>
+        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-action btn-support">Support</a>
+        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-action btn-subscribe">Subscribe</a>
       </div>
     </div>
   </div>
- 
-  <!-- MAIN NAV -->
+
   <nav class="main-nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="https://www.thinking-global.org/logo.png" alt="Thinking Global" onerror="this.style.display='none'" />
-        <div class="nav-logo-text">
-          Thinking Global
-          <span>Decoding Geopolitics</span>
-        </div>
+        <img src="logo.png" alt="Logo">
+        Thinking Global
       </a>
- 
       <ul class="nav-links">
-        <li>
-          <a href="#">Eurasia</a>
-          <div class="dropdown">
-            <div class="dropdown-title">Latest in Eurasia</div>
-            <a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">Iran & Middle East</a>
-            <a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">Taiwan & China</a>
-            <a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">Russia & Europe</a>
-          </div>
-        </li>
-        <li>
-          <a href="#">Americas</a>
-          <div class="dropdown">
-            <div class="dropdown-title">Latest in Americas</div>
-            <a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">Latin America</a>
-            <a href="#">USA & Geopolitics</a>
-          </div>
-        </li>
-        <li>
-          <a href="#">Africa</a>
-          <div class="dropdown">
-            <div class="dropdown-title">Latest in Africa</div>
-            <a href="#">BRICS & Africa</a>
-            <a href="#">Sahel & Transitions</a>
-          </div>
-        </li>
-        <li>
-          <a href="#">Economy</a>
-          <div class="dropdown">
-            <div class="dropdown-title">Latest in Economy</div>
-            <a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot">Global South</a>
-            <a href="#">Dedollarization</a>
-            <a href="#">Trade & Sanctions</a>
-          </div>
-        </li>
-        <li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">Videos</a></li>
-        <li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
+        <li><a href="https://www.youtube.com/watch?v=wLnstF15Ypc&list=PL_L9Vu9uBDO3twJAllxSPpr7sYnAl9UNn" target="_blank">Asia</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0M3IdpyH4iQsuA7-D0dVwc" target="_blank">Africa</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0noMaYOR4rqj9aY__cfQOO" target="_blank">BRICS</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a></li>
       </ul>
- 
-      <div class="nav-right">
-        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
-        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
-      </div>
- 
-      <div class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </div>
     </div>
   </nav>
- 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#">Eurasia</a>
-    <a href="#">Americas</a>
-    <a href="#">Africa</a>
-    <a href="#">Economy</a>
-    <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">Videos</a>
-    <a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
-    <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
-    <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
-  </div>
- 
-  <!-- SITE BODY -->
+
   <div class="site-body">
- 
-    <!-- MAIN COLUMN -->
-    <main>
- 
-      <!-- FEATURED ARTICLE -->
-      <article class="featured-article">
-        <span class="tag">Economy</span>
-        <a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot">
-          <div class="thumb-wrap">
-            <div class="thumb-placeholder">Thinking Global</div>
-          </div>
-          <h2>The $5 Trillion Blind Spot: Indonesia's Geopolitical Power</h2>
-        </a>
-        <p class="excerpt">The world's fourth most populous nation stands at a unique geopolitical crossroads — commanding critical maritime chokepoints, abundant resources, and a rapidly expanding economy that most Western analysts continue to underestimate.</p>
-        <div class="article-meta">
-          <span class="author">Thinking Global</span>
-          <span class="dot">·</span>
-          <span>2026-05-01</span>
-        </div>
-      </article>
- 
-      <!-- ARTICLE LIST: Latest -->
-      <div class="category-section-header">
-        <h2>Latest Analysis</h2>
+    <main id="main-content">
+      <div id="articles-list">
+        <div class="widget-title">Latest Intelligence</div>
+        <div id="feed-container">Loading analysis...</div>
       </div>
-      <div class="article-list">
- 
-        <article class="article-card">
-          <a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">
-            <div class="thumb-wrap">
-              <div class="thumb-placeholder">Eurasia</div>
-            </div>
-          </a>
-          <div class="article-card-body">
-            <span class="section-label">Eurasia</span>
-            <a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">
-              <h3>Why Taiwan is Turning Away from the US: The 14% Collapse</h3>
-            </a>
-            <p class="excerpt">Trust in Washington's security guarantees has fallen to historic lows in Taipei, reshaping the island's geopolitical posture in real time.</p>
-            <div class="article-meta">
-              <span class="author">Thinking Global</span>
-              <span class="dot">·</span>
-              <span>2026-04-28</span>
-            </div>
-          </div>
-        </article>
- 
-        <article class="article-card">
-          <a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">
-            <div class="thumb-wrap">
-              <div class="thumb-placeholder">Eurasia</div>
-            </div>
-          </a>
-          <div class="article-card-body">
-            <span class="section-label">Eurasia</span>
-            <a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">
-              <h3>Strategic Timeline: Iranian Missile Interceptions in March 2026</h3>
-            </a>
-            <p class="excerpt">A detailed chronological breakdown of Iran's asymmetric defense posture and what it reveals about the evolving balance of power in the region.</p>
-            <div class="article-meta">
-              <span class="author">Thinking Global</span>
-              <span class="dot">·</span>
-              <span>2026-04-15</span>
-            </div>
-          </div>
-        </article>
- 
-        <article class="article-card">
-          <a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">
-            <div class="thumb-wrap">
-              <div class="thumb-placeholder">Americas</div>
-            </div>
-          </a>
-          <div class="article-card-body">
-            <span class="section-label">Americas</span>
-            <a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">
-              <h3>The Mercosur-EU Agreement: A New Colonial Pact</h3>
-            </a>
-            <p class="excerpt">Beneath the diplomatic surface, the landmark trade deal encodes structural asymmetries that echo centuries of unequal exchange between the Global South and Europe.</p>
-            <div class="article-meta">
-              <span class="author">Thinking Global</span>
-              <span class="dot">·</span>
-              <span>2026-04-02</span>
-            </div>
-          </div>
-        </article>
- 
-        <article class="article-card">
-          <a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">
-            <div class="thumb-wrap">
-              <div class="thumb-placeholder">Eurasia</div>
-            </div>
-          </a>
-          <div class="article-card-body">
-            <span class="section-label">Eurasia</span>
-            <a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">
-              <h3>Greenland: The Strategic Test for European Sovereignty</h3>
-            </a>
-            <p class="excerpt">As Washington increases pressure over the Arctic island, European capitals face a defining test of whether they can act as an autonomous geopolitical actor.</p>
-            <div class="article-meta">
-              <span class="author">Thinking Global</span>
-              <span class="dot">·</span>
-              <span>2026-03-20</span>
-            </div>
-          </div>
-        </article>
- 
+
+      <div id="reader-view">
+        <div class="back-btn" onclick="closeReader()">← Back to Intelligence Feed</div>
+        <div id="article-full" class="reader-content"></div>
       </div>
- 
-      <!-- PAGINATION -->
-      <div class="pagination">
-        <span class="current">1</span>
-        <a href="https://thinkingglobal.substack.com/">2</a>
-        <a href="https://thinkingglobal.substack.com/">3</a>
-        <a href="https://thinkingglobal.substack.com/">Next ›</a>
-        <a href="https://thinkingglobal.substack.com/">Last »</a>
-      </div>
- 
     </main>
- 
-    <!-- SIDEBAR -->
+
     <aside class="sidebar">
- 
-      <!-- Popular -->
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Popular</h3>
-        <ol class="popular-list">
-          <li>
-            <span class="popular-num">1</span>
-            <a href="https://thinkingglobal.substack.com/p/taiwan-collapse-us-trust">Why Taiwan is Turning Away from the US: The 14% Collapse</a>
-          </li>
-          <li>
-            <span class="popular-num">2</span>
-            <a href="https://thinkingglobal.substack.com/p/indonesia-5-trillion-blind-spot">The $5 Trillion Blind Spot: Indonesia's Geopolitical Power</a>
-          </li>
-          <li>
-            <span class="popular-num">3</span>
-            <a href="https://thinkingglobal.substack.com/p/mercosur-eu-agreement-colonial-pact">The Mercosur-EU Agreement: A New Colonial Pact</a>
-          </li>
-          <li>
-            <span class="popular-num">4</span>
-            <a href="https://thinkingglobal.substack.com/p/iran-missile-defense-timeline">Strategic Timeline: Iranian Missile Interceptions in March 2026</a>
-          </li>
-          <li>
-            <span class="popular-num">5</span>
-            <a href="https://thinkingglobal.substack.com/p/greenland-geopolitics-europe-sovereignty">Greenland: The Strategic Test for European Sovereignty</a>
-          </li>
-        </ol>
+      <div class="widget-title">Popular Analysis</div>
+      <div id="popular-container">Loading top stories...</div>
+      
+      <div style="background: var(--bg2); padding: 20px; border-radius: 4px; margin-top: 30px; border: 1px solid var(--border);">
+        <h4 style="color: var(--accent); margin-bottom: 10px; font-size: 14px;">Thinking Global Club</h4>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">Support our independent structural analysis.</p>
+        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-action btn-subscribe" style="display: block; text-align: center; margin: 0;">Join via YouTube</a>
       </div>
- 
-      <!-- Newsletter -->
-      <div class="sidebar-widget newsletter-widget">
-        <h3 class="widget-title">Weekly Dispatch</h3>
-        <p>Structural intelligence on geopolitics and political economy — directly to your inbox.</p>
-        <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Join the Newsletter</a>
-        <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
-      </div>
- 
-      <!-- Categories -->
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Topics</h3>
-        <ul class="cat-list">
-          <li><a href="#">Eurasia <span class="cat-count">38</span></a></li>
-          <li><a href="#">Americas <span class="cat-count">24</span></a></li>
-          <li><a href="#">Africa <span class="cat-count">17</span></a></li>
-          <li><a href="#">Economy <span class="cat-count">31</span></a></li>
-          <li><a href="#">Dedollarization <span class="cat-count">12</span></a></li>
-          <li><a href="#">BRICS <span class="cat-count">9</span></a></li>
-          <li><a href="#">Opinion <span class="cat-count">8</span></a></li>
-        </ul>
-      </div>
- 
-      <!-- Membership -->
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Thinking Global Club</h3>
-        <div class="membership-tier">
-          <div class="tier-name">🛡️ Sovereign Supporter</div>
-          <div class="tier-desc">Directly fund our independence. Exclusive emojis & badges for community discussions.</div>
-        </div>
-        <div class="membership-tier">
-          <div class="tier-name">📊 Multipolar Analyst</div>
-          <div class="tier-desc">Early access to long-form videos and your handle credited in video outros.</div>
-        </div>
-        <div class="membership-tier">
-          <div class="tier-name">🎓 Structural Partner</div>
-          <div class="tier-desc">Inner circle support. Direct educational guidance and shared IR expertise via email.</div>
-        </div>
-        <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:14px;">Support via YouTube</a>
-      </div>
- 
     </aside>
   </div>
- 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="https://www.thinking-global.org/logo.png" alt="Thinking Global" onerror="this.style.display='none'" />
-          <h3>Thinking Global</h3>
-          <p>Decoding Geopolitics & Political Economy. Independent analysis for a multipolar world.</p>
-          <div class="footer-socials">
-            <a href="https://x.com/thinkinglobalYT" target="_blank" title="X / Twitter">𝕏</a>
-            <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank" title="YouTube">▶</a>
-            <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" title="Instagram">◻</a>
-            <a href="https://www.tiktok.com/@thinking.global" target="_blank" title="TikTok">♪</a>
+
+  <script>
+    let articlesData = [];
+
+    async function getFeed() {
+      const RSS_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed&api_key=oynyv9t7e0vxm8m8y8y8y8y8y8y8y8y8`; // Use sua chave ou deixe assim
+      try {
+        const response = await fetch(RSS_URL);
+        const data = await response.json();
+        articlesData = data.items;
+        renderArticles();
+        renderPopular();
+      } catch (err) {
+        console.error("Feed error:", err);
+      }
+    }
+
+    function renderArticles() {
+      const container = document.getElementById('feed-container');
+      container.innerHTML = articlesData.map((item, index) => `
+        <div class="article-card" onclick="openReader(${index})">
+          <img src="${item.thumbnail || 'logo.png'}" class="thumb">
+          <div class="article-info">
+            <h2>${item.title}</h2>
+            <p class="excerpt">${item.description.replace(/<[^>]*>/g, '').substring(0, 180)}...</p>
+            <div style="font-size: 11px; color: var(--accent); margin-top: 10px;">${item.pubDate.split(' ')[0]}</div>
           </div>
         </div>
- 
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="#">Eurasia</a></li>
-            <li><a href="#">Americas</a></li>
-            <li><a href="#">Africa</a></li>
-            <li><a href="#">Economy</a></li>
-            <li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank">Videos</a></li>
-          </ul>
-        </div>
- 
-        <div class="footer-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Patreon</a></li>
-            <li><a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank">YouTube Membership</a></li>
-            <li><a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Newsletter</a></li>
-          </ul>
-        </div>
- 
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="https://x.com/thinkinglobalYT" target="_blank">X / Twitter</a></li>
-            <li><a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank">Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@thinking.global" target="_blank">TikTok</a></li>
-            <li><a href="https://thinkingglobal.substack.com/" target="_blank">Substack</a></li>
-          </ul>
-        </div>
-      </div>
- 
-      <div class="footer-bottom">
-        <span>© 2026 Thinking Global. Decoding Geopolitics & Economy.</span>
-        <span>Independent & Ad-Free</span>
-      </div>
-    </div>
-  </footer>
- 
-  <script>
-    function toggleMenu() {
-      const m = document.getElementById('mobileMenu');
-      m.classList.toggle('open');
+      `).join('');
     }
+
+    function renderPopular() {
+      const container = document.getElementById('popular-container');
+      // Simulando o Top 5 (RSS não envia ranking, então pegamos os 5 com mais conteúdo)
+      const popular = [...articlesData].slice(0, 5); 
+      container.innerHTML = popular.map((item, index) => `
+        <div class="popular-item" onclick="openReader(${index})">
+          <span class="rank-num">${index + 1}</span>
+          <div class="popular-title">${item.title}</div>
+        </div>
+      `).join('');
+    }
+
+    function openReader(index) {
+      const item = articlesData[index];
+      const reader = document.getElementById('article-full');
+      document.getElementById('articles-list').style.display = 'none';
+      document.getElementById('reader-view').style.display = 'block';
+      window.scrollTo(0, 0);
+
+      reader.innerHTML = `
+        <h1>${item.title}</h1>
+        <div style="color: var(--accent); font-weight: 700; margin-bottom: 30px;">Published on ${item.pubDate}</div>
+        <div class="reader-body">${item.content || item.description}</div>
+        <hr border="0" style="height: 1px; background: var(--border); margin: 40px 0;">
+        <p style="text-align: center;">Read the original on <a href="${item.link}" target="_blank" style="color: var(--accent); text-decoration: underline;">Substack</a></p>
+      `;
+    }
+
+    function closeReader() {
+      document.getElementById('articles-list').style.display = 'block';
+      document.getElementById('reader-view').style.display = 'none';
+      window.scrollTo(0, 0);
+    }
+
+    getFeed();
   </script>
- 
 </body>
 </html>
