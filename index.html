@@ -528,7 +528,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Thinking Global. Decoding Geopolitics & Economy.</span>
-      <span>Independent & Ad-Free</span>
+      <span>Independent & Anti-Imperialist</span>
     </div>
   </div>
 </footer>
@@ -595,7 +595,7 @@
         </div>
         <p class="excerpt">${esc(f.description.replace(/<[^>]*>/g, '').substring(0, 200))}...</p>
         <div class="article-meta">
-          <span class="author">Thinking Global</span><span>·</span><span>${f.pubDate.substring(0, 10)}</span>
+          <span class="author">Thinking Global</span><span>·</span><span>${f.pubDate.substring(0, 5)}</span>
         </div>
       </article>
       <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
@@ -645,7 +645,7 @@
       <div class="reader-meta">
         <span class="author">Thinking Global</span>
         <span>·</span>
-        <span>${p.pubDate.substring(0, 10)}</span>
+        <span>${p.pubDate.substring(0, 5)}</span>
       </div>
       ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
       <div class="reader-body">${p.content || p.description}</div>
