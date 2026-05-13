@@ -95,16 +95,17 @@
       transition: color .2s; white-space: nowrap;
     }
     .nav-links > li > a:hover { color: var(--blue-glow); }
-    .nav-right { margin-left: auto; display: flex; gap: 8px; flex-shrink: 0; }
+    .nav-right { margin-left: auto; display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
     .btn-small {
       padding: 5px 14px; border-radius: 2px;
       font-size: 11px; font-weight: 700; letter-spacing: .08em;
       text-transform: uppercase; transition: all .2s; white-space: nowrap;
+      cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
     }
-    .btn-outline { border: 1px solid var(--blue-dim); color: var(--blue); }
+    .btn-outline { border: 1px solid var(--blue-dim); color: var(--blue); background: transparent; }
     .btn-outline:hover { background: var(--blue); color: #fff; }
-    .btn-solid { background: var(--blue); color: #fff; }
-    .btn-solid:hover { background: var(--blue-glow); }
+    .btn-solid { background: var(--blue); color: #fff; border: 1px solid var(--blue); }
+    .btn-solid:hover { background: var(--blue-glow); border-color: var(--blue-glow); }
     .nav-hamburger {
       display: none; flex-direction: column; gap: 5px;
       cursor: pointer; padding: 4px; margin-left: auto;
@@ -118,6 +119,8 @@
       color: var(--text-muted); border-bottom: 1px solid var(--border-lt);
     }
     .mobile-menu a:hover { color: var(--blue-glow); }
+    .mobile-btns { display: flex; gap: 10px; margin-top: 15px; padding-bottom: 5px; }
+    .mobile-btns .btn-small { flex: 1; }
  
     /* ── LAYOUT ── */
     .site-body {
@@ -387,9 +390,9 @@
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a></li>
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a></li>
       <li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
-      <li><a href="javascript:void(0)" onclick="showContact()">Contact</a></li>
     </ul>
     <div class="nav-right">
+      <span onclick="showContact()" class="btn-small btn-outline">Contact</span>
       <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
       <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid">Subscribe</a>
     </div>
@@ -407,9 +410,11 @@
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
   <a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
-  <a href="javascript:void(0)" onclick="showContact()">Contact</a>
-  <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
-  <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
+  <div class="mobile-btns">
+    <span onclick="showContact()" class="btn-small btn-outline">Contact</span>
+    <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
+  </div>
+  <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-small btn-solid" style="margin-top:10px; text-align:center;">Subscribe</a>
 </div>
  
 <!-- ══ HOME PAGE ══ -->
