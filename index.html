@@ -281,7 +281,7 @@
     .reader-cta p { font-size: 14px; color: var(--text-muted); margin-bottom: 18px; }
     .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .cta-btns a { display: inline-block; padding: 10px 22px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; }
- 
+
     /* ── CONTACT SECTION ── */
     #contact-page { display: none; max-width: 800px; margin: 0 auto; padding: 60px 20px; }
     .contact-header { text-align: center; margin-bottom: 40px; }
@@ -302,7 +302,7 @@
       cursor: pointer; transition: background .2s; border-radius: 2px;
     }
     .btn-submit:hover { background: var(--blue-glow); }
-
+ 
     /* ── FOOTER ── */
     .site-footer { background: #07131f; border-top: 2px solid var(--blue-dim); padding: 40px 0 20px; margin-top: 40px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -384,6 +384,9 @@
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a></li>
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a></li>
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a></li>
+      <li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
       <li><a href="javascript:void(0)" onclick="showContact()">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -401,6 +404,9 @@
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO1InwXO2GXMNnm6HhkPE2tv" target="_blank">Europe</a>
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a>
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
+  <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
+  <a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
   <a href="javascript:void(0)" onclick="showContact()">Contact</a>
   <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
   <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
@@ -606,7 +612,6 @@
   // ─── Fetch latest posts ───────────────────────────────────────────
   async function fetchPosts() {
     try {
-      // Usando o feed RSS convertido para JSON para evitar CORS e obter dados estruturados
       const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
       if (!r.ok) throw new Error('Feed error');
       const data = await r.json();
@@ -618,7 +623,6 @@
   // ─── Fetch top posts ──────────────────────────────────────────────
   async function fetchTopPosts() {
     try {
-      // Como a API de "top" é restrita, usamos os posts do feed e selecionamos os principais para o ranking
       if (allPosts.length === 0) {
         const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
         const data = await r.json();
@@ -635,7 +639,6 @@
     const c = document.getElementById('articles-container');
     const f = posts[0];
  
-    // Helper para extrair imagem do feed RSS2JSON
     function thumb(p) {
       const src = p.thumbnail || p.enclosure.link || null;
       if (src) return `<img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
@@ -691,7 +694,6 @@
     const content = document.getElementById('article-content');
     window.scrollTo(0, 0);
  
-    // Sincroniza sidebar de populares
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
  
     const img = p.thumbnail || p.enclosure.link || '';
@@ -729,7 +731,6 @@
   }
  
   function renderPopularFallback() {
-    // Caso o feed falhe, exibe os títulos mais relevantes
     const fallback = [
       { title: 'Why Taiwan is Turning Away from the US: The 14% Collapse', link: '#' },
       { title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', link: '#' },
