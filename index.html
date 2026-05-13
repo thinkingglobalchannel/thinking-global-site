@@ -306,6 +306,80 @@
     .footer-socials a:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text-faint); }
  
+    /* ── CONTACT PAGE ── */
+    #contact-page { display: none; max-width: 800px; margin: 0 auto; padding: 50px 20px 70px; }
+    .contact-header { text-align: center; margin-bottom: 44px; }
+    .contact-header h1 {
+      font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900;
+      color: var(--text); line-height: 1.18; margin-bottom: 14px;
+    }
+    .contact-header p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 520px; margin: 0 auto;
+    }
+    .contact-divider {
+      width: 48px; height: 3px; background: var(--blue); margin: 20px auto 0;
+    }
+    .contact-box {
+      background: var(--navy2); border: 1px solid var(--border);
+      border-top: 3px solid var(--blue); padding: 40px 44px;
+    }
+    .contact-row { margin-bottom: 22px; }
+    .contact-row label {
+      display: block; font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
+    }
+    .contact-row input,
+    .contact-row select,
+    .contact-row textarea {
+      width: 100%; background: var(--navy3); border: 1px solid var(--border);
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px;
+      padding: 12px 14px; outline: none; transition: border-color .2s;
+      border-radius: 2px; -webkit-appearance: none; appearance: none;
+    }
+    .contact-row input:focus,
+    .contact-row select:focus,
+    .contact-row textarea:focus { border-color: var(--blue); }
+    .contact-row input::placeholder,
+    .contact-row textarea::placeholder { color: var(--text-faint); }
+    .contact-row textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+    .contact-row select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238aa5c0' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .contact-row select option { background: var(--navy2); }
+    .contact-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .contact-submit {
+      width: 100%; padding: 14px; margin-top: 8px;
+      background: var(--blue); color: #fff; font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: background .2s; border-radius: 2px;
+    }
+    .contact-submit:hover { background: var(--blue-glow); }
+    .contact-submit:disabled { background: var(--blue-dim); cursor: not-allowed; opacity: .7; }
+    .contact-note {
+      font-size: 12px; color: var(--text-faint); text-align: center; margin-top: 14px; line-height: 1.5;
+    }
+    .contact-success {
+      display: none; text-align: center; padding: 36px 24px;
+    }
+    .contact-success .check-icon {
+      width: 56px; height: 56px; background: var(--blue); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+    }
+    .contact-success .check-icon svg { width: 28px; height: 28px; fill: #fff; }
+    .contact-success h3 { font-family: 'Playfair Display', serif; font-size: 22px; margin-bottom: 10px; color: var(--text); }
+    .contact-success p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .contact-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 28px;
+      cursor: pointer; border: 1px solid var(--blue-dim); padding: 6px 14px;
+      transition: all .2s; border-radius: 2px;
+    }
+    .contact-back:hover { color: var(--blue-glow); border-color: var(--blue-glow); }
+    @media (max-width: 600px) {
+      .contact-box { padding: 26px 20px; }
+      .contact-2col { grid-template-columns: 1fr; }
+      .contact-header h1 { font-size: 28px; }
+    }
+ 
     /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       .nav-links, .nav-right { display: none; }
@@ -327,6 +401,8 @@
 <div class="top-bar">
   <div class="top-bar-inner">
     <span class="top-bar-left">Thinking Global — Decoding Geopolitics & Political Economy</span>
+    <div style="display:flex;align-items:center;gap:14px;">
+    <span onclick="showContact()" style="cursor:pointer;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border-lt);padding:4px 12px;border-radius:2px;transition:all .2s;" onmouseover="this.style.color='#fff';this.style.borderColor='var(--blue)';this.style.background='var(--blue)'" onmouseout="this.style.color='var(--text-muted)';this.style.borderColor='var(--border-lt)';this.style.background='transparent'">Contact</span>
     <div class="top-socials">
       <!-- YouTube -->
       <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank" title="YouTube">
@@ -344,6 +420,7 @@
       <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" title="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
+    </div>
     </div>
   </div>
 </div>
@@ -363,9 +440,8 @@
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO0NlKEcF3ombqswPG7hhCyq" target="_blank">Latin America</a></li>
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO34GVwH126oDPZYwG7GTqLn" target="_blank">U.S.</a></li>
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a></li>
-      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a></li>
+      <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Pol. Theory</a></li>
       <li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
-      <li><a href="javascript:void(0)" onclick="showContact()">Contact</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
@@ -385,7 +461,6 @@
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
   <a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
-  <a href="javascript:void(0)" onclick="showContact()">Contact</a>
   <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
   <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
 </div>
@@ -485,17 +560,69 @@
     </aside>
   </div>
 </div>
-
-/* ── CONTACT SECTION ADDITION ── */
-    #contact-page { display: none; max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
-    .contact-form { background: var(--navy2); border: 1px solid var(--border); padding: 32px; border-top: 2px solid var(--blue-dim); }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; letter-spacing: .1em; }
-    .form-group input, .form-group textarea {
-      width: 100%; padding: 12px; background: var(--navy); border: 1px solid var(--border-lt);
-      color: var(--text); font-family: inherit; font-size: 14px; border-radius: 2px;
-      transition: border-color .2s;
-
+ 
+<!-- ══ CONTACT PAGE ══ -->
+<div id="contact-page">
+  <span class="contact-back" onclick="showHome()">← Back to Home</span>
+  <div class="contact-header">
+    <h1>Get in Touch</h1>
+    <p>Have a question, want to collaborate, or just want to share your perspective on geopolitics? We'd love to hear from you.</p>
+    <div class="contact-divider"></div>
+  </div>
+ 
+  <div class="contact-box">
+    <!-- Success state (hidden until form submits) -->
+    <div class="contact-success" id="contactSuccess">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for reaching out. We'll get back to you as soon as possible at the email address you provided.</p>
+      <span onclick="resetContactForm()" style="display:inline-block;margin-top:20px;cursor:pointer;" class="contact-back">← Send Another Message</span>
+    </div>
+ 
+    <!-- Form (Formspree — replace YOUR_FORM_ID after signing up at formspree.io) -->
+    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <!-- Hidden fields for routing -->
+      <input type="hidden" name="_replyto" id="replyToField" value="" />
+      <input type="hidden" name="_subject" value="[Thinking Global] New Contact Form Submission" />
+      <input type="hidden" name="_next" value="" />
+ 
+      <div class="contact-2col">
+        <div class="contact-row">
+          <label for="cf-name">Name *</label>
+          <input type="text" id="cf-name" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="contact-row">
+          <label for="cf-email">Email *</label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required
+                 oninput="document.getElementById('replyToField').value=this.value" />
+        </div>
+      </div>
+ 
+      <div class="contact-row">
+        <label for="cf-subject">Subject *</label>
+        <select id="cf-subject" name="subject" required>
+          <option value="" disabled selected>Select a topic…</option>
+          <option value="General Question">General Question</option>
+          <option value="Collaboration / Partnership">Collaboration / Partnership</option>
+          <option value="Media / Press Inquiry">Media / Press Inquiry</option>
+          <option value="Article Pitch / Contribution">Article Pitch / Contribution</option>
+          <option value="Support / Membership">Support / Membership</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+ 
+      <div class="contact-row">
+        <label for="cf-message">Message *</label>
+        <textarea id="cf-message" name="message" placeholder="Write your message here…" required></textarea>
+      </div>
+ 
+      <button type="submit" class="contact-submit" id="contactSubmit">Send Message</button>
+      <p class="contact-note">Your message will be sent directly to thinkingglobalchannel@gmail.com. We typically respond within 48 hours.</p>
+    </form>
+  </div>
+</div>
  
 <!-- ══ FOOTER ══ -->
 <footer class="site-footer">
@@ -541,7 +668,10 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Thinking Global. Decoding Geopolitics & Economy.</span>
-      <span>Independent & Anti-Imperialist</span>
+      <span style="display:flex;align-items:center;gap:18px;">
+        <span onclick="showContact()" style="cursor:pointer;color:var(--text-faint);transition:color .2s;" onmouseover="this.style.color='var(--blue-glow)'" onmouseout="this.style.color='var(--text-faint)'">Contact</span>
+        <span>Independent & Ad-Free</span>
+      </span>
     </div>
   </div>
 </footer>
@@ -557,17 +687,62 @@
   function showHome() {
     document.getElementById('home-page').style.display = '';
     document.getElementById('article-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'none';
     window.scrollTo(0, 0);
   }
+ 
+  function showContact() {
+    document.getElementById('home-page').style.display = 'none';
+    document.getElementById('article-page').style.display = 'none';
+    document.getElementById('contact-page').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+ 
+  function resetContactForm() {
+    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm').style.display = '';
+    document.getElementById('contactSuccess').style.display = 'none';
+    document.getElementById('contactSubmit').disabled = false;
+  }
+ 
+  // Contact form submission via Formspree
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('contactSubmit');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('contactSuccess').style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+          alert('Something went wrong. Please try again or email us directly at thinkingglobalchannel@gmail.com');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        alert('Network error. Please try again or email us directly at thinkingglobalchannel@gmail.com');
+      }
+    });
+  });
  
   // ─── Fetch latest posts ───────────────────────────────────────────
   async function fetchPosts() {
     try {
-      // Usando o feed RSS convertido para JSON para evitar CORS e obter dados estruturados
-      const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
-      if (!r.ok) throw new Error('Feed error');
-      const data = await r.json();
-      allPosts = data.items;
+      const r = await fetch('https://thinkingglobal.substack.com/api/v1/posts?limit=20&sort=new');
+      if (!r.ok) throw new Error('API error');
+      allPosts = await r.json();
       renderArticles(allPosts);
     } catch { renderFallbackArticles(); }
   }
@@ -575,13 +750,9 @@
   // ─── Fetch top posts ──────────────────────────────────────────────
   async function fetchTopPosts() {
     try {
-      // Como a API de "top" é restrita, usamos os posts do feed e selecionamos os principais para o ranking
-      if (allPosts.length === 0) {
-        const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
-        const data = await r.json();
-        allPosts = data.items;
-      }
-      topPosts = allPosts.slice(0, 5); 
+      const r = await fetch('https://thinkingglobal.substack.com/api/v1/posts?limit=5&sort=top_all_time');
+      if (!r.ok) throw new Error('API error');
+      topPosts = await r.json();
       renderPopular(topPosts);
     } catch { renderPopularFallback(); }
   }
@@ -592,23 +763,24 @@
     const c = document.getElementById('articles-container');
     const f = posts[0];
  
-    // Helper para extrair imagem do feed RSS2JSON
-    function thumb(p) {
-      const src = p.thumbnail || p.enclosure.link || null;
+    // Helper to build a thumbnail tag from a post object
+    function thumb(p, cls) {
+      // Substack exposes cover_image on list endpoints
+      const src = p.cover_image || (p.thumbnail_url) || null;
       if (src) return `<img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
       return `<div class="thumb-placeholder">Thinking Global</div>`;
     }
  
     let html = `
       <article class="featured-article">
-        <span class="tag">Featured Analysis</span>
-        <div onclick="openReader('${encodeURIComponent(posts.indexOf(f))}')" style="cursor:pointer">
+        <span class="tag">${escTag(f.section_name || 'Analysis')}</span>
+        <div onclick="openReader('${f.slug}')" style="cursor:pointer">
           <div class="thumb-wrap">${thumb(f)}</div>
           <h2>${esc(f.title)}</h2>
         </div>
-        <p class="excerpt">${esc(f.description.replace(/<[^>]*>/g, '').substring(0, 200))}...</p>
+        <p class="excerpt">${esc(f.subtitle || '')}</p>
         <div class="article-meta">
-          <span class="author">Thinking Global</span><span>·</span><span>${f.pubDate.substring(0, 5)}</span>
+          <span class="author">Thinking Global</span><span>·</span><span>${fmtDate(f.post_date)}</span>
         </div>
       </article>
       <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
@@ -616,17 +788,17 @@
       </div>
       <div class="article-list">`;
  
-    for (let i = 1; i < Math.min(posts.length, 11); i++) {
+    for (let i = 1; i < Math.min(posts.length, 10); i++) {
       const p = posts[i];
       html += `
-        <article class="article-card" onclick="openReader('${encodeURIComponent(i)}')">
+        <article class="article-card" onclick="openReader('${p.slug}')">
           <div class="thumb-wrap">${thumb(p)}</div>
           <div class="article-card-body">
-            <span class="section-label">Geopolitics</span>
+            <span class="section-label">${escTag(p.section_name || 'Analysis')}</span>
             <h3>${esc(p.title)}</h3>
-            <p class="excerpt">${esc(p.description.replace(/<[^>]*>/g, '').substring(0, 150))}...</p>
+            <p class="excerpt">${esc(p.subtitle || '')}</p>
             <div class="article-meta">
-              <span class="author">Thinking Global</span><span>·</span><span>${p.pubDate.substring(0, 5)}</span>
+              <span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.post_date)}</span>
             </div>
           </div>
         </article>`;
@@ -635,41 +807,105 @@
     c.innerHTML = html;
   }
  
-  // ─── openReader(): exibe o conteúdo do post no site ────────────────
-  function openReader(index) {
-    const idx = parseInt(decodeURIComponent(index));
-    const p = allPosts[idx];
-    if (!p) return;
-
+  // ─── openReader(): fetch full post & display in-site reader ───────
+  async function openReader(slug) {
+    // Switch to reader view
     document.getElementById('home-page').style.display = 'none';
     const ap = document.getElementById('article-page');
     ap.style.display = 'block';
     const content = document.getElementById('article-content');
+    content.innerHTML = `
+      <div class="reader-loading">
+        <div class="loading-spinner" style="display:block;margin:0 auto;"></div>
+        <p style="margin-top:14px;font-size:13px;">Loading article…</p>
+      </div>`;
     window.scrollTo(0, 0);
  
-    // Sincroniza sidebar de populares
+    // Mirror popular list to article sidebar
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
  
-    const img = p.thumbnail || p.enclosure.link || '';
-    
-    content.innerHTML = `
-      <span class="tag">Structural Analysis</span>
+    // 1️⃣ Try full post endpoint (returns body_html for free/public posts)
+    try {
+      const r = await fetch(`https://thinkingglobal.substack.com/api/v1/posts/${slug}`);
+      if (!r.ok) throw new Error('not ok');
+      const p = await r.json();
+ 
+      // If we got body_html, render the full article
+      if (p.body_html) {
+        renderFullArticle(p);
+        return;
+      }
+      // Otherwise render preview + CTA
+      renderPreviewArticle(p);
+    } catch {
+      // 2️⃣ Fallback: find in cache
+      const p = allPosts.find(x => x.slug === slug) || topPosts.find(x => x.slug === slug);
+      if (p) { renderPreviewArticle(p); } else { renderErrorState(slug); }
+    }
+  }
+ 
+  function renderFullArticle(p) {
+    const img = p.cover_image || p.thumbnail_url || '';
+    document.getElementById('article-content').innerHTML = `
+      <span class="tag">${escTag(p.section_name || 'Analysis')}</span>
       <h1 class="reader-title">${esc(p.title)}</h1>
       <div class="reader-meta">
         <span class="author">Thinking Global</span>
         <span>·</span>
-        <span>${p.pubDate.substring(0, 5)}</span>
+        <span>${fmtDate(p.post_date)}</span>
       </div>
       ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
-      <div class="reader-body">${p.content || p.description}</div>
+      <div class="reader-body">${sanitizeSubstackHTML(p.body_html)}</div>
       <div class="reader-cta">
         <h4>Enjoy this analysis?</h4>
         <p>Subscribe to receive structural geopolitical intelligence weekly — free.</p>
         <div class="cta-btns">
           <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full" style="max-width:220px;">Subscribe Free</a>
-          <a href="${p.link}" target="_blank" class="btn-full outline" style="max-width:220px;">Read on Substack ↗</a>
+          <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline" style="max-width:220px;">Support on Patreon</a>
         </div>
       </div>`;
+  }
+ 
+  function renderPreviewArticle(p) {
+    const img = p.cover_image || p.thumbnail_url || '';
+    const truncatedBody = p.truncated_body_text
+      ? `<p>${esc(p.truncated_body_text)}</p>`
+      : `<p style="font-size:18px;color:var(--text);">${esc(p.subtitle || '')}</p>`;
+    document.getElementById('article-content').innerHTML = `
+      <span class="tag">${escTag(p.section_name || 'Analysis')}</span>
+      <h1 class="reader-title">${esc(p.title)}</h1>
+      <div class="reader-meta">
+        <span class="author">Thinking Global</span>
+        <span>·</span>
+        <span>${fmtDate(p.post_date)}</span>
+      </div>
+      ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
+      <div class="reader-body">${truncatedBody}</div>
+      <div class="reader-cta">
+        <h4>Read the full article</h4>
+        <p>This article is available in full on Substack. Subscribe for free to read everything.</p>
+        <div class="cta-btns">
+          <a href="https://thinkingglobal.substack.com/p/${p.slug}" target="_blank" class="btn-full" style="max-width:220px;">Read on Substack ↗</a>
+          <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full outline" style="max-width:220px;">Subscribe Free</a>
+        </div>
+      </div>`;
+  }
+ 
+  function renderErrorState(slug) {
+    document.getElementById('article-content').innerHTML = `
+      <div style="padding:50px 0;text-align:center;color:var(--text-faint);">
+        <p style="font-size:15px;margin-bottom:18px;">Could not load this article.</p>
+        <a href="https://thinkingglobal.substack.com/p/${slug}" target="_blank" class="btn-full" style="display:inline-block;max-width:260px;">Read on Substack ↗</a>
+      </div>`;
+  }
+ 
+  // Strip Substack paywall/subscription widgets from injected HTML
+  function sanitizeSubstackHTML(html) {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    // Remove paywall / subscribe prompts
+    div.querySelectorAll('.paywall, .subscription-widget, .paywall-cta, [data-component-name="PaywallBodyText"]').forEach(el => el.remove());
+    return div.innerHTML;
   }
  
   // ─── Popular sidebar ───────────────────────────────────────────────
@@ -678,41 +914,44 @@
     const list = document.getElementById('popularList');
     list.style.display = '';
     list.innerHTML = posts.slice(0, 5).map((p, i) => `
-      <li onclick="openReader('${encodeURIComponent(allPosts.indexOf(p))}')">
+      <li onclick="openReader('${p.slug}')">
         <span class="popular-num">${i + 1}</span>
         <span class="p-title">${esc(p.title)}</span>
       </li>`).join('');
   }
  
   function renderPopularFallback() {
-    // Caso o feed falhe, exibe os títulos mais relevantes
-    const fallback = [
-      { title: 'Why Taiwan is Turning Away from the US: The 14% Collapse', link: '#' },
-      { title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', link: '#' },
-      { title: 'The Mercosur-EU Agreement: A New Colonial Pact', link: '#' },
-      { title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026', link: '#' },
-      { title: 'Greenland: The Strategic Test for European Sovereignty', link: '#' }
-    ];
-    document.getElementById('popularLoading').style.display = 'none';
-    const list = document.getElementById('popularList');
-    list.style.display = '';
-    list.innerHTML = fallback.map((p, i) => `
-      <li>
-        <span class="popular-num">${i + 1}</span>
-        <span class="p-title">${esc(p.title)}</span>
-      </li>`).join('');
+    renderPopular([
+      { slug: 'taiwan-collapse-us-trust',             title: 'Why Taiwan is Turning Away from the US: The 14% Collapse' },
+      { slug: 'indonesia-5-trillion-blind-spot',       title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power' },
+      { slug: 'mercosur-eu-agreement-colonial-pact',   title: 'The Mercosur-EU Agreement: A New Colonial Pact' },
+      { slug: 'iran-missile-defense-timeline',         title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026' },
+      { slug: 'greenland-geopolitics-europe-sovereignty', title: 'Greenland: The Strategic Test for European Sovereignty' },
+    ]);
   }
  
+  // ─── Fallback article list ─────────────────────────────────────────
   function renderFallbackArticles() {
-    document.getElementById('articles-container').innerHTML = '<p style="text-align:center;padding:20px;">Unable to load feed. Please check back later.</p>';
+    renderArticles([
+      { slug: 'indonesia-5-trillion-blind-spot',       title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power',       subtitle: 'The world\'s fourth most populous nation commands critical maritime chokepoints and a rapidly expanding economy most Western analysts underestimate.', section_name: 'Economy',  post_date: '2026-05-01', cover_image: null },
+      { slug: 'taiwan-collapse-us-trust',             title: 'Why Taiwan is Turning Away from the US: The 14% Collapse',           subtitle: 'Trust in Washington\'s security guarantees has fallen to historic lows in Taipei, reshaping the island\'s geopolitical posture in real time.',         section_name: 'Eurasia',  post_date: '2026-04-28', cover_image: null },
+      { slug: 'iran-missile-defense-timeline',         title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026',   subtitle: 'A detailed chronological breakdown of Iran\'s asymmetric defense posture and the evolving regional balance of power.',                            section_name: 'Eurasia',  post_date: '2026-04-15', cover_image: null },
+      { slug: 'mercosur-eu-agreement-colonial-pact',   title: 'The Mercosur-EU Agreement: A New Colonial Pact',                    subtitle: 'Beneath the diplomatic surface, the trade deal encodes structural asymmetries echoing centuries of unequal exchange.',                           section_name: 'Americas', post_date: '2026-04-02', cover_image: null },
+      { slug: 'greenland-geopolitics-europe-sovereignty', title: 'Greenland: The Strategic Test for European Sovereignty',         subtitle: 'European capitals face a defining test of whether they can act as an autonomous geopolitical actor.',                                             section_name: 'Eurasia',  post_date: '2026-03-20', cover_image: null },
+    ]);
   }
  
+  // ─── Utilities ─────────────────────────────────────────────────────
   function esc(s) {
     if (!s) return '';
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+  function escTag(s) { return esc((s||'').toString()).substring(0, 30); }
+  function fmtDate(d) { return d ? d.substring(0, 10) : ''; }
  
-  fetchPosts().then(() => fetchTopPosts());
+  // ─── Init ───────────────────────────────────────────────────────────
+  fetchPosts();
+  fetchTopPosts();
 </script>
 </body>
 </html>
