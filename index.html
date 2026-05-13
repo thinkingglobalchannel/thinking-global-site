@@ -215,7 +215,6 @@
       background: var(--blue); color: #fff; font-weight: 700;
       font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
       text-align: center; transition: background .2s; margin-bottom: 8px;
-      cursor: pointer; border: none;
     }
     .btn-full:hover { background: var(--blue-glow); color: #fff; }
     .btn-full.outline { background: transparent; border: 1px solid var(--blue-dim); color: var(--blue); }
@@ -283,18 +282,6 @@
     .cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .cta-btns a { display: inline-block; padding: 10px 22px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: all .2s; }
  
-    /* ── CONTACT SECTION ADDITION ── */
-    #contact-page { display: none; max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
-    .contact-form { background: var(--navy2); border: 1px solid var(--border); padding: 32px; border-top: 2px solid var(--blue-dim); }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; letter-spacing: .1em; }
-    .form-group input, .form-group textarea {
-      width: 100%; padding: 12px; background: var(--navy); border: 1px solid var(--border-lt);
-      color: var(--text); font-family: inherit; font-size: 14px; border-radius: 2px;
-      transition: border-color .2s;
-    }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); }
-
     /* ── FOOTER ── */
     .site-footer { background: #07131f; border-top: 2px solid var(--blue-dim); padding: 40px 0 20px; margin-top: 40px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
@@ -323,7 +310,7 @@
     @media (max-width: 960px) {
       .nav-links, .nav-right { display: none; }
       .nav-hamburger { display: flex; }
-      .site-body, .article-reader, #contact-page .site-body { grid-template-columns: 1fr; }
+      .site-body, .article-reader { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
@@ -336,20 +323,24 @@
 </head>
 <body>
  
-<!-- ══ TOP BAR ══ -->
+<!-- ══ TOP BAR: social icons only ══ -->
 <div class="top-bar">
   <div class="top-bar-inner">
     <span class="top-bar-left">Thinking Global — Decoding Geopolitics & Political Economy</span>
     <div class="top-socials">
+      <!-- YouTube -->
       <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA" target="_blank" title="YouTube">
         <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
       </a>
+      <!-- X / Twitter -->
       <a href="https://x.com/thinkinglobalYT" target="_blank" title="X / Twitter">
         <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
+      <!-- TikTok -->
       <a href="https://www.tiktok.com/@thinking.global" target="_blank" title="TikTok">
         <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
       </a>
+      <!-- Instagram -->
       <a href="https://www.instagram.com/thinkingglobalchannel/" target="_blank" title="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       </a>
@@ -357,7 +348,7 @@
   </div>
 </div>
  
-<!-- ══ MAIN NAV ══ -->
+<!-- ══ MAIN NAV (logo + playlist categories) ══ -->
 <nav class="main-nav">
   <div class="nav-inner">
     <div class="nav-logo" onclick="showHome()">
@@ -374,7 +365,6 @@
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a></li>
       <li><a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a></li>
       <li><a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a></li>
-      <li><a href="javascript:void(0)" onclick="showContact()">Contact</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-small btn-outline">Support</a>
@@ -394,7 +384,6 @@
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO10olGM5ZxSJE2K3w-w5IVf" target="_blank">Oceania</a>
   <a href="https://www.youtube.com/playlist?list=PL_L9Vu9uBDO2CUoOtoefFKDwFrXDAijqw" target="_blank">Political Theory</a>
   <a href="https://thinkingglobal.substack.com/" target="_blank">Newsletter</a>
-  <a href="javascript:void(0)" onclick="showContact()">Contact</a>
   <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank">Support</a>
   <a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Subscribe</a>
 </div>
@@ -412,6 +401,8 @@
     </main>
  
     <aside class="sidebar">
+ 
+      <!-- Popular (top 5 from Substack) -->
       <div class="sidebar-widget">
         <h3 class="widget-title">Popular</h3>
         <div id="popularLoading" style="text-align:center;padding:14px 0;">
@@ -420,6 +411,7 @@
         <ol class="popular-list" id="popularList" style="display:none"></ol>
       </div>
  
+      <!-- Thinking Global Club -->
       <div class="sidebar-widget">
         <h3 class="widget-title">Thinking Global Club</h3>
         <div class="membership-tier">
@@ -437,12 +429,14 @@
         <a href="https://www.youtube.com/channel/UCW_QFh9V61avMzogPy-g0nA/join" target="_blank" class="btn-full" style="margin-top:16px;">Join via YouTube</a>
       </div>
  
+      <!-- Newsletter -->
       <div class="sidebar-widget newsletter-widget">
         <h3 class="widget-title">Weekly Dispatch</h3>
         <p>Structural intelligence on geopolitics and political economy — directly to your inbox.</p>
         <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full">Join the Newsletter</a>
         <a href="https://www.patreon.com/c/ThinkingGlobalChannel" target="_blank" class="btn-full outline">Support on Patreon</a>
       </div>
+ 
     </aside>
   </div>
 </div>
@@ -489,47 +483,6 @@
     </aside>
   </div>
 </div>
-
-<!-- ══ CONTACT PAGE ══ -->
-<div id="contact-page">
-  <div class="site-body">
-    <main>
-       <span class="tag">Get in Touch</span>
-       <h1 class="reader-title">Contact</h1>
-       <p style="margin-bottom: 24px; color: var(--text-muted); font-family: 'Source Serif 4', serif; font-size: 18px;">
-         For inquiries, collaborations, or feedback, please use the form below. 
-         Your message will be sent directly to the Thinking Global team.
-       </p>
-       
-       <form action="https://formspree.io/f/thinkingglobalchannel@gmail.com" method="POST" class="contact-form">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" name="name" required placeholder="Enter your name">
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" required placeholder="your@email.com">
-          </div>
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="text" name="subject" required placeholder="What is this regarding?">
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" rows="6" required placeholder="Write your message here..."></textarea>
-          </div>
-          <button type="submit" class="btn-full">Send Message</button>
-       </form>
-    </main>
-    <aside class="sidebar">
-      <div class="sidebar-widget newsletter-widget">
-        <h3 class="widget-title">Project Info</h3>
-        <p>Thinking Global is an independent media outlet focused on decoding structural geopolitics and political economy for a multipolar world.</p>
-        <p style="margin-top: 10px; font-weight: 700; color: var(--blue);">thinkingglobalchannel@gmail.com</p>
-      </div>
-    </aside>
-  </div>
-</div>
  
 <!-- ══ FOOTER ══ -->
 <footer class="site-footer">
@@ -563,7 +516,6 @@
           <li><a href="https://thinkingglobal.substack.com/" target="_blank">All Articles</a></li>
           <li><a href="https://thinkingglobal.substack.com/subscribe" target="_blank">Newsletter</a></li>
           <li><a href="https://thinkingglobal.substack.com/?sort=top" target="_blank">Most Popular</a></li>
-          <li><a href="javascript:void(0)" onclick="showContact()">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -592,21 +544,13 @@
   function showHome() {
     document.getElementById('home-page').style.display = '';
     document.getElementById('article-page').style.display = 'none';
-    document.getElementById('contact-page').style.display = 'none';
     window.scrollTo(0, 0);
-  }
-
-  function showContact() {
-    document.getElementById('home-page').style.display = 'none';
-    document.getElementById('article-page').style.display = 'none';
-    document.getElementById('contact-page').style.display = 'block';
-    window.scrollTo(0, 0);
-    if(document.getElementById('mobileMenu').classList.contains('open')) toggleMenu();
   }
  
   // ─── Fetch latest posts ───────────────────────────────────────────
   async function fetchPosts() {
     try {
+      // Usando o feed RSS convertido para JSON para evitar CORS e obter dados estruturados
       const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
       if (!r.ok) throw new Error('Feed error');
       const data = await r.json();
@@ -615,8 +559,10 @@
     } catch { renderFallbackArticles(); }
   }
  
+  // ─── Fetch top posts ──────────────────────────────────────────────
   async function fetchTopPosts() {
     try {
+      // Como a API de "top" é restrita, usamos os posts do feed e selecionamos os principais para o ranking
       if (allPosts.length === 0) {
         const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
         const data = await r.json();
@@ -627,11 +573,13 @@
     } catch { renderPopularFallback(); }
   }
  
+  // ─── Render article list ──────────────────────────────────────────
   function renderArticles(posts) {
     if (!posts || posts.length === 0) { renderFallbackArticles(); return; }
     const c = document.getElementById('articles-container');
     const f = posts[0];
  
+    // Helper para extrair imagem do feed RSS2JSON
     function thumb(p) {
       const src = p.thumbnail || p.enclosure.link || null;
       if (src) return `<img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
@@ -647,7 +595,7 @@
         </div>
         <p class="excerpt">${esc(f.description.replace(/<[^>]*>/g, '').substring(0, 200))}...</p>
         <div class="article-meta">
-          <span class="author">Thinking Global</span><span>·</span><span>${f.pubDate.substring(0, 10)}</span>
+          <span class="author">Thinking Global</span><span>·</span><span>${f.pubDate.substring(0, 5)}</span>
         </div>
       </article>
       <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
@@ -665,7 +613,7 @@
             <h3>${esc(p.title)}</h3>
             <p class="excerpt">${esc(p.description.replace(/<[^>]*>/g, '').substring(0, 150))}...</p>
             <div class="article-meta">
-              <span class="author">Thinking Global</span><span>·</span><span>${p.pubDate.substring(0, 10)}</span>
+              <span class="author">Thinking Global</span><span>·</span><span>${p.pubDate.substring(0, 5)}</span>
             </div>
           </div>
         </article>`;
@@ -674,18 +622,19 @@
     c.innerHTML = html;
   }
  
+  // ─── openReader(): exibe o conteúdo do post no site ────────────────
   function openReader(index) {
     const idx = parseInt(decodeURIComponent(index));
     const p = allPosts[idx];
     if (!p) return;
 
     document.getElementById('home-page').style.display = 'none';
-    document.getElementById('contact-page').style.display = 'none';
     const ap = document.getElementById('article-page');
     ap.style.display = 'block';
     const content = document.getElementById('article-content');
     window.scrollTo(0, 0);
  
+    // Sincroniza sidebar de populares
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
  
     const img = p.thumbnail || p.enclosure.link || '';
@@ -696,7 +645,7 @@
       <div class="reader-meta">
         <span class="author">Thinking Global</span>
         <span>·</span>
-        <span>${p.pubDate.substring(0, 10)}</span>
+        <span>${p.pubDate.substring(0, 5)}</span>
       </div>
       ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
       <div class="reader-body">${p.content || p.description}</div>
@@ -710,6 +659,7 @@
       </div>`;
   }
  
+  // ─── Popular sidebar ───────────────────────────────────────────────
   function renderPopular(posts) {
     document.getElementById('popularLoading').style.display = 'none';
     const list = document.getElementById('popularList');
@@ -722,6 +672,7 @@
   }
  
   function renderPopularFallback() {
+    // Caso o feed falhe, exibe os títulos mais relevantes
     const fallback = [
       { title: 'Why Taiwan is Turning Away from the US: The 14% Collapse', link: '#' },
       { title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', link: '#' },
