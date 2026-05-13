@@ -320,6 +320,8 @@
       .reader-body { font-size: 16px; }
     }
   </style>
+  <!-- Twitter Script Loaded Early -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 <body>
  
@@ -438,10 +440,10 @@
       </div>
 
       <!-- Twitter Feed -->
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Latest Updates</h3>
-        <div style="max-height: 500px; overflow-y: auto; border-radius: 4px; background: #07131f;">
-          <a class="twitter-timeline" data-height="500" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <div class="sidebar-widget" style="padding: 10px;">
+        <h3 class="widget-title" style="margin: 10px;">Latest Updates</h3>
+        <div id="twitter-feed-home" style="min-height: 500px;">
+          <a class="twitter-timeline" data-height="500" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>
         </div>
       </div>
  
@@ -470,10 +472,10 @@
       </div>
 
       <!-- Twitter Feed (Article Page) -->
-      <div class="sidebar-widget">
-        <h3 class="widget-title">Latest Updates</h3>
-        <div style="max-height: 400px; overflow-y: auto; border-radius: 4px; background: #07131f;">
-          <a class="twitter-timeline" data-height="400" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>
+      <div class="sidebar-widget" style="padding: 10px;">
+        <h3 class="widget-title" style="margin: 10px;">Latest Updates</h3>
+        <div id="twitter-feed-article" style="min-height: 400px;">
+          <!-- O widget será clonado/recarregado aqui via JS -->
         </div>
       </div>
 
@@ -561,13 +563,17 @@
   function showHome() {
     document.getElementById('home-page').style.display = '';
     document.getElementById('article-page').style.display = 'none';
+    
+    // Refresh Twitter widget on Home
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load(document.getElementById('twitter-feed-home'));
+    }
     window.scrollTo(0, 0);
   }
  
   // ─── Fetch latest posts ───────────────────────────────────────────
   async function fetchPosts() {
     try {
-      // Usando o feed RSS convertido para JSON para evitar CORS e obter dados estruturados
       const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
       if (!r.ok) throw new Error('Feed error');
       const data = await r.json();
@@ -579,7 +585,6 @@
   // ─── Fetch top posts ──────────────────────────────────────────────
   async function fetchTopPosts() {
     try {
-      // Como a API de "top" é restrita, usamos os posts do feed e selecionamos os principais para o ranking
       if (allPosts.length === 0) {
         const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
         const data = await r.json();
@@ -596,7 +601,6 @@
     const c = document.getElementById('articles-container');
     const f = posts[0];
  
-    // Helper para extrair imagem do feed RSS2JSON
     function thumb(p) {
       const src = p.thumbnail || p.enclosure.link || null;
       if (src) return `<img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
@@ -654,6 +658,14 @@
     // Sincroniza sidebar de populares
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
  
+    // Sync Twitter feed to Article page
+    const twitterContainer = document.getElementById('twitter-feed-article');
+    twitterContainer.innerHTML = '<a class="twitter-timeline" data-height="400" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>';
+    
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load(twitterContainer);
+    }
+ 
     const img = p.thumbnail || p.enclosure.link || '';
     
     content.innerHTML = `
@@ -674,11 +686,6 @@
           <a href="${p.link}" target="_blank" class="btn-full outline" style="max-width:220px;">Read on Substack ↗</a>
         </div>
       </div>`;
-
-    // Re-initialize Twitter widgets if they exist on the page
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load();
-    }
   }
  
   // ─── Popular sidebar ───────────────────────────────────────────────
@@ -694,7 +701,6 @@
   }
  
   function renderPopularFallback() {
-    // Caso o feed falhe, exibe os títulos mais relevantes
     const fallback = [
       { title: 'Why Taiwan is Turning Away from the US: The 14% Collapse', link: '#' },
       { title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', link: '#' },
