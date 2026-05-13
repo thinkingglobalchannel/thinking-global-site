@@ -320,8 +320,6 @@
       .reader-body { font-size: 16px; }
     }
   </style>
-  <!-- Twitter Script Loaded Early -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </head>
 <body>
  
@@ -440,10 +438,10 @@
       </div>
 
       <!-- Twitter Feed -->
-      <div class="sidebar-widget" style="padding: 10px;">
-        <h3 class="widget-title" style="margin: 10px;">Latest Updates</h3>
-        <div id="twitter-feed-home" style="min-height: 500px;">
-          <a class="twitter-timeline" data-height="500" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>
+      <div class="sidebar-widget" id="twitter-widget-home">
+        <h3 class="widget-title">Latest Updates</h3>
+        <div class="twitter-container" style="min-height: 500px;">
+          <a class="twitter-timeline" data-height="500" data-theme="dark" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>
         </div>
       </div>
  
@@ -472,10 +470,10 @@
       </div>
 
       <!-- Twitter Feed (Article Page) -->
-      <div class="sidebar-widget" style="padding: 10px;">
-        <h3 class="widget-title" style="margin: 10px;">Latest Updates</h3>
-        <div id="twitter-feed-article" style="min-height: 400px;">
-          <!-- O widget será clonado/recarregado aqui via JS -->
+      <div class="sidebar-widget" id="twitter-widget-article">
+        <h3 class="widget-title">Latest Updates</h3>
+        <div class="twitter-container" style="min-height: 400px;">
+          <!-- Carregado via JS -->
         </div>
       </div>
 
@@ -563,12 +561,28 @@
   function showHome() {
     document.getElementById('home-page').style.display = '';
     document.getElementById('article-page').style.display = 'none';
-    
-    // Refresh Twitter widget on Home
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load(document.getElementById('twitter-feed-home'));
-    }
+    loadTwitter('home');
     window.scrollTo(0, 0);
+  }
+
+  // ─── Twitter Loader (Robust) ─────────────────────────────────────
+  function loadTwitter(view) {
+    const containerId = view === 'home' ? 'twitter-widget-home' : 'twitter-widget-article';
+    const container = document.getElementById(containerId).querySelector('.twitter-container');
+    const height = view === 'home' ? 500 : 400;
+    
+    // Clear and inject fresh link
+    container.innerHTML = `<a class="twitter-timeline" data-height="${height}" data-theme="dark" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>`;
+    
+    // Load script if not present, otherwise call load()
+    if (!document.getElementById('twitter-wjs')) {
+      const s = document.createElement('script');
+      s.id = 'twitter-wjs';
+      s.src = 'https://platform.twitter.com/widgets.js';
+      document.body.appendChild(s);
+    } else if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load(container);
+    }
   }
  
   // ─── Fetch latest posts ───────────────────────────────────────────
@@ -658,13 +672,8 @@
     // Sincroniza sidebar de populares
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
  
-    // Sync Twitter feed to Article page
-    const twitterContainer = document.getElementById('twitter-feed-article');
-    twitterContainer.innerHTML = '<a class="twitter-timeline" data-height="400" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/thinkinglobalYT?ref_src=twsrc%5Etfw">Tweets by thinkinglobalYT</a>';
-    
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load(twitterContainer);
-    }
+    // Load Twitter for Article view
+    loadTwitter('article');
  
     const img = p.thumbnail || p.enclosure.link || '';
     
@@ -727,7 +736,10 @@
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
  
-  fetchPosts().then(() => fetchTopPosts());
+  fetchPosts().then(() => {
+    fetchTopPosts();
+    loadTwitter('home'); // Initial load
+  });
 </script>
 </body>
 </html>
