@@ -597,12 +597,13 @@
  
 <script>
   // ─── State ───────────────────────────────────────────────────────
-  let allPosts = [];
-  let topPosts = [];
- 
+  let allPosts = [];          // latest posts (normalized)
+  let topPosts = [];          // most popular posts (normalized)
+  const postsBySlug = {};     // every post seen so far, by slug
+
   // ─── Nav ─────────────────────────────────────────────────────────
   function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
- 
+
   function showHome() {
     document.getElementById('home-page').style.display = '';
     document.getElementById('article-page').style.display = 'none';
@@ -619,71 +620,174 @@
     }
     window.scrollTo(0, 0);
   }
- 
+
+  // ─── Substack data layer ──────────────────────────────────────────
+  // Browsers block direct calls to Substack from other domains (CORS), and third-party
+  // converters (like rss2json) can fail or hit usage limits. So each request walks a chain:
+  //   1) your own proxy (/api/substack.js on Vercel)  2) direct  3) public CORS proxies
+  const SUBSTACK = 'https://thinkingglobal.substack.com';
+  const FEED_PROXY = '/api/substack?url=';
+
+  const PROXIES = [
+    u => FEED_PROXY ? FEED_PROXY + encodeURIComponent(u) : null,
+    u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+    u => 'https://corsproxy.io/?url=' + encodeURIComponent(u),
+  ];
+
+  async function fetchViaChain(url, parse) {
+    const proxied = PROXIES.map(p => p(url)).filter(Boolean);
+    const attempts = FEED_PROXY ? [proxied[0], url, ...proxied.slice(1)] : [url, ...proxied];
+    let lastErr;
+    for (const a of attempts) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 9000);
+      try {
+        const r = await fetch(a, { signal: ctrl.signal });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return parse(await r.text());     // parse() throws if the content isn't what we expect
+      } catch (e) { lastErr = e; }
+      finally { clearTimeout(timer); }
+    }
+    throw lastErr || new Error('all sources failed');
+  }
+
+  const parseJSONList = t => { const j = JSON.parse(t); if (!Array.isArray(j) || !j.length) throw new Error('empty'); return j; };
+  const parseJSONObj  = t => { const j = JSON.parse(t); if (!j || !j.slug) throw new Error('bad post'); return j; };
+
+  // Every post, whatever its source, is converted to this shape:
+  // { slug, title, description, pubDate, link, thumbnail, content }
+  const SLUG_RE = /^[\w-]+$/;
+
+  function normalizeFromAPI(p) {
+    return {
+      slug: p.slug || '',
+      title: p.title || '',
+      description: p.subtitle || p.description || p.truncated_body_text || '',
+      pubDate: p.post_date || '',
+      link: p.canonical_url || `${SUBSTACK}/p/${p.slug}`,
+      thumbnail: p.cover_image || null,
+      content: p.body_html || ''
+    };
+  }
+
+  function parseRSS(xmlText) {
+    const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+    if (doc.querySelector('parsererror')) throw new Error('bad xml');
+    const items = [...doc.getElementsByTagName('item')];
+    if (!items.length) throw new Error('empty feed');
+    const txt = (it, tag) => { const el = it.getElementsByTagName(tag)[0]; return el ? el.textContent : ''; };
+    return items.map(it => {
+      const link = txt(it, 'link').trim();
+      const enc = it.getElementsByTagName('enclosure')[0];
+      const d = new Date(txt(it, 'pubDate'));
+      return {
+        slug: (link.match(/\/p\/([\w-]+)/) || [])[1] || '',
+        title: txt(it, 'title'),
+        description: txt(it, 'description'),
+        pubDate: isNaN(d) ? '' : d.toISOString(),
+        link,
+        thumbnail: enc ? enc.getAttribute('url') : null,
+        content: txt(it, 'content:encoded')
+      };
+    }).filter(p => p.slug);
+  }
+
+  function register(p) {
+    if (!p || !SLUG_RE.test(p.slug || '')) return null;
+    const old = postsBySlug[p.slug] || {};
+    const merged = { ...old, ...p, content: p.content || old.content || '', thumbnail: p.thumbnail || old.thumbnail || null };
+    postsBySlug[p.slug] = merged;
+    return merged;
+  }
+
+  // Cache: shows the last good list instantly and keeps the site alive if Substack is unreachable
+  function cacheSet(key, posts) {
+    try { localStorage.setItem(key, JSON.stringify(posts.map(p => ({ ...p, content: '' })))); } catch {}
+  }
+  function cacheGet(key) {
+    try { const c = JSON.parse(localStorage.getItem(key)); return Array.isArray(c) && c.length ? c : null; } catch { return null; }
+  }
+
   // ─── Fetch latest posts ───────────────────────────────────────────
   async function fetchPosts() {
+    const cached = cacheGet('tg_latest_v2');
+    if (cached) { allPosts = cached.map(register).filter(Boolean); renderArticles(allPosts); }
+
+    let posts = null;
     try {
-      const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
-      if (!r.ok) throw new Error('Feed error');
-      const data = await r.json();
-      allPosts = data.items;
+      posts = await fetchViaChain(`${SUBSTACK}/feed`, parseRSS);                       // has images + full text
+    } catch {
+      try {
+        const raw = await fetchViaChain(`${SUBSTACK}/api/v1/posts?limit=20&sort=new`, parseJSONList);
+        posts = raw.map(normalizeFromAPI);
+      } catch {}
+    }
+    if (posts) {
+      allPosts = posts.map(register).filter(Boolean);
+      cacheSet('tg_latest_v2', allPosts);
       renderArticles(allPosts);
-    } catch { renderFallbackArticles(); }
+    } else if (!cached) {
+      renderFallbackArticles();
+    }
   }
- 
-  // ─── Fetch top posts ──────────────────────────────────────────────
+
+  // ─── Fetch top posts (mirrors thinkingglobal.substack.com/?sort=top) ─
   async function fetchTopPosts() {
+    const cached = cacheGet('tg_top_v2');
+    if (cached) { topPosts = cached.map(register).filter(Boolean); renderPopular(topPosts); }
     try {
-      if (allPosts.length === 0) {
-        const r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://thinkingglobal.substack.com/feed');
-        const data = await r.json();
-        allPosts = data.items;
-      }
-      topPosts = allPosts.slice(0, 5); 
+      const raw = await fetchViaChain(`${SUBSTACK}/api/v1/posts?limit=5&sort=top_all_time`, parseJSONList);
+      topPosts = raw.map(normalizeFromAPI).map(register).filter(Boolean);
+      if (!topPosts.length) throw new Error('empty');
+      cacheSet('tg_top_v2', topPosts);
       renderPopular(topPosts);
-    } catch { renderPopularFallback(); }
+    } catch {
+      if (cached) return;
+      if (allPosts.length) { topPosts = allPosts.slice(0, 5); renderPopular(topPosts); }   // best available
+      else renderPopularFallback();
+    }
   }
- 
+
   // ─── Render article list ──────────────────────────────────────────
   function renderArticles(posts) {
     if (!posts || posts.length === 0) { renderFallbackArticles(); return; }
     const c = document.getElementById('articles-container');
     const f = posts[0];
- 
+
     function thumb(p) {
-      const src = p.thumbnail || p.enclosure.link || null;
-      if (src) return `<img src="${src}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
+      const src = p.thumbnail || null;
+      if (src) return `<img src="${esc(src)}" alt="${esc(p.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=thumb-placeholder>Thinking Global</div>'"/>`;
       return `<div class="thumb-placeholder">Thinking Global</div>`;
     }
- 
+
     let html = `
       <article class="featured-article">
         <span class="tag">Featured Analysis</span>
-        <div onclick="openReader('${encodeURIComponent(posts.indexOf(f))}')" style="cursor:pointer">
+        <div onclick="openReader('${f.slug}')" style="cursor:pointer">
           <div class="thumb-wrap">${thumb(f)}</div>
           <h2>${esc(f.title)}</h2>
         </div>
-        <p class="excerpt">${esc(f.description.replace(/<[^>]*>/g, '').substring(0, 200))}...</p>
+        <p class="excerpt">${esc(excerpt(f.description, 200))}</p>
         <div class="article-meta">
-          <span class="author">Thinking Global</span><span>·</span><span>${f.pubDate.substring(0, 5)}</span>
+          <span class="author">Thinking Global</span><span>·</span><span>${fmtDate(f.pubDate)}</span>
         </div>
       </article>
       <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px;">
         <h2 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">Latest Analysis</h2>
       </div>
       <div class="article-list">`;
- 
+
     for (let i = 1; i < Math.min(posts.length, 11); i++) {
       const p = posts[i];
       html += `
-        <article class="article-card" onclick="openReader('${encodeURIComponent(i)}')">
+        <article class="article-card" onclick="openReader('${p.slug}')">
           <div class="thumb-wrap">${thumb(p)}</div>
           <div class="article-card-body">
             <span class="section-label">Geopolitics</span>
             <h3>${esc(p.title)}</h3>
-            <p class="excerpt">${esc(p.description.replace(/<[^>]*>/g, '').substring(0, 150))}...</p>
+            <p class="excerpt">${esc(excerpt(p.description, 150))}</p>
             <div class="article-meta">
-              <span class="author">Thinking Global</span><span>·</span><span>${p.pubDate.substring(0, 5)}</span>
+              <span class="author">Thinking Global</span><span>·</span><span>${fmtDate(p.pubDate)}</span>
             </div>
           </div>
         </article>`;
@@ -691,83 +795,136 @@
     html += `</div>`;
     c.innerHTML = html;
   }
- 
-  // ─── openReader(): exibe o conteúdo do post no site ────────────────
-  function openReader(index) {
-    const idx = parseInt(decodeURIComponent(index));
-    const p = allPosts[idx];
-    if (!p) return;
- 
+
+  // ─── openReader(): shows the post inside the site ──────────────────
+  async function openReader(slug) {
+    if (!SLUG_RE.test(slug || '')) return;
+
     document.getElementById('home-page').style.display = 'none';
     document.getElementById('contact-page').style.display = 'none';
-    const ap = document.getElementById('article-page');
-    ap.style.display = 'block';
+    document.getElementById('article-page').style.display = 'block';
     const content = document.getElementById('article-content');
     window.scrollTo(0, 0);
- 
     document.getElementById('popularListArticle').innerHTML = document.getElementById('popularList').innerHTML;
- 
-    const img = p.thumbnail || p.enclosure.link || '';
-    
+
+    let p = postsBySlug[slug];
+    if (!p || !p.content) {
+      content.innerHTML = `
+        <div class="reader-loading">
+          <div class="loading-spinner" style="display:block;margin:0 auto;"></div>
+          <p style="margin-top:14px;font-size:13px;">Loading article…</p>
+        </div>`;
+      // 1) the post endpoint (full body for public posts)
+      try { p = register(normalizeFromAPI(await fetchViaChain(`${SUBSTACK}/api/v1/posts/${slug}`, parseJSONObj))); } catch {}
+      // 2) the RSS feed, which carries full text for public posts
+      if (!p || !p.content) {
+        try { (await fetchViaChain(`${SUBSTACK}/feed`, parseRSS)).forEach(register); p = postsBySlug[slug]; } catch {}
+      }
+    }
+
+    if (!p) {
+      content.innerHTML = `
+        <div style="padding:50px 0;text-align:center;color:var(--text-faint);">
+          <p style="font-size:15px;margin-bottom:18px;">Could not load this article here.</p>
+          <a href="${SUBSTACK}/p/${slug}" target="_blank" class="btn-full" style="display:inline-block;max-width:260px;">Read on Substack ↗</a>
+        </div>`;
+      return;
+    }
+
+    const img = p.thumbnail || '';
+    const body = p.content
+      ? sanitizeHTML(p.content)
+      : `<p style="font-size:18px;color:var(--text);">${esc(stripTags(p.description))}</p>
+         <p>The full text is available on Substack.</p>`;
+
     content.innerHTML = `
       <span class="tag">Structural Analysis</span>
       <h1 class="reader-title">${esc(p.title)}</h1>
       <div class="reader-meta">
         <span class="author">Thinking Global</span>
         <span>·</span>
-        <span>${p.pubDate.substring(0, 5)}</span>
+        <span>${fmtDate(p.pubDate)}</span>
       </div>
-      ${img ? `<div class="reader-hero"><img src="${img}" alt="${esc(p.title)}"/></div>` : ''}
-      <div class="reader-body">${p.content || p.description}</div>
+      ${img ? `<div class="reader-hero"><img src="${esc(img)}" alt="${esc(p.title)}"/></div>` : ''}
+      <div class="reader-body">${body}</div>
       <div class="reader-cta">
         <h4>Enjoy this analysis?</h4>
         <p>Subscribe to receive structural geopolitical intelligence weekly — free.</p>
         <div class="cta-btns">
           <a href="https://thinkingglobal.substack.com/subscribe" target="_blank" class="btn-full" style="max-width:220px;">Subscribe Free</a>
-          <a href="${p.link}" target="_blank" class="btn-full outline" style="max-width:220px;">Read on Substack ↗</a>
+          <a href="${esc(p.link)}" target="_blank" class="btn-full outline" style="max-width:220px;">Read on Substack ↗</a>
         </div>
       </div>`;
   }
- 
+
+  // Post bodies may pass through third-party proxies, so clean them before injecting.
+  function sanitizeHTML(html) {
+    const doc = new DOMParser().parseFromString(html || '', 'text/html');
+    doc.querySelectorAll('script, style, link, meta, object, embed, form, base, noscript').forEach(el => el.remove());
+    doc.querySelectorAll('.paywall, .subscription-widget, .paywall-cta, [data-component-name="PaywallBodyText"]').forEach(el => el.remove());
+    doc.querySelectorAll('iframe').forEach(el => {            // keep only video embeds
+      let ok = false;
+      try {
+        const h = new URL(el.getAttribute('src') || '', location.href).hostname;
+        ok = /(^|\.)(youtube\.com|youtube-nocookie\.com|player\.vimeo\.com)$/.test(h);
+      } catch {}
+      if (!ok) el.remove();
+    });
+    doc.querySelectorAll('*').forEach(el => {
+      [...el.attributes].forEach(a => {
+        const n = a.name.toLowerCase(), v = a.value.replace(/\s/g, '').toLowerCase();
+        if (n.startsWith('on') || n === 'srcdoc' || /^(javascript|vbscript):/.test(v)) el.removeAttribute(a.name);
+      });
+    });
+    doc.querySelectorAll('a[href]').forEach(a => { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer'); });
+    return doc.body.innerHTML;
+  }
+
   // ─── Popular sidebar ───────────────────────────────────────────────
   function renderPopular(posts) {
     document.getElementById('popularLoading').style.display = 'none';
     const list = document.getElementById('popularList');
     list.style.display = '';
     list.innerHTML = posts.slice(0, 5).map((p, i) => `
-      <li onclick="openReader('${encodeURIComponent(allPosts.indexOf(p))}')">
+      <li onclick="openReader('${p.slug}')">
         <span class="popular-num">${i + 1}</span>
         <span class="p-title">${esc(p.title)}</span>
       </li>`).join('');
   }
- 
+
   function renderPopularFallback() {
-    const fallback = [
-      { title: 'Why Taiwan is Turning Away from the US: The 14% Collapse', link: '#' },
-      { title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power', link: '#' },
-      { title: 'The Mercosur-EU Agreement: A New Colonial Pact', link: '#' },
-      { title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026', link: '#' },
-      { title: 'Greenland: The Strategic Test for European Sovereignty', link: '#' }
-    ];
-    document.getElementById('popularLoading').style.display = 'none';
-    const list = document.getElementById('popularList');
-    list.style.display = '';
-    list.innerHTML = fallback.map((p, i) => `
-      <li>
-        <span class="popular-num">${i + 1}</span>
-        <span class="p-title">${esc(p.title)}</span>
-      </li>`).join('');
+    renderPopular([
+      { slug: 'taiwan-collapse-us-trust',                 title: 'Why Taiwan is Turning Away from the US: The 14% Collapse' },
+      { slug: 'indonesia-5-trillion-blind-spot',          title: 'The $5 Trillion Blind Spot: Indonesia\'s Geopolitical Power' },
+      { slug: 'mercosur-eu-agreement-colonial-pact',      title: 'The Mercosur-EU Agreement: A New Colonial Pact' },
+      { slug: 'iran-missile-defense-timeline',            title: 'Strategic Timeline: Iranian Missile Interceptions in March 2026' },
+      { slug: 'greenland-geopolitics-europe-sovereignty', title: 'Greenland: The Strategic Test for European Sovereignty' }
+    ]);
   }
- 
+
   function renderFallbackArticles() {
-    document.getElementById('articles-container').innerHTML = '<p style="text-align:center;padding:20px;">Unable to load feed. Please check back later.</p>';
+    document.getElementById('articles-container').innerHTML = `
+      <div style="text-align:center;padding:40px 20px;color:var(--text-muted);">
+        <p style="margin-bottom:18px;">Unable to load the feed right now.</p>
+        <a href="https://thinkingglobal.substack.com/" target="_blank" class="btn-full" style="display:inline-block;max-width:260px;">Read on Substack ↗</a>
+        <p style="margin-top:14px;"><span onclick="location.reload()" style="cursor:pointer;color:var(--blue);font-size:13px;">Try again</span></p>
+      </div>`;
   }
- 
+
+  // ─── Utilities ─────────────────────────────────────────────────────
   function esc(s) {
     if (!s) return '';
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
- 
+  function stripTags(s) {
+    return (new DOMParser().parseFromString(s || '', 'text/html').body.textContent || '').trim();
+  }
+  function excerpt(s, n) {
+    const t = stripTags(s);
+    return t.length > n ? t.substring(0, n).trimEnd() + '…' : t;
+  }
+  function fmtDate(d) { return d ? String(d).substring(0, 10) : ''; }
+
   fetchPosts().then(() => fetchTopPosts());
 </script>
 </body>
